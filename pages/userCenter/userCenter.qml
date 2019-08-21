@@ -59,7 +59,8 @@
                 <view class="missionTxt">
                     连续签到，有收获！
                 </view>
-                <view class="btn btn-yellow goWatch" bindtap="checkInFun">签到</view>
+                <!-- <view class="btn btn-yellow goWatch" bindtap="checkInFun">签到</view> -->
+                <view class="isCheckIn goWatch">已签到</view>
                 <view class="checkinsWrapper">
                     <block qq:for="{{checkInsList}}" qq:for-item="item" qq:key="index">
                         <view class="checkinsItem {{item.isCkeck ? 'checkinsItemActive':''}}">

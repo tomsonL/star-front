@@ -28,11 +28,15 @@ Page({
         for (var x = 0; x < horoList.length; x++) {
             var start = new Date(new Date().getFullYear() + '/' + horoList[x].start).getTime();
             var end = new Date(new Date().getFullYear() + '/' + horoList[x].end).getTime();
+            var horoArr = horoList;
+            for(var y = 0; y < horoArr.length; y++){
+                horoArr[y].zh =  horoArr[y].zh.replace("座","月");
+            }
             if (today > start && today < end) {
                 that.setData({
                     currentIndex: x,
                     cstl_id: horoList[x].cstl_id,
-                    constellation: horoList
+                    constellation: horoArr
                 })
                 break;
             }

@@ -1,16 +1,36 @@
-.homePage{
-
+.homePage {
 }
-.bg{
+.bg {
     position: fixed;
     width: 750rpx;
     height: 100vh;
 }
+.searchBtn {
+    position: relative;
+    top: 21rpx;
+    margin: 0 auto;
+    background: rgba(238, 238, 238, 0.1);
+    border: 1p solid #fff;
+    border-radius: 27rpx;
+    width: 696rpx;
+    height: 53rpx;
+    text-align: center;
+    font-size: 28rpx;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 53rpx;
+}
+.searchIcon {
+    display: inline-block;
+    width: 25rpx;
+    height: 25rpx;
+    margin-right: 15rpx;
+    vertical-align: middle;
+}
 /* 头部 */
-.header{
+.header {
     padding-top: 20rpx;
 }
-.headerImg{
+.headerImg {
     position: relative;
     z-index: 10;
     display: block;
@@ -18,192 +38,194 @@
     width: 740rpx;
     height: 211rpx;
 }
-.headerBtn{
+.headerBtn {
     width: 140rpx;
     height: 60rpx;
     line-height: 60rpx;
     border-radius: 30rpx;
 }
 /* 控制星座 */
-.switch-ctrl swiper{
-    height: 58rpx;
+.switch-ctrl{
+    margin-top: 66rpx;
+}
+.switch-ctrl swiper {
+    height: 65rpx;
     line-height: 58rpx;
 }
-.switch-ctrl swiper-item{
-
+.switch-ctrl swiper-item {
 }
-.switch-ctrl swiper-item .ctrl-name{
+.switch-ctrl swiper-item .ctrl-name {
     text-align: center;
     font-size: 28rpx;
-    color: #7F7E7F;
+    color: #7f7e7f;
 }
-.switch-ctrl swiper-item .active{
+.switch-ctrl swiper-item .active {
     color: #fff;
     font-size: 34rpx;
+    border-bottom: 1px solid #fff;
 }
 /* body轮盘 */
-.body{
+.body {
     position: relative;
 }
-.rule-wrapper{
+.rule-wrapper {
     position: absolute;
     top: 10rpx;
     right: 13rpx;
     width: 139rpx;
     height: 40rpx;
     line-height: 40rpx;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0, 0, 0, 0.4);
     border-radius: 20rpx;
     padding-left: 23rpx;
-    color: #FFF800;
+    color: #fff800;
     font-size: 24rpx;
     z-index: 3;
 }
-.rule-icon{
+.rule-icon {
     position: absolute;
-    right:17rpx;
-    top:9rpx;
+    right: 17rpx;
+    top: 9rpx;
     display: block;
     width: 21rpx;
     height: 22rpx;
 }
 /* 星盘 */
-.horoscopeWrapper{
+.horoscopeWrapper {
     margin: 35rpx auto;
     width: 750rpx;
     height: 781rpx;
 }
-.horoBg{
-    position:absolute;
-    width:750rpx;
-    height:781rpx;
+.horoBg {
+    position: absolute;
+    width: 750rpx;
+    height: 781rpx;
 }
-.totalTop{
+.totalTop {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: 180rpx;
     height: 180rpx;
     border-radius: 50%;
 }
-.totalTitle{
+.totalTitle {
     position: absolute;
     width: 169rpx;
     height: 47rpx;
-    margin-left:8rpx;
+    margin-left: 8rpx;
     transform: translate(0, -25%);
     z-index: 3;
 }
-.totalBg{
+.totalBg {
     position: absolute;
     width: 100%;
     height: 100%;
     border-radius: 50%;
     z-index: 2;
 }
-.totalAvatar{
+.totalAvatar {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: 90%;
     height: 90%;
     border-radius: 50%;
     border: 1px solid rgba(112, 112, 112, 0.99);
 }
-.icon_wrapper{
+.icon_wrapper {
     position: absolute;
 }
-.icon_wrapper image{
+.icon_wrapper image {
     position: absolute;
     width: 100%;
     height: 100%;
 }
 /* 星座icon */
-.ari_icon_wrapper{
+.ari_icon_wrapper {
     top: 59rpx;
     left: 361rpx;
     width: 32rpx;
     height: 25rpx;
 }
-.tau_icon_wrapper{
+.tau_icon_wrapper {
     top: 99rpx;
     left: 530rpx;
     width: 31rpx;
     height: 33rpx;
 }
-.gem_icon_wrapper{
+.gem_icon_wrapper {
     top: 219rpx;
     left: 639rpx;
     width: 35rpx;
     height: 33rpx;
 }
-.cnc_icon_wrapper{
+.cnc_icon_wrapper {
     top: 379rpx;
     left: 685rpx;
     width: 25rpx;
     height: 29rpx;
 }
-.leo_icon_wrapper{
+.leo_icon_wrapper {
     top: 535rpx;
     left: 640rpx;
     width: 30rpx;
     height: 26rpx;
 }
-.vir_icon_wrapper{
+.vir_icon_wrapper {
     top: 661rpx;
     left: 516rpx;
     width: 37rpx;
     height: 25rpx;
 }
-.lib_icon_wrapper{
+.lib_icon_wrapper {
     top: 705rpx;
     left: 363rpx;
     width: 33rpx;
     height: 20rpx;
 }
-.sco_icon_wrapper{
+.sco_icon_wrapper {
     top: 649rpx;
     left: 197rpx;
     width: 23rpx;
     height: 34rpx;
 }
-.sgr_icon_wrapper{
+.sgr_icon_wrapper {
     top: 547rpx;
     left: 81rpx;
     width: 36rpx;
     height: 18rpx;
 }
-.cap_icon_wrapper{
+.cap_icon_wrapper {
     top: 377rpx;
     left: 41rpx;
     width: 25rpx;
     height: 31rpx;
 }
-.agr_icon_wrapper{
+.agr_icon_wrapper {
     top: 209rpx;
     left: 85rpx;
     width: 28rpx;
     height: 36rpx;
 }
-.psc_icon_wrapper{
+.psc_icon_wrapper {
     top: 98rpx;
     left: 199rpx;
     width: 33rpx;
     height: 33rpx;
 }
 /* 明星头像 */
-.avatarWrapper{
-
+.avatarWrapper {
 }
-.avatar_wrapper{
+.avatar_wrapper {
     position: absolute;
     width: 100rpx;
     height: 100rpx;
-    border-radius:50%;
+    border-radius: 50%;
 }
-.rankAvatar{
+.rankAvatar {
     position: absolute;
     z-index: 2;
     width: 100%;
@@ -211,192 +233,223 @@
     border-radius: 50%;
     border: 1px solid rgba(112, 112, 112, 0.99);
 }
-.avatar_border{
-    position:absolute;
-    z-index:3;
-    width:125%;
-    height:125%;
-    top:51%;
-    left:51%;
-    transform:translate(-50%,-50%);
+.avatar_border {
+    position: absolute;
+    z-index: 3;
+    width: 125%;
+    height: 125%;
+    top: 51%;
+    left: 51%;
+    transform: translate(-50%, -50%);
 }
-.activeBg{
-    position:absolute;
-    width:224rpx;
-    height:207rpx;
-    z-index:0;
+.activeBg {
+    position: absolute;
+    width: 224rpx;
+    height: 207rpx;
+    z-index: 0;
 }
-.ari_avatar_wrapper{
+.ari_avatar_wrapper {
     top: 119rpx;
     left: 325rpx;
 }
-.ari_avatar_wrapper .activeBg{
-    transform:rotate(-60deg);
-    top:-97rpx;
-    left:-72rpx;
+.ari_avatar_wrapper .activeBg {
+    transform: rotate(-60deg);
+    top: -97rpx;
+    left: -72rpx;
 }
-.tau_avatar_wrapper{
+.tau_avatar_wrapper {
     top: 149rpx;
     left: 439rpx;
 }
-.tau_avatar_wrapper .activeBg{
-    transform:rotate(-30deg);
-    top:-97rpx;
-    left:-51rpx;
+.tau_avatar_wrapper .activeBg {
+    transform: rotate(-30deg);
+    top: -97rpx;
+    left: -51rpx;
 }
-.gem_avatar_wrapper{
+.gem_avatar_wrapper {
     top: 231rpx;
     left: 521rpx;
 }
-.gem_avatar_wrapper .activeBg{
-    top:-87rpx;
-    left:-34rpx;
+.gem_avatar_wrapper .activeBg {
+    top: -87rpx;
+    left: -34rpx;
 }
-.cnc_avatar_wrapper{
+.cnc_avatar_wrapper {
     top: 344rpx;
     left: 552rpx;
 }
-.cnc_avatar_wrapper .activeBg{
-    transform:rotate(30deg);
-    top:-71rpx;
-    left:-26rpx;
+.cnc_avatar_wrapper .activeBg {
+    transform: rotate(30deg);
+    top: -71rpx;
+    left: -26rpx;
 }
-.leo_avatar_wrapper{
+.leo_avatar_wrapper {
     top: 457rpx;
     left: 522rpx;
 }
-.leo_avatar_wrapper .activeBg{
-    transform:rotate(60deg);
-    top:-48rpx;
-    left:-22rpx;
+.leo_avatar_wrapper .activeBg {
+    transform: rotate(60deg);
+    top: -48rpx;
+    left: -22rpx;
 }
-.vir_avatar_wrapper{
+.vir_avatar_wrapper {
     top: 539rpx;
     left: 440rpx;
 }
-.vir_avatar_wrapper .activeBg{
+.vir_avatar_wrapper .activeBg {
     transform: rotate(90deg);
-    top:-30rpx;
-    left:-36rpx;
+    top: -30rpx;
+    left: -36rpx;
 }
-.lib_avatar_wrapper{
+.lib_avatar_wrapper {
     top: 570rpx;
     left: 327rpx;
 }
-.lib_avatar_wrapper .activeBg{
-    transform:rotate(120deg);
-    left:-50rpx;
-    top:-17rpx;
+.lib_avatar_wrapper .activeBg {
+    transform: rotate(120deg);
+    left: -50rpx;
+    top: -17rpx;
 }
-.sco_avatar_wrapper{
+.sco_avatar_wrapper {
     top: 540rpx;
     left: 214rpx;
 }
-.sco_avatar_wrapper .activeBg{
+.sco_avatar_wrapper .activeBg {
     transform: rotate(150deg);
-    top:-17rpx;
-    left:-69rpx;
+    top: -17rpx;
+    left: -69rpx;
 }
-.sgr_avatar_wrapper{
+.sgr_avatar_wrapper {
     top: 458rpx;
     left: 131rpx;
 }
-.sgr_avatar_wrapper .activeBg{
+.sgr_avatar_wrapper .activeBg {
     transform: rotate(180deg);
-    top:-28rpx;
-    left:-87rpx;
+    top: -28rpx;
+    left: -87rpx;
 }
-.cap_avatar_wrapper{
+.cap_avatar_wrapper {
     top: 345rpx;
     left: 101rpx;
 }
-.cap_avatar_wrapper .activeBg{
+.cap_avatar_wrapper .activeBg {
     transform: rotate(-150deg);
-    top:-41rpx;
-    left:-97rpx;
+    top: -41rpx;
+    left: -97rpx;
 }
-.agr_avatar_wrapper{
+.agr_avatar_wrapper {
     top: 232rpx;
     left: 131rpx;
 }
-.agr_avatar_wrapper .activeBg{
+.agr_avatar_wrapper .activeBg {
     transform: rotate(-120deg);
-    top:-66rpx;
-    left:-98rpx;
+    top: -66rpx;
+    left: -98rpx;
 }
-.psc_avatar_wrapper{
+.psc_avatar_wrapper {
     top: 149rpx;
     left: 213rpx;
 }
-.psc_avatar_wrapper .activeBg{
+.psc_avatar_wrapper .activeBg {
     transform: rotate(-90deg);
-    top:-84rpx;
-    left:-88rpx;
+    top: -84rpx;
+    left: -88rpx;
 }
 /* 底部规则 */
-.listRule{
-    position:relative;
-    bottom:0;
-    z-index:2;
-    width:700rpx;
-    height:320rpx;
-    left:25rpx;
+.listRule {
+    position: relative;
+    bottom: 0;
+    z-index: 2;
+    width: 700rpx;
+    height: 320rpx;
+    left: 25rpx;
 }
-.listRule-background{
+.listRule-background {
     position: absolute;
     bottom: 0;
     display: block;
     width: 700rpx;
     height: 320rpx;
 }
-.rule-title{
+.rule-title {
     position: relative;
     z-index: 3;
     padding-top: 40rpx;
 }
-.rule-title-txt{
+.rule-title-txt {
     font-size: 32rpx;
     line-height: 32rpx;
     text-align: center;
-    color: #fff;    
+    color: #fff;
 }
-.rule-title-bottom{
+.rule-title-bottom {
     display: block;
     margin: 7rpx auto 0;
     width: 231rpx;
     height: 13rpx;
 }
 
-.rule-detail{
+.rule-detail {
     position: relative;
     z-index: 3;
     font-size: 28rpx;
-    color: #A594E4;
+    color: #a594e4;
     text-indent: 2em;
     padding: 19rpx 45rpx 0 50rpx;
 }
 /* 获取授权弹框 */
-.getUserInfoBtn{
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 4;
+.getUserInfoBtn {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 4;
 }
-.getInfoBtn{
-  position:fixed;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  box-shadow:none;
-  border:none;
-  width:484rpx;
-  height:363rpx;
-  background: rgba(0,0,0,0)
-  color: #fff;
+.getUserInfo {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: none;
+    border: none;
+    background: rgba(0, 0, 0, 0.3);
 }
-.getInfoBtn{
-  z-index: 10;
+.getInfoTxt {
+    font-size: 32rpx;
+    color: #5c1166;
+    text-align: center;
+    position: relative;
+    top: 218rpx;
+    letter-spacing: -2rpx;
+}
+.getInfoBtn {
+    position: absolute;
+    bottom: 40rpx;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 10;
+    width: 374rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    background: linear-gradient(to right, #e43acf, #713bf0);
+    color: #fff;
+    font-size: 35rpx;
+    border-radius: 40rpx;
+}
+.getUserInfoWrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 644rpx;
+    height: 425rpx;
+}
+.getUserInfoBg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
