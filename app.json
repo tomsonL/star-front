@@ -1,0 +1,34 @@
+{
+  "pages": [
+    "pages/homePage/homePage",
+    "pages/idolDetail/idolDetail",
+    "pages/totalList/totalList",
+    "pages/searchList/searchList",
+    "pages/assistValue/assistValue",
+    "pages/userCenter/userCenter",
+    "pages/subList/subList",
+    "pages/inviteList/inviteList",
+    "pages/rulePage/rulePage"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#000000",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "星守护",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "color": "#655035",
+    "selectedColor": "#F7BB6F",
+    "backgroundColor": "#030022",
+    "list": [
+      {
+        "pagePath": "pages/homePage/homePage",
+        "text": "星盘"
+      },
+      {
+        "pagePath": "pages/userCenter/userCenter",
+        "text": "我的"
+      }
+    ]
+  }
+}

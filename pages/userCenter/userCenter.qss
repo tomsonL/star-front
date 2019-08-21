@@ -1,0 +1,222 @@
+.userCenter{
+
+}
+.bg{
+    position: fixed;
+    width: 750rpx;
+    height: 100vh;
+}
+.userCard{
+    position: relative;
+    top: 27rpx;
+    width: 697rpx;
+    height: 139rpx;
+    display: block;
+    margin: 0 auto;
+}
+.userCardBg{
+    position: absolute;
+    width: 697rpx;
+    height: 139rpx;
+}
+.userAvatar{
+    position: absolute;
+    border: 1px solid #ffd690;
+    border-radius: 50%;
+    width: 100rpx;
+    height: 100rpx;
+    top: 23rpx;
+    left: 56rpx;
+}
+.username{
+    font-size:24rpx;
+    margin-left:170rpx;
+    display:block;
+    height:139rpx;
+    line-height:139rpx;
+    color:#fff;
+}
+.editName{
+    width: 23rpx;
+    height: 23rpx;
+    position: absolute;
+    top: 60rpx;
+    right: 131rpx;
+}
+.voteWrapper{
+    display:flex;
+    justify-content:space-between;
+    width:696rpx;
+    margin:54rpx auto 0;
+}
+.voteItem{
+    width: 223rpx;
+    height: 129rpx;
+    border-radius: 7rpx;
+    background: linear-gradient( to bottom, #FAC786,#E8A653);
+    padding-top: 38rpx;
+}
+.voteTitle{
+    text-align: center;
+    font-size: 28rpx;
+    color: #653D2A;
+}
+.powerWrapper{
+    width: 184rpx;
+    height: 53rpx;
+    line-height: 53rpx;
+    text-align: center;
+    background: linear-gradient(to bottom, #63441C, #955B22);
+    border-radius: 27rpx;
+    margin: 13rpx auto;
+}
+.poworIcon{
+    display: inline-block;
+    width: 22rpx;
+    height: 24rpx;
+    vertical-align: center;
+    margin-right: 7rpx;
+}
+.power{
+    display:inline-block;
+    font-size: 31rpx;
+    color: #fff;
+}
+.voteDetail, .contact{
+    width: 697rpx;
+    height: 96rpx;
+    line-height: 96rpx;
+    background: linear-gradient( to bottom, #573AE7, #441BA9);
+    margin: 27rpx auto;
+    border-radius: 7rpx;
+    text-align: center;
+    font-size: 32rpx;
+    color: #fff;
+}
+.missionWrapper{
+    width:670rpx;
+    margin:27rpx;
+    margin:27rpx;
+    background:linear-gradient(to bottom, #521FC6,#21155A);
+    border-radius:7rpx;
+    padding:28rpx 13rpx 14rpx 14rpx;
+}
+.getMoreTxt{
+    font-size: 32rpx;
+    color: #fff;
+    margin-bottom: 21rpx;
+}
+.missionItem{
+    width: 670rpx;
+    height: 105rpx;
+    background: rgba(0,0,0,0.3);
+    border-radius: 7rpx;
+    line-height: 105rpx;
+    margin-bottom: 13rpx;
+    position: relative;
+}
+.corner{
+    position: absolute;
+    width: 70rpx;
+    height: 70rpx;
+    top: 0;
+    left: 0;
+}
+.missionTxt{
+    font-size: 32rpx;
+    color: #fff;
+    padding-left: 65rpx;
+    position: relative;
+}
+.powerIcon{
+    display: inline-block;
+    width: 22rpx;
+    height: 22rpx;
+    vertical-align: middle;
+    margin-top:-2rpx;
+}
+.goWatch{
+    position: absolute;
+    width: 145rpx;
+    height: 56rpx;
+    line-height: 56rpx;
+    border-radius: 28rpx;
+    top: 27rpx;
+    right: 27rpx;
+}
+.checkins{
+    height: auto;
+    padding-bottom: 10rpx;
+}
+.checkinsWrapper{
+    display: flex;
+    justify-content: space-around;
+}
+.checkinsItem{
+    padding: 18rpx 6rpx 14rpx 7rpx;
+    width: 69rpx;
+    height: 51rpx;
+    background: linear-gradient(to bottom, #513CBD,#2F1F7F,#521FC6);
+    font-size: 23rpx;
+    color: #fff;
+    box-shadow: 3px 0 3px #0A0002;
+    border-radius: 7rpx;
+}
+.checkinsItem view{
+    line-height: 25rpx;
+    text-align: center;
+}
+.checkinsItemActive{
+    background: linear-gradient(to top, #A87524,#E1BA7C);
+    color: #401D04;
+}
+/* 提示框 */
+.votePopWrapper {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    left: 0;
+    right: 0;
+}
+.promptPop {
+    position: fixed;
+    width: 697rpx;
+    height: 313rpx;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.promptBg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.promptIcon {
+    position: absolute;
+    width: 141rpx;
+    height: 141rpx;
+    top: 55rpx;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+.promptTxtWrapper {
+    text-align: center;
+    line-height: 31rpx;
+    height: 31rpx;
+    position: absolute;
+    top: 210rpx;
+    width: 100%;
+}
+.promptTxt {
+    color: #fff;
+    font-size: 31rpx;
+    margin-right: 11rpx;
+    display: inline-block;
+    line-height: 31rpx;
+}
+.promptPop .poworIcon {
+    width: 26rpx;
+    height: 28rpx;
+    vertical-align: middle;
+}

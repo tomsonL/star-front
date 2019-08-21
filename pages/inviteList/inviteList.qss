@@ -1,0 +1,101 @@
+.inviteList {
+}
+.bg {
+    position: fixed;
+    width: 750rpx;
+    height: 100vh;
+}
+.inviteBlock {
+    position: relative;
+    top: 27rpx;
+    width: 697rpx;
+    height: 185rpx;
+    margin: 0 auto;
+}
+.inviteBlockBg {
+    position: absolute;
+    width: 697rpx;
+    height: 185rpx;
+}
+.inviteTitleWrapper {
+    position: relative;
+    padding: 45rpx 0 0 47rpx;
+    line-height: 40rpx;
+    color: #401d04;
+    font-size: 32rpx;
+}
+.inviteTitle {
+    display: inline-block;
+}
+.inviteNum {
+    display: inline-block;
+    width: 186rpx;
+    height: 40rpx;
+    background: #a27339;
+    text-align: center;
+    line-height: 40rpx;
+    border-radius: 20rpx;
+    color: #fff;
+    font-size: 32rpx;
+}
+.inviteDesc {
+    position: relative;
+    font-size: 24rpx;
+    margin-top: 17rpx;
+    padding-left: 47rpx;
+    color: #401d04;
+    line-height: 32rpx;
+}
+.inviteRecord {
+    margin-top: 54rpx;
+}
+.inviteItem {
+    position: relative;
+    width: 697rpx;
+    height: 119rpx;
+    margin: 0 auto 13rpx;
+    background: rgba(20, 9, 47, 0.6);
+    border-radius: 7rpx;
+}
+.inviteAvatar {
+    position: absolute;
+    width: 80rpx;
+    height: 80rpx;
+    border: 1px solid #ffd690;
+    border-radius: 50%;
+    top: 20rpx;
+    left: 45rpx;
+}
+.itemTitle {
+    position: relative;
+    font-size: 21rpx;
+    line-heigth: 30rpx;
+    padding: 35rpx 153rpx 0;
+    color: #D1CDC7;
+}
+.itemPower {
+    position: relative;
+    margin-top: 13rpx;
+    padding-left: 153rpx;
+    line-height: 21rpx;
+}
+.power {
+    display: inline-block;
+    font-size: 20rpx;
+    color: #8B45F2;
+}
+.poworIcon {
+    display: inline-block;
+    width: 15rpx;
+    height: 16rpx;
+    margin-left: 7rpx;
+}
+.inviteBtn{
+    position: absolute;
+    top: 33rpx;
+    right: 31rpx;
+    width: 145rpx;
+    height: 55rpx;
+    border-radius: 28rpx;
+    line-height: 55rpx;
+}

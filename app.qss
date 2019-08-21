@@ -1,0 +1,29 @@
+.container {
+  overflow: hidden;
+}
+.scrollWrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+/* 按钮样式统一写 */
+.btn {
+  display: block;
+  box-shadow: 4px 0 4px rgba(10, 0, 2, 0.31);
+  font-size: 24rpx;
+  color: #401d04;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+.btn-yellow {
+  background: linear-gradient(to bottom, #FAC786, #E4A04A, #E8A653);
+}
+.btn-green {
+  background: linear-gradient(to bottom, #47ec4b, #42b21b);
+}
+.btn-gray{
+   background: #d9d9d9;
+}

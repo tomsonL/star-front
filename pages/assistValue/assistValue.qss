@@ -1,0 +1,80 @@
+.assistValue {
+}
+.bg {
+    position: fixed;
+    width: 750rpx;
+    height: 100vh;
+}
+.voteBlock {
+    position: relative;
+    top: 27rpx;
+    width: 697rpx;
+    height: 185rpx;
+    margin: 0 auto;
+}
+.voteBlockBg {
+    position: absolute;
+    width: 697rpx;
+    height: 185rpx;
+}
+.voteTitle {
+    position: relative;
+    padding-top: 47rpx;
+    text-align: center;
+    line-heigth: 31rpx;
+    font-size: 32rpx;
+    color: #401d04;
+}
+.powerWrapper {
+    position: relative;
+    margin: 13rpx auto 0;
+    width: 237rpx;
+    height: 53rpx;
+    text-align: center;
+    background: #a27339;
+    border-radius: 27rpx;
+}
+.power {
+    display: inline-block;
+    font-size: 31rpx;
+    color: #fff;
+}
+.poworIcon {
+    display: inline-block;
+    width: 22rpx;
+    height: 24rpx;
+    margin-left: 13rpx;
+}
+.voteRecord {
+    margin-top: 54rpx;
+}
+.recordItem {
+    position: relative;
+    width: 697rpx;
+    height: 119rpx;
+    margin: 0 auto 13rpx;
+    background: rgba(20, 9, 47, 0.6);
+    border-radius: 7rpx;
+}
+.itemTitle {
+    font-size: 32rpx;
+    line-heigth: 30rpx;
+    padding: 27rpx 27rpx 0;
+    color: #f6c07c;
+}
+.itemTime {
+    font-size: 27rpx;
+    color: #6a491f;
+    margin-top: 11rpx;
+    margin-left: 26rpx;
+}
+.itemPower {
+    position: absolute;
+    right: 27rpx;
+    top: 33rpx;
+    width: 183rpx;
+    height: 54rpx;
+    text-align: center;
+    background: linear-gradient(to bottom, rgba(99, 68, 28, 0.76), rgba(149, 91, 34, 0.76));
+    border-radius: 27rpx;
+}

@@ -1,0 +1,145 @@
+.topWrapper{
+    position: absolute;
+    width: 215rpx;
+    height: 311rpx;
+    border-radius: 7rpx;
+}
+.firstIdol{
+    left: 50%;
+    transform: translate(-50%,0);
+}
+.secondIdol{
+    margin-top: 30rpx;
+    right: 27rpx;
+}
+.thirdIdol{
+    margin-top: 30rpx;
+    left: 27rpx;   
+}
+.topBg{
+    position: absolute;
+    width: 215rpx;
+    height: 311rpx;
+}
+.topAvatar{
+    position: relative;
+    display: block;
+    top: 35rpx;
+    width: 100rpx;
+    height: 100rpx;
+    margin: 0 auto;
+    border-radius:50%;
+    border:1px solid #ffd690;
+
+}
+.topHoro{
+    width:28rpx;
+    height:28rpx;
+    position:absolute;
+    top:117rpx;
+    right:59rpx;
+}
+.idolName{
+    position: relative;
+    margin-top:60rpx;
+    text-align: center;
+    font-size: 27rpx;
+    line-height: 25rpx;
+    color: #000;
+}
+.powerWrapper{
+    position: relative;
+    height: 16rpx;
+    line-height: 16rpx;
+    text-align: center;
+    margin-top: 10rpx;
+}
+.poworIcon{
+    width: 15rpx;
+    height: 16rpx;
+    display: inline-block;
+    margin-right: 7rpx;
+}
+.power{
+    line-height:21rpx;
+    font-size: 21rpx;
+    color: #F7BB6F;
+    display: inline-block;
+}
+.textLeft{
+    text-align: left;
+}
+.assistBtn{
+    position: relative;
+    width: 140rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    display: block;
+    margin: 23rpx auto 0;
+    border-radius: 30rpx;
+}
+.rankList{
+    position: relative;
+    top: 359rpx;
+}
+.rankItem{
+    position: relative;
+    height: 108rpx;
+}
+.rankBottom{
+    position: absolute;
+    width: 750rpx;
+    height: 108rpx;
+}
+.rankNum{
+    position: relative;
+    display: inline-block;
+    line-height: 108rpx;
+    color: #A09F9D;
+    font-size: 36rpx;
+    padding-left: 40rpx;
+}
+.rankAvatar{
+    position: relative;
+    display: inline-block;
+    width: 80rpx;
+    height: 80rpx;
+    margin-left: 39rpx;
+    vertical-align: middle;
+    border-radius: 50%;
+    border: 1px solid #FFD690;
+}
+.idolInfoWrapper{
+    position: absolute;
+    left: 225rpx;
+    display: inline-block;
+    padding-top: 30rpx;
+}
+.idolInfo{
+    height: 23rpx;
+    line-height: 15rpx;
+}
+.rankHoro{
+    display: inline-block;
+    width: 19rpx;
+    height: 19rpx;
+    vertical-align: middle;
+}
+.rankName{
+    display: inline-block;
+    color: #D1CDC7;
+    font-size: 24rpx;
+    margin-left: 5px;
+}
+.textLeft{
+
+}
+.assistListBtn{
+    position: absolute;
+    top: 24rpx;
+    right: 55rpx;
+    width: 140rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-radius: 30rpx;
+}

@@ -1,0 +1,49 @@
+.rulePage {
+}
+.bg {
+    position: fixed;
+    width: 750rpx;
+    height: 100vh;
+}
+.header {
+    position: relative;
+    top: 27rpx;
+    width: 614rpx;
+    height: 107rpx;
+    margin: 0 auto;
+    padding: 27rpx 45rpx 29rpx 39rpx;
+    background: rgba(58, 42, 118, 0.8);
+    border-radius: 7rpx;
+    color: #e5e5e5;
+    font-size: 28rpx;
+    line-height: 36rpx;
+    text-indent: 2em;
+}
+.ruleTitle {
+    position: relative;
+    font-size: 32rpx;
+    color: #f7c697;
+    text-align: center;
+    line-height: 32rpx;
+    height: 32rpx;
+    margin: 57rpx 0 25rpx;
+}
+.rule-wrapper {
+    position: relative;
+    margin: 0 auto 13rpx;
+    width: 605rpx;
+    padding: 27rpx 50rpx 27rpx 43rpx;
+    font-size: 28rpx;
+    color: #6d59b9;
+    background: rgba(58, 42, 118, 0.8);
+    border-radius: 7rpx;
+}
+.subTitle {
+    color: #a594e4;
+}
+.ruleTxt {
+    text-indent: 2em;
+}
+.marginBottom {
+    margin-bottom: 28rpx;
+}

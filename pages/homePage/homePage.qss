@@ -1,0 +1,402 @@
+.homePage{
+
+}
+.bg{
+    position: fixed;
+    width: 750rpx;
+    height: 100vh;
+}
+/* 头部 */
+.header{
+    padding-top: 20rpx;
+}
+.headerImg{
+    position: relative;
+    z-index: 10;
+    display: block;
+    margin: 0 auto;
+    width: 740rpx;
+    height: 211rpx;
+}
+.headerBtn{
+    width: 140rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-radius: 30rpx;
+}
+/* 控制星座 */
+.switch-ctrl swiper{
+    height: 58rpx;
+    line-height: 58rpx;
+}
+.switch-ctrl swiper-item{
+
+}
+.switch-ctrl swiper-item .ctrl-name{
+    text-align: center;
+    font-size: 28rpx;
+    color: #7F7E7F;
+}
+.switch-ctrl swiper-item .active{
+    color: #fff;
+    font-size: 34rpx;
+}
+/* body轮盘 */
+.body{
+    position: relative;
+}
+.rule-wrapper{
+    position: absolute;
+    top: 10rpx;
+    right: 13rpx;
+    width: 139rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    background: rgba(0,0,0,0.4);
+    border-radius: 20rpx;
+    padding-left: 23rpx;
+    color: #FFF800;
+    font-size: 24rpx;
+    z-index: 3;
+}
+.rule-icon{
+    position: absolute;
+    right:17rpx;
+    top:9rpx;
+    display: block;
+    width: 21rpx;
+    height: 22rpx;
+}
+/* 星盘 */
+.horoscopeWrapper{
+    margin: 35rpx auto;
+    width: 750rpx;
+    height: 781rpx;
+}
+.horoBg{
+    position:absolute;
+    width:750rpx;
+    height:781rpx;
+}
+.totalTop{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 180rpx;
+    height: 180rpx;
+    border-radius: 50%;
+}
+.totalTitle{
+    position: absolute;
+    width: 169rpx;
+    height: 47rpx;
+    margin-left:8rpx;
+    transform: translate(0, -25%);
+    z-index: 3;
+}
+.totalBg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    z-index: 2;
+}
+.totalAvatar{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    border: 1px solid rgba(112, 112, 112, 0.99);
+}
+.icon_wrapper{
+    position: absolute;
+}
+.icon_wrapper image{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+/* 星座icon */
+.ari_icon_wrapper{
+    top: 59rpx;
+    left: 361rpx;
+    width: 32rpx;
+    height: 25rpx;
+}
+.tau_icon_wrapper{
+    top: 99rpx;
+    left: 530rpx;
+    width: 31rpx;
+    height: 33rpx;
+}
+.gem_icon_wrapper{
+    top: 219rpx;
+    left: 639rpx;
+    width: 35rpx;
+    height: 33rpx;
+}
+.cnc_icon_wrapper{
+    top: 379rpx;
+    left: 685rpx;
+    width: 25rpx;
+    height: 29rpx;
+}
+.leo_icon_wrapper{
+    top: 535rpx;
+    left: 640rpx;
+    width: 30rpx;
+    height: 26rpx;
+}
+.vir_icon_wrapper{
+    top: 661rpx;
+    left: 516rpx;
+    width: 37rpx;
+    height: 25rpx;
+}
+.lib_icon_wrapper{
+    top: 705rpx;
+    left: 363rpx;
+    width: 33rpx;
+    height: 20rpx;
+}
+.sco_icon_wrapper{
+    top: 649rpx;
+    left: 197rpx;
+    width: 23rpx;
+    height: 34rpx;
+}
+.sgr_icon_wrapper{
+    top: 547rpx;
+    left: 81rpx;
+    width: 36rpx;
+    height: 18rpx;
+}
+.cap_icon_wrapper{
+    top: 377rpx;
+    left: 41rpx;
+    width: 25rpx;
+    height: 31rpx;
+}
+.agr_icon_wrapper{
+    top: 209rpx;
+    left: 85rpx;
+    width: 28rpx;
+    height: 36rpx;
+}
+.psc_icon_wrapper{
+    top: 98rpx;
+    left: 199rpx;
+    width: 33rpx;
+    height: 33rpx;
+}
+/* 明星头像 */
+.avatarWrapper{
+
+}
+.avatar_wrapper{
+    position: absolute;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius:50%;
+}
+.rankAvatar{
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px solid rgba(112, 112, 112, 0.99);
+}
+.avatar_border{
+    position:absolute;
+    z-index:3;
+    width:125%;
+    height:125%;
+    top:51%;
+    left:51%;
+    transform:translate(-50%,-50%);
+}
+.activeBg{
+    position:absolute;
+    width:224rpx;
+    height:207rpx;
+    z-index:0;
+}
+.ari_avatar_wrapper{
+    top: 119rpx;
+    left: 325rpx;
+}
+.ari_avatar_wrapper .activeBg{
+    transform:rotate(-60deg);
+    top:-97rpx;
+    left:-72rpx;
+}
+.tau_avatar_wrapper{
+    top: 149rpx;
+    left: 439rpx;
+}
+.tau_avatar_wrapper .activeBg{
+    transform:rotate(-30deg);
+    top:-97rpx;
+    left:-51rpx;
+}
+.gem_avatar_wrapper{
+    top: 231rpx;
+    left: 521rpx;
+}
+.gem_avatar_wrapper .activeBg{
+    top:-87rpx;
+    left:-34rpx;
+}
+.cnc_avatar_wrapper{
+    top: 344rpx;
+    left: 552rpx;
+}
+.cnc_avatar_wrapper .activeBg{
+    transform:rotate(30deg);
+    top:-71rpx;
+    left:-26rpx;
+}
+.leo_avatar_wrapper{
+    top: 457rpx;
+    left: 522rpx;
+}
+.leo_avatar_wrapper .activeBg{
+    transform:rotate(60deg);
+    top:-48rpx;
+    left:-22rpx;
+}
+.vir_avatar_wrapper{
+    top: 539rpx;
+    left: 440rpx;
+}
+.vir_avatar_wrapper .activeBg{
+    transform: rotate(90deg);
+    top:-30rpx;
+    left:-36rpx;
+}
+.lib_avatar_wrapper{
+    top: 570rpx;
+    left: 327rpx;
+}
+.lib_avatar_wrapper .activeBg{
+    transform:rotate(120deg);
+    left:-50rpx;
+    top:-17rpx;
+}
+.sco_avatar_wrapper{
+    top: 540rpx;
+    left: 214rpx;
+}
+.sco_avatar_wrapper .activeBg{
+    transform: rotate(150deg);
+    top:-17rpx;
+    left:-69rpx;
+}
+.sgr_avatar_wrapper{
+    top: 458rpx;
+    left: 131rpx;
+}
+.sgr_avatar_wrapper .activeBg{
+    transform: rotate(180deg);
+    top:-28rpx;
+    left:-87rpx;
+}
+.cap_avatar_wrapper{
+    top: 345rpx;
+    left: 101rpx;
+}
+.cap_avatar_wrapper .activeBg{
+    transform: rotate(-150deg);
+    top:-41rpx;
+    left:-97rpx;
+}
+.agr_avatar_wrapper{
+    top: 232rpx;
+    left: 131rpx;
+}
+.agr_avatar_wrapper .activeBg{
+    transform: rotate(-120deg);
+    top:-66rpx;
+    left:-98rpx;
+}
+.psc_avatar_wrapper{
+    top: 149rpx;
+    left: 213rpx;
+}
+.psc_avatar_wrapper .activeBg{
+    transform: rotate(-90deg);
+    top:-84rpx;
+    left:-88rpx;
+}
+/* 底部规则 */
+.listRule{
+    position:relative;
+    bottom:0;
+    z-index:2;
+    width:700rpx;
+    height:320rpx;
+    left:25rpx;
+}
+.listRule-background{
+    position: absolute;
+    bottom: 0;
+    display: block;
+    width: 700rpx;
+    height: 320rpx;
+}
+.rule-title{
+    position: relative;
+    z-index: 3;
+    padding-top: 40rpx;
+}
+.rule-title-txt{
+    font-size: 32rpx;
+    line-height: 32rpx;
+    text-align: center;
+    color: #fff;    
+}
+.rule-title-bottom{
+    display: block;
+    margin: 7rpx auto 0;
+    width: 231rpx;
+    height: 13rpx;
+}
+
+.rule-detail{
+    position: relative;
+    z-index: 3;
+    font-size: 28rpx;
+    color: #A594E4;
+    text-indent: 2em;
+    padding: 19rpx 45rpx 0 50rpx;
+}
+/* 获取授权弹框 */
+.getUserInfoBtn{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 4;
+}
+.getInfoBtn{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  box-shadow:none;
+  border:none;
+  width:484rpx;
+  height:363rpx;
+  background: rgba(0,0,0,0)
+  color: #fff;
+}
+.getInfoBtn{
+  z-index: 10;
+}
