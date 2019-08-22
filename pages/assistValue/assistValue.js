@@ -14,8 +14,12 @@ Page({
         page: 0
     },
     onLoad: function (option) {
+         qq.showShareMenu();
+         qq.showLoading({
+            title: "请稍后",
+            mask: true
+        })
         var that = this;
-
         qq.getStorage({
             key: 'staruserinfo',
             success: function (res1) {
@@ -38,6 +42,7 @@ Page({
                             voteNum: option.voteNum,
                             voteList: list
                         })
+                        qq.hideLoading();
                     }
                 })
             }

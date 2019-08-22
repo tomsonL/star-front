@@ -70,15 +70,22 @@ Page({
         showPrompt: false,
         promptType: 1,
         promptTxt: "aaa",
-        isVote: false
+        isVote: false,
+        // 今天是否签到
+        todayCheck: false
     },
     onLoad: function (option) {
+        qq.showShareMenu();
         this.setData({
             urlParam: option
         })
         this.getList(option)
     },
     getList: function (option) {
+        qq.showLoading({
+            title: "请稍后",
+            mask: true
+        })
         var that = this;
         qq.getStorage({
             key: "staruserinfo",
@@ -101,6 +108,7 @@ Page({
                         that.setData({
                             idolInfo: res2.data.data
                         })
+                        qq.hideLoading();
                     }
                 })
                 qq.request({
@@ -149,6 +157,7 @@ Page({
                                 fansList: list,
                                 self: self
                             })
+                            qq.hideLoading();
                         }
                     }
                 })
@@ -174,6 +183,10 @@ Page({
     },
     // 投票方法
     assistPopFun: function (e) {
+        qq.showLoading({
+            title: "请稍后",
+            mask: true
+        })
         var that = this;
         var idolId = this.data.urlParam.star_id;
         qq.getStorage({
@@ -195,8 +208,10 @@ Page({
                             fansInfo: res1.data.data,
                             idolId: idolId,
                             showVotePop: true,
-                            checkInsList: checkList
+                            checkInsList: checkList,
+                            todayCheck: res1.data.data.checkedin == 1
                         })
+                        qq.hideLoading();
                     }
                 })
             }
@@ -226,6 +241,10 @@ Page({
     },
     // 投票方法
     assistBtn: function () {
+        qq.showLoading({
+            title: "请稍后",
+            mask: true
+        })
         var that = this;
         if (!that.data.showErrorPop) {
             qq.getStorage({
@@ -270,6 +289,7 @@ Page({
                                     isVote: false
                                 })
                             }
+                            qq.hideLoading();
                         }
                     })
                 }
@@ -291,6 +311,10 @@ Page({
     },
     // 签到
     checkInFun: function (e) {
+        qq.showLoading({
+            title: "请稍后",
+            mask: true
+        })
         var that = this;
         qq.getStorage({
             key: 'staruserinfo',
@@ -342,6 +366,7 @@ Page({
                                 promptTxt: res2.data.msg
                             })
                         }
+                        qq.hideLoading();
                     }
                 })
             }

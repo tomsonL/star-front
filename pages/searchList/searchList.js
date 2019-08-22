@@ -65,12 +65,18 @@ Page({
         showPrompt: false,
         promptType: 1,
         promptTxt: "aaa",
-        isVote: false
+        isVote: false,
+        // 今天是否签到
+        todayCheck: false
     },
     onLoad: function () {
-
+        qq.showShareMenu();
     },
     getList: function (keyword, type) {
+        qq.showLoading({
+            title: "请稍后",
+            mask: true
+        })
         // type = 0: 刷新 type = 1: 加载更多
         var that = this;
         qq.getStorage({
@@ -101,6 +107,7 @@ Page({
                         that.setData({
                             idolList: list
                         })
+                        qq.hideLoading();
                     }
                 })
             }
@@ -146,7 +153,8 @@ Page({
                             fansInfo: res1.data.data,
                             idolId: idolId,
                             showVotePop: true,
-                            checkInsList: checkList
+                            checkInsList: checkList,
+                            todayCheck: res1.data.data.checkedin == 1
                         })
                     }
                 })

@@ -6,6 +6,7 @@
       搜索
     </navigator>
     <view class="switch-ctrl">
+      <view class="swiperShadow"></view>
       <swiper current="{{currentIndex}}" circular="{{true}}" previous-margin="325rpx" display-multiple-items="4" bindchange="swipeCtrl">
         <swiper-item qq:for="{{constellation}}" qq:for-index="idx" qq:for-item="item" qq:key="idx">
           <view class="ctrl-name {{currentIndex==idx?'active': ''}}">{{item.zh}}</view>
@@ -140,11 +141,16 @@
     </view>
     <view class="listRule">
       <image src="../../images/bottomRule2x.png" class="listRule-background" />
-      <view class="rule-title">
+      <!-- <view class="rule-title">
         <view class="rule-title-txt">榜单规则</view>
         <image src="../../images/ruleTitle2x.png" class="rule-title-bottom" />
+      </view> -->
+      <view class="rule-detail">
+        <view>在斗数命盘中，每个人都在变换角色，</view>
+        <view>仿佛 闪耀的“你”，在皓洁星空无时无刻变化着光亮，</view>
+        <view>渺小的“我”，愿做漆黑夜晚中的“追光者”……</view>
+        <view>用浅层的指尖，给你应援与保护，愿你星运无限……</view>
       </view>
-      <view class="rule-detail"> 星守护小程序是客观反映明星热度的产品，星榜单排名以粉丝真实助力数据为依据的明星打榜平台。</view>
     </view>
   </scroll-view>
   <view class="getUserInfo" qq:if="{{!hasUserInfo}}">

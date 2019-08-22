@@ -3,7 +3,6 @@ const config = require('config.js');
 const ald = require('./utils/ald-stat.js')
 App({
   onLaunch: function () {
-    
     // 展示本地存储能力
     var logs = qq.getStorageSync('logs') || [];
     var that = this;

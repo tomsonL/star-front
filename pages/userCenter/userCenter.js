@@ -52,12 +52,19 @@ Page({
         showPrompt: false,
         promptType: 1,
         promptTxt: "",
-        isVote: false
+        isVote: false,
+        // 今天是否签到
+        todayCheck: false
     },
     onLoad: function () {
         this.getList();
+        qq.showShareMenu();
     },
     getList: function () {
+        qq.showLoading({
+            title: "请稍后",
+            mask: true
+        })
         var that = this;
         qq.getStorage({
             key: "userInfo",
@@ -84,8 +91,10 @@ Page({
                         }
                         that.setData({
                             fansInfo: res1.data.data,
-                            checkInsList: checkList
+                            checkInsList: checkList,
+                            todayCheck: res1.data.data.checkedin == 1
                         })
+                        qq.hideLoading();
                     }
                 })
             }
@@ -93,6 +102,10 @@ Page({
     },
     // 签到
     checkInFun: function (e) {
+        qq.showLoading({
+            title: "请稍后",
+            mask: true
+        })
         var that = this;
         qq.getStorage({
             key: 'staruserinfo',
@@ -144,6 +157,7 @@ Page({
                                 promptTxt: res2.data.msg
                             })
                         }
+                        qq.hideLoading();
                     }
                 })
             }

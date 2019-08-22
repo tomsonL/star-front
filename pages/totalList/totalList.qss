@@ -278,13 +278,15 @@
     background: rgba(0, 0, 0, 0.46);
 }
 .voteInput {
+    position: absolute;
+    top: 0;
+    left: 75rpx;
     text-align: center;
     width: 330rpx;
     height: 80rpx;
     line-height: 80rpx;
     color: #f7bb6f;
     font-size: 40rpx;
-    margin-left: 75rpx;
 }
 .inputWrapper .poworIcon {
     position: absolute;
@@ -365,6 +367,11 @@
     border-radius: 28rpx;
     top: 27rpx;
     right: 27rpx;
+}
+.isCheckIn {
+    color: #929293;
+    text-align: center;
+    font-size: 28rpx;
 }
 .checkins {
     height: auto;

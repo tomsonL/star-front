@@ -27,7 +27,7 @@
                         <view class="power">+1000</view>
                         <image class="poworIcon" src="../../images/powerIcon2x.png" />
                     </view>
-                    <view class="btn btn-yellow inviteBtn" qq:if="{{!item.canGet}}">邀请</view>
+                    <button class="btn btn-yellow inviteBtn" open-type="share" qq:if="{{!item.canGet}}">邀请</button>
                     <view class="btn btn-green inviteBtn" qq:else>领取</view>
                 </view>
             </block>

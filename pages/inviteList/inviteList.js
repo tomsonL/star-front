@@ -13,6 +13,7 @@ Page({
         invited_count: ""
     },
     onLoad: function () {
+        qq.showShareMenu();
         var that = this;
         qq.getStorage({
             key: 'staruserinfo',
@@ -36,7 +37,7 @@ Page({
         })
     },
     // 邀请方法
-    inviteFun: function(){
-
+    inviteFun: function () {
+        qq.shareAppMessage();
     }
 })

@@ -374,6 +374,11 @@
     top: 27rpx;
     right: 27rpx;
 }
+.isCheckIn {
+    color: #929293;
+    text-align: center;
+    font-size: 28rpx;
+}
 .checkins {
     height: auto;
     padding-bottom: 10rpx;

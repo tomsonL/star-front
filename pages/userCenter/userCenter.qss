@@ -1,12 +1,11 @@
-.userCenter{
-
+.userCenter {
 }
-.bg{
+.bg {
     position: fixed;
     width: 750rpx;
     height: 100vh;
 }
-.userCard{
+.userCard {
     position: relative;
     top: 27rpx;
     width: 697rpx;
@@ -14,12 +13,12 @@
     display: block;
     margin: 0 auto;
 }
-.userCardBg{
+.userCardBg {
     position: absolute;
     width: 697rpx;
     height: 139rpx;
 }
-.userAvatar{
+.userAvatar {
     position: absolute;
     border: 1px solid #ffd690;
     border-radius: 50%;
@@ -28,114 +27,115 @@
     top: 23rpx;
     left: 56rpx;
 }
-.username{
-    font-size:24rpx;
-    margin-left:170rpx;
-    display:block;
-    height:139rpx;
-    line-height:139rpx;
-    color:#fff;
+.username {
+    font-size: 24rpx;
+    margin-left: 170rpx;
+    display: block;
+    height: 139rpx;
+    line-height: 139rpx;
+    color: #fff;
 }
-.editName{
+.editName {
     width: 23rpx;
     height: 23rpx;
     position: absolute;
     top: 60rpx;
     right: 131rpx;
 }
-.voteWrapper{
-    display:flex;
-    justify-content:space-between;
-    width:696rpx;
-    margin:54rpx auto 0;
+.voteWrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 696rpx;
+    margin: 54rpx auto 0;
 }
-.voteItem{
+.voteItem {
     width: 223rpx;
     height: 129rpx;
     border-radius: 7rpx;
-    background: linear-gradient( to bottom, #FAC786,#E8A653);
+    background: linear-gradient(to bottom, #fac786, #e8a653);
     padding-top: 38rpx;
 }
-.voteTitle{
+.voteTitle {
     text-align: center;
     font-size: 28rpx;
-    color: #653D2A;
+    color: #653d2a;
 }
-.powerWrapper{
+.powerWrapper {
     width: 184rpx;
     height: 53rpx;
     line-height: 53rpx;
     text-align: center;
-    background: linear-gradient(to bottom, #63441C, #955B22);
+    background: linear-gradient(to bottom, #63441c, #955b22);
     border-radius: 27rpx;
     margin: 13rpx auto;
 }
-.poworIcon{
+.poworIcon {
     display: inline-block;
     width: 22rpx;
     height: 24rpx;
     vertical-align: center;
     margin-right: 7rpx;
 }
-.power{
-    display:inline-block;
+.power {
+    display: inline-block;
     font-size: 31rpx;
     color: #fff;
 }
-.voteDetail, .contact{
+.voteDetail,
+.contact {
     width: 697rpx;
     height: 96rpx;
     line-height: 96rpx;
-    background: linear-gradient( to bottom, #573AE7, #441BA9);
+    background: linear-gradient(to bottom, #573ae7, #441ba9);
     margin: 27rpx auto;
     border-radius: 7rpx;
     text-align: center;
     font-size: 32rpx;
     color: #fff;
 }
-.missionWrapper{
-    width:670rpx;
-    margin:27rpx;
-    margin:27rpx;
-    background:linear-gradient(to bottom, #521FC6,#21155A);
-    border-radius:7rpx;
-    padding:28rpx 13rpx 14rpx 14rpx;
+.missionWrapper {
+    width: 670rpx;
+    margin: 27rpx;
+    margin: 27rpx;
+    background: linear-gradient(to bottom, #521fc6, #21155a);
+    border-radius: 7rpx;
+    padding: 28rpx 13rpx 14rpx 14rpx;
 }
-.getMoreTxt{
+.getMoreTxt {
     font-size: 32rpx;
     color: #fff;
     margin-bottom: 21rpx;
 }
-.missionItem{
+.missionItem {
     width: 670rpx;
     height: 105rpx;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 7rpx;
     line-height: 105rpx;
     margin-bottom: 13rpx;
     position: relative;
 }
-.corner{
+.corner {
     position: absolute;
     width: 70rpx;
     height: 70rpx;
     top: 0;
     left: 0;
 }
-.missionTxt{
+.missionTxt {
     font-size: 32rpx;
     color: #fff;
     padding-left: 65rpx;
     position: relative;
 }
-.powerIcon{
+.powerIcon {
     display: inline-block;
     width: 22rpx;
     height: 22rpx;
     vertical-align: middle;
-    margin-top:-2rpx;
+    margin-top: -2rpx;
 }
-.goWatch{
+.goWatch {
     position: absolute;
     width: 145rpx;
     height: 56rpx;
@@ -144,31 +144,36 @@
     top: 27rpx;
     right: 27rpx;
 }
-.checkins{
+.isCheckIn {
+    color: #929293;
+    text-align: center;
+    font-size: 28rpx;
+}
+.checkins {
     height: auto;
     padding-bottom: 10rpx;
 }
-.checkinsWrapper{
+.checkinsWrapper {
     display: flex;
     justify-content: space-around;
 }
-.checkinsItem{
+.checkinsItem {
     padding: 18rpx 6rpx 14rpx 7rpx;
     width: 69rpx;
     height: 51rpx;
-    background: linear-gradient(to bottom, #513CBD,#2F1F7F,#521FC6);
+    background: linear-gradient(to bottom, #513cbd, #2f1f7f, #521fc6);
     font-size: 23rpx;
     color: #fff;
-    box-shadow: 3px 0 3px #0A0002;
+    box-shadow: 3px 0 3px #0a0002;
     border-radius: 7rpx;
 }
-.checkinsItem view{
+.checkinsItem view {
     line-height: 25rpx;
     text-align: center;
 }
-.checkinsItemActive{
-    background: linear-gradient(to top, #A87524,#E1BA7C);
-    color: #401D04;
+.checkinsItemActive {
+    background: linear-gradient(to top, #a87524, #e1ba7c);
+    color: #401d04;
 }
 /* 提示框 */
 .votePopWrapper {

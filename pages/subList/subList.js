@@ -74,9 +74,12 @@ Page({
         showPrompt: false,
         promptType: 1,
         promptTxt: "aaa",
-        isVote: false
+        isVote: false,
+        // 今天是否签到
+        todayCheck: false
     },
     onLoad: function (option) {
+        qq.showShareMenu();
         var that = this;
         this.getMonthInfo(option.cstl);
         this.getList(option);
@@ -95,9 +98,9 @@ Page({
         //判断当前日期星座
         for (var x = 0; x < horoList.length; x++) {
             var start = new Date(new Date().getFullYear() + '/' + horoList[x].start).getTime();
-            var end = new Date(new Date().getFullYear() + '/' + horoList[x].end).getTime();
+            var end = new Date(new Date().getFullYear() + '/' + horoList[x + 1].start).getTime();
             if (today > start && today < end) {
-                endTime = end;
+                endTime = end + 60 * 60 * 24;
                 break;
             }
         }
@@ -112,6 +115,10 @@ Page({
     },
     // 获取列表
     getList: function (option, type) {
+        qq.showLoading({
+            title: "请稍后",
+            mask: true
+        })
         // type = 0: 刷新 type = 1: 加载更多
         var that = this;
         qq.getStorage({
@@ -160,6 +167,7 @@ Page({
                                 })
                             }
                         }
+                        qq.hideLoading();
                     }
                 })
             }
@@ -182,6 +190,10 @@ Page({
     },
     // 投票方法
     assistPopFun: function (e) {
+        qq.showLoading({
+            title: "请稍后",
+            mask: true
+        })
         var that = this;
         var idolId = e ? e.currentTarget.dataset.idolid : this.data.idolId;
         qq.getStorage({
@@ -203,8 +215,10 @@ Page({
                             fansInfo: res1.data.data,
                             idolId: idolId,
                             showVotePop: true,
-                            checkInsList: checkList
+                            checkInsList: checkList,
+                            todayCheck: res1.data.data.checkedin == 1
                         })
+                        qq.hideLoading();
                     }
                 })
             }
@@ -240,6 +254,10 @@ Page({
     },
     // 投票方法
     assistBtn: function () {
+        qq.showLoading({
+            title: "请稍后",
+            mask: true
+        })
         var that = this;
         if (!that.data.showErrorPop) {
             qq.getStorage({
@@ -284,6 +302,7 @@ Page({
                                     isVote: false
                                 })
                             }
+                            qq.hideLoading();
                         }
                     })
                 }
@@ -305,6 +324,10 @@ Page({
     },
     // 签到
     checkInFun: function (e) {
+        qq.showLoading({
+            title: "请稍后",
+            mask: true
+        })
         var that = this;
         qq.getStorage({
             key: 'staruserinfo',
@@ -356,6 +379,7 @@ Page({
                                 promptTxt: res2.data.msg
                             })
                         }
+                        qq.hideLoading();
                     }
                 })
             }

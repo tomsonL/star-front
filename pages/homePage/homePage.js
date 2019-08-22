@@ -21,16 +21,17 @@ Page({
         rankData: []
     },
     onLoad: function () {
+        qq.showShareMenu();
         var that = this;
         var cstlId = "";
         var today = new Date().getTime();
         //判断当前日期星座
         for (var x = 0; x < horoList.length; x++) {
             var start = new Date(new Date().getFullYear() + '/' + horoList[x].start).getTime();
-            var end = new Date(new Date().getFullYear() + '/' + horoList[x].end).getTime();
-            var horoArr = horoList;
-            for(var y = 0; y < horoArr.length; y++){
-                horoArr[y].zh =  horoArr[y].zh.replace("座","月");
+            var end = new Date(new Date().getFullYear() + '/' + horoList[x + 1].start).getTime();
+            var horoArr = JSON.parse(JSON.stringify(horoList));
+            for (var y = 0; y < horoArr.length; y++) {
+                horoArr[y].zh = horoArr[y].zh.replace("座", "月");
             }
             if (today > start && today < end) {
                 that.setData({
@@ -59,6 +60,10 @@ Page({
     },
     //星座榜
     getHoroData: function (cstl) {
+        qq.showLoading({
+            title: "请稍后",
+            mask: true
+        })
         var that = this;
         qq.getStorage({
             key: 'staruserinfo',
@@ -72,6 +77,7 @@ Page({
                         api_token: res1.data.token
                     },
                     success: function (res) {
+                        qq.hideLoading();
                         that.setData({
                             rankData: res.data.data
                         })
