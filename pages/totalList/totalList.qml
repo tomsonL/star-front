@@ -73,7 +73,7 @@
         </view>
     </scroll-view>
     <view class="votePopWrapper" bindtap="closePop" hidden="{{!showVotePop}}"> </view>
-    <view class="votePop" hidden="{{!showVotePop}}">
+    <view class="votePop" qq:if="{{showVotePop}}">
         <view class="voteBlock">
             <view class="errorTxt" hidden="{{!showErrorPop}}">您的助力值不足，请先查看</view>
             <view class="voteInputWrapper">
