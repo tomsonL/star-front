@@ -167,14 +167,23 @@ Page({
         var that = this;
         var vote = that.data.voteNum;
         e.currentTarget.dataset.type == 1 ? vote-- : vote++;
-        that.setData({
-            voteNum: vote
-        })
+        vote = vote < 0 ? 0 : vote;
+        if (parseInt(e.detail.value) > this.data.fansInfo.votes_left) {
+            this.setData({
+                showErrorPop: true,
+                errorTxt: "您的助力值不足，请先查看",
+            })
+        } else {
+            this.setData({
+                showErrorPop: false,
+                voteNum: vote
+            })
+        }
     },
     // 输入方法
     bindInputFun: function (e) {
         var reg = /^[0-9]*$/;
-        if(reg.test(e.detail.value)){
+        if(!reg.test(e.detail.value)){
             this.setData({
                 showErrorPop: false,
                 voteNum: 0,
