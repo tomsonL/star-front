@@ -68,6 +68,7 @@ Page({
         idolId: "",
         // 显示错误提示
         showErrorPop: false,
+        errorTxt: "",
         // 投票数量
         voteNum: 0,
         // 提示框相关
@@ -241,9 +242,19 @@ Page({
     },
     // 输入方法
     bindInputFun: function (e) {
+        var reg = /^[0-9]*$/;
+        if(reg.test(e.detail.value)){
+            this.setData({
+                showErrorPop: false,
+                voteNum: 0,
+                errorTxt: "投票只能是正整数"
+            })
+            return false;
+        }
         if (parseInt(e.detail.value) > this.data.fansInfo.votes_left) {
             this.setData({
-                showErrorPop: true
+                showErrorPop: true,
+                errorTxt: "您的助力值不足，请先查看"
             })
         } else {
             this.setData({

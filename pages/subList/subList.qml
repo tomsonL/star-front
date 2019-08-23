@@ -80,7 +80,7 @@
     <view class="votePopWrapper" bindtap="closePop" hidden="{{!showVotePop}}"> </view>
     <view class="votePop" hidden="{{!showVotePop}}">
         <view class="voteBlock">
-            <view class="errorTxt" hidden="{{!showErrorPop}}">您的助力值不足，请先查看</view>
+            <view class="errorTxt" hidden="{{!showErrorPop}}">{{errorTxt}}</view>
             <view class="voteInputWrapper">
                 <image class="minusBtn btnFun" src="../../images/icon_minus_btn.png" catchtap="calculateFun" data-type="1" />
                 <view class="inputWrapper">
