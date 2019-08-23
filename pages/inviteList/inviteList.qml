@@ -17,7 +17,7 @@
                     <view class="power">+1000</view>
                     <image class="poworIcon" src="../../images/powerIcon2x.png" />
                 </view>
-                <view class="btn btn-yellow inviteBtn" bindtap="inviteFun">邀请</view>
+                <button  open-type="share" class="btn btn-yellow inviteBtn" bindtap="inviteFun">邀请</button>
             </view>
             <block qq:for="{{inviteList}}" qq:for-item="item" qq:key="index">
                 <view class="inviteItem">
