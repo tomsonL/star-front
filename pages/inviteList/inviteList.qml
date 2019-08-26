@@ -14,7 +14,7 @@
                 <image class="inviteAvatar" src="../../images/icon_avatar.png" />
                 <view class="itemTitle">第{{inviteList.length+1}}位好友</view>
                 <view class="itemPower">
-                    <view class="power">+1000</view>
+                    <view class="power">+500</view>
                     <image class="poworIcon" src="../../images/powerIcon2x.png" />
                 </view>
                 <button  open-type="share" class="btn btn-yellow inviteBtn" bindtap="inviteFun">邀请</button>
@@ -24,7 +24,7 @@
                     <image class="inviteAvatar" src="{{item.avatar ? item.avatar : '../../images/icon_avatar.png'}}" />
                     <view class="itemTitle">{{item.name}}</view>
                     <view class="itemPower">
-                        <view class="power">+1000</view>
+                        <view class="power">+500</view>
                         <image class="poworIcon" src="../../images/powerIcon2x.png" />
                     </view>
                     <button class="btn btn-green inviteBtn" qq:if="{{item.invited_award == 1}}">领取</button>

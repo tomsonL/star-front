@@ -115,7 +115,7 @@
             <view class="missionItem">
                 <image class="corner" src="../../images/starCorner2x.png" />
                 <view class="missionTxt">
-                    邀请好友+1000
+                    邀请好友+500
                     <image class="powerIcon" src="../../images/powerIcon2x.png" />
                 </view>
                 <view class="btn btn-yellow goWatch" catchtap="goInvite">去邀请</view>
