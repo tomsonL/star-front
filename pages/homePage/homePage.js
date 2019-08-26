@@ -95,21 +95,16 @@ Page({
             mask: true
         })
         var that = this;
-        qq.getStorage({
-            key: 'staruserinfo',
-            success: function (res1) {
-                qq.request({
-                    method: "GET",
-                    url: request_host + '/ranks/cstl',
-                    data: {
-                        cstl_mon: cstl ? cstl : ''
-                    },
-                    success: function (res) {
-                        qq.hideLoading();
-                        that.setData({
-                            rankData: res.data.data
-                        })
-                    }
+        qq.request({
+            method: "GET",
+            url: request_host + '/ranks/cstl',
+            data: {
+                cstl_mon: cstl ? cstl : ''
+            },
+            success: function (res) {
+                qq.hideLoading();
+                that.setData({
+                    rankData: res.data.data
                 })
             }
         })
