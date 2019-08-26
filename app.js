@@ -2,7 +2,7 @@
 const config = require('config.js');
 const ald = require('./utils/ald-stat.js')
 App({
-  onLaunch: function () {
+  onLaunch: function (option) {
     // 展示本地存储能力
     var logs = qq.getStorageSync('logs') || [];
     var that = this;
@@ -24,8 +24,8 @@ App({
               }
             }
           })
-        }else{
-          
+        } else {
+
         }
       }
     })
@@ -39,25 +39,26 @@ App({
           data: {
             qqcode: res.code
           },
-          success: function (res1){
+          success: function (res1) {
             var req = res1.data.data;
             qq.setStorage({
               key: "staruserinfo",
               data: req
             })
-            if(req.need_create == 1){
+            if (req.need_create == 1) {
               qq.getStorage({
                 key: "userInfo",
-                success: function (res2){
+                success: function (res2) {
                   var param = {
                     name: res2.data.nickName,
-                    gender: res2.data.gender+"",
+                    gender: res2.data.gender + "",
                     avatar: res2.data.avatarUrl,
                     city: res2.data.city,
                     province: res2.data.province,
                     country: res2.data.country,
                     user_id: req.user_id,
-                    api_token: req.token
+                    api_token: req.token,
+                    invited_by: qq.getStorageSync('invite_id')
                   };
                   qq.request({
                     method: "POST",
@@ -69,14 +70,14 @@ App({
                   })
                 }
               })
-            }else{
+            } else {
               qq.hideLoading();
             }
           }
         })
       }
     })
-    
+
   },
   getUserInfo: function (cb) {
     var that = this;

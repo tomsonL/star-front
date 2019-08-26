@@ -1,4 +1,5 @@
-module.exports.REQUEST_HOST = 'https://star.3ceng.cn';//配置api地址
+module.exports.REQUEST_HOST = 'http://star.test.3ceng.cn';//配置api地址 测试
+// module.exports.REQUEST_HOST = 'https://star.3ceng.cn';//配置api地址  正式
 const imgUrl = "http://image.3ceng.cn/icon/cstl";
 module.exports.HORO = [
     {
@@ -157,4 +158,4 @@ module.exports.HORO = [
         'home_icon': imgUrl + '/icon_psc_home.png',
         'home_active': imgUrl +'/icon_psc_active.png' 
     }
-]
+];

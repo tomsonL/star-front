@@ -119,9 +119,10 @@
 }
 .totalTitle {
     position: absolute;
-    width: 169rpx;
-    height: 47rpx;
-    margin-left: 8rpx;
+    width: 193rpx;
+    height: 73rpx;
+    left: -5rpx;
+    top: -15rpx;
     transform: translate(0, -25%);
     z-index: 3;
 }
