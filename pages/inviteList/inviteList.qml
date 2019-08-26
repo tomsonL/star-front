@@ -11,7 +11,7 @@
         </view>
         <view class="inviteRecord">
             <view class="inviteItem">
-                <image class="inviteAvatar" src="" />
+                <image class="inviteAvatar" src="../../images/icon_avatar.png" />
                 <view class="itemTitle">第{{inviteList.length+1}}位好友</view>
                 <view class="itemPower">
                     <view class="power">+1000</view>
@@ -21,14 +21,14 @@
             </view>
             <block qq:for="{{inviteList}}" qq:for-item="item" qq:key="index">
                 <view class="inviteItem">
-                    <image class="inviteAvatar" src="{{item.avatar}}" />
+                    <image class="inviteAvatar" src="{{item.avatar ? item.avatar : '../../images/icon_avatar.png'}}" />
                     <view class="itemTitle">{{item.name}}</view>
                     <view class="itemPower">
                         <view class="power">+1000</view>
                         <image class="poworIcon" src="../../images/powerIcon2x.png" />
                     </view>
-                    <button class="btn btn-yellow inviteBtn" open-type="share" qq:if="{{!item.canGet}}">邀请</button>
-                    <view class="btn btn-green inviteBtn" qq:else>领取</view>
+                    <button class="btn btn-green inviteBtn" qq:if="{{item.invited_award == 1}}">领取</button>
+                    <view class="btn btn-green inviteBtn" qq:else>已领取</view>
                 </view>
             </block>
         </view>

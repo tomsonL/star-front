@@ -3,7 +3,7 @@
     <scroll-view scroll-y class="scrollWrapper">
         <view class="userCard">
             <image class="userCardBg" src="../../images/myInfoBg.png" />
-            <image class="userAvatar" src="{{userInfo.avatarUrl}}" />
+            <image class="userAvatar" src="{{userInfo.avatarUrl ? userInfo.avatarUrl : '../../images/icon_avatar.png'}}" />
             <view class="username">昵称：{{userInfo.nickName}}</view>
             <image class="editName" src="../../images/editIcon2x.png" />
         </view>

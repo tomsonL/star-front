@@ -91,6 +91,9 @@ Page({
             that.getCountDown();
         }, 1000)
     },
+    onShow: function () {
+        this.getList(this.data.urlParam);
+    },
     // 获取倒计时
     getCountDown: function () {
         var that = this;

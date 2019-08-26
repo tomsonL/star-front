@@ -19,7 +19,7 @@
                 <view class="itemTitle">抢点王{{lastTimer}}</view>
                 <view class="userAvatar">
                     <image class="avatarIcon" src="../../images/icon_timeVote.png" />
-                    <image class="avatar" src="{{timeKing.flasher_avatar}}" />
+                    <image class="avatar" src="{{timeKing.flasher_avatar ? timeKing.flasher_avatar : '../../images/icon_avatar.png'}}" />
                 </view>
                 <view class="userName">{{timeKing.flasher_name ? timeKing.flasher_name:"暂无"}}</view>
                 <view class="powerWrapper">
@@ -31,7 +31,7 @@
                 <view class="itemTitle">累计助力冠军：</view>
                 <view class="userAvatar">
                     <image class="avatarIcon" src="../../images/icon_totalVote.png" />
-                    <image class="avatar" src="{{totalKing.toper_avatar}}" />
+                    <image class="avatar" src="{{totalKing.toper_avatar ? totalKing.toper_avatar : '../../images/icon_avatar.png'}}" />
                 </view>
                 <view class="userName">{{totalKing.toper_name ? totalKing.toper_name:"暂无"}}</view>
                 <view class="powerWrapper">
@@ -43,7 +43,7 @@
                 <view class="itemTitle">今日助力神：</view>
                 <view class="userAvatar">
                     <image class="avatarIcon" src="../../images/icon_todayVote.png" />
-                    <image class="avatar" src="{{todayKing.toper_avatar}}" />
+                    <image class="avatar" src="{{todayKing.toper_avatar ? todayKing.toper_avatar : '../../images/icon_avatar.png'}}" />
                 </view>
                 <view class="userName">{{todayKing.toper_name ? todayKing.toper_name:"暂无"}}</view>
                 <view class="powerWrapper">
@@ -58,7 +58,7 @@
                 <view class="fansItem">
                     <image class="fansBg" src="../../images/fans_bg.png" />
                     <image class="topThreeIcon" qq:if="{{item.topThree}}" src="{{item.topIcon ? item.topIcon : ''}}" />
-                    <image class="fansAvatar" src="{{item.fans_avatar}}" />
+                    <image class="fansAvatar" src="{{item.fans_avatar ? item.fans_avatar : '../../images/icon_avatar.png'}}" />
                     <view class="fansName">{{item.fans_name}}</view>
                     <view class="powerWrapper textLeft">
                         <image class="poworIcon" src="../../images/powerIcon2x.png" />
@@ -73,7 +73,7 @@
         <view class="mySelfWrapper fansItem">
             <image class="myBg" src="../../images/self_bg.png" />
             <image class="topThreeIcon" qq:if="{{self.topThree}}" src="{{self.topIcon ? self.topIcon : ''}}" />
-            <image class="fansAvatar" src="{{self.current_avatar}}" />
+            <image class="fansAvatar" src="{{self.current_avatar ? self.current_avatar : '../../images/icon_avatar.png'}}" />
             <view class="fansName">{{self.current_name}}</view>
             <view class="powerWrapper textLeft">
                 <image class="poworIcon" src="../../images/powerIcon2x.png" />

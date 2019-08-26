@@ -62,10 +62,15 @@ App({
                   qq.request({
                     method: "POST",
                     url: config.REQUEST_HOST + "/user/create",
-                    data: param
+                    data: param,
+                    success: function (res) {
+                      qq.hideLoading();
+                    }
                   })
                 }
               })
+            }else{
+              qq.hideLoading();
             }
           }
         })
