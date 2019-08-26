@@ -73,6 +73,11 @@ Page({
     onLoad: function () {
         qq.showShareMenu();
     },
+    onShow: function () {
+        if (this.data.keyword) {
+            this.getList(this.data.keyword, 0);
+        }
+    },
     getList: function (keyword, type) {
         qq.showLoading({
             title: "请稍后",
@@ -183,7 +188,7 @@ Page({
     // 输入方法
     bindInputFun: function (e) {
         var reg = /^[0-9]*$/;
-        if(!reg.test(e.detail.value)){
+        if (!reg.test(e.detail.value)) {
             this.setData({
                 showErrorPop: true,
                 voteNum: 1,
@@ -191,7 +196,7 @@ Page({
             })
             return false;
         }
-        if(parseInt(e.detail.value) < 1){
+        if (parseInt(e.detail.value) < 1) {
             this.setData({
                 showErrorPop: true,
                 voteNum: 1,

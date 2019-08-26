@@ -58,6 +58,9 @@ Page({
         })
         that.getHoroData();
     },
+    onShow: function () {
+        this.getHoroData();
+    },
     onShareAppMessage: function( options ){
         var that = this;
     　　// 设置菜单中的转发按钮触发转发事件时的转发内容
@@ -99,9 +102,7 @@ Page({
                     method: "GET",
                     url: request_host + '/ranks/cstl',
                     data: {
-                        cstl_mon: cstl ? cstl : '',
-                        user_id: res1.data.user_id,
-                        api_token: res1.data.token
+                        cstl_mon: cstl ? cstl : ''
                     },
                     success: function (res) {
                         qq.hideLoading();
