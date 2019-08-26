@@ -313,7 +313,8 @@ Page({
                                     showPrompt: true,
                                     promptType: 1,
                                     promptTxt: "成功助力" + that.data.voteNum,
-                                    isVote: true
+                                    isVote: true,
+                                    pageNo: 0
                                 })
                                 that.getList(that.data.urlParam);
                                 setTimeout(function () {
