@@ -236,7 +236,7 @@ Page({
         var that = this;
         var vote = that.data.voteNum;
         e.currentTarget.dataset.type == 1 ? vote-- : vote++;
-        vote = vote < 0 ? 0 : vote;
+        vote = vote < 1 ? 1 : vote;
         if (parseInt(e.detail.value) > this.data.fansInfo.votes_left) {
             this.setData({
                 showErrorPop: true,
@@ -254,11 +254,18 @@ Page({
         var reg = /^[0-9]*$/;
         if(!reg.test(e.detail.value)){
             this.setData({
-                showErrorPop: false,
-                voteNum: 0,
+                showErrorPop: true,
+                voteNum: 1,
                 errorTxt: "投票只能是正整数"
             })
             return false;
+        }
+        if(parseInt(e.detail.value) < 1){
+            this.setData({
+                showErrorPop: true,
+                voteNum: 1,
+                errorTxt: "投票必须大于票"
+            })
         }
         if (parseInt(e.detail.value) > this.data.fansInfo.votes_left) {
             this.setData({
