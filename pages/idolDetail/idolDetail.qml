@@ -9,7 +9,7 @@
             </view>
             <view class="idolInfo">
                 <view class="idolName">姓名：{{idolInfo.star_name}}</view>
-                <view>神力：{{idolInfo.star_votes}}</view>
+                <view>星运：{{idolInfo.star_votes}}</view>
             </view>
             <view class="btn btn-yellow assistBtn" data-star-id="{{idolInfo.star_id}}" bindtap="assistPopFun">助力</view>
         </view>
