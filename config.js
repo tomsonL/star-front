@@ -1,5 +1,5 @@
-module.exports.REQUEST_HOST = 'http://tstar.3ceng.cn';//配置api地址 测试
-// module.exports.REQUEST_HOST = 'https://star.3ceng.cn';//配置api地址  正式
+module.exports.REQUEST_HOST = 'http://tstar.3ceng.cn/';//配置api地址 测试
+//module.exports.REQUEST_HOST = 'https://star.3ceng.cn';//配置api地址  正式
 const imgUrl = "http://image.3ceng.cn/icon/cstl";
 module.exports.HORO = [
     {
@@ -8,7 +8,7 @@ module.exports.HORO = [
         'en': 'Aries',
         'start': '03/21',
         'end': '04/19',
-        'bigImg': imgUrl  + '/icon_ari_big.png',
+        'bigImg': imgUrl + '/icon_ari_big.png',
         'smallImg': imgUrl + '/icon_ari_small.png',
         'img': imgUrl + '/img_ari.png',
         'bg': imgUrl + '/bg_ari.png',
