@@ -103,19 +103,18 @@ Page({
                         user_id: res1.data.user_id,
                         api_token: res1.data.token,
                         task: "invite",
-                        invite_fans_id: e.currentTarget.dataset.invitedId
+                        invite_fans_id: e.currentTarget.dataset.invitedid
                     },
                     success: function (res2) {
                         qq.hideLoading();
-                        console.log(res2);
-                        if(res2.data.code == 1){
+                        if (res2.data.code == 1) {
                             that.setData({
                                 showPrompt: true,
                                 promptType: 1,
                                 promptTxt: "成功领取助力" + res2.data.data.votes,
                             });
                             that.getList();
-                        }else{
+                        } else {
                             that.setData({
                                 showPrompt: true,
                                 promptType: 0,
