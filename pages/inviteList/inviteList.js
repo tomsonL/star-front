@@ -10,33 +10,17 @@ const horoList = config.HORO;
 Page({
     data: {
         inviteList: [],
-        invited_count: ""
+        invited_count: "",
+        // 提示框相关
+        showPrompt: false,
+        promptType: 1,
+        promptTxt: "",
+        isVote: false,
     },
     onLoad: function () {
         qq.showShareMenu();
-        var that = this;
-        qq.getStorage({
-            key: 'staruserinfo',
-            success: function (res1) {
-                qq.request({
-                    method: "GET",
-                    url: request_host + '/fans/invited',
-                    data: {
-                        user_id: res1.data.user_id,
-                        api_token: res1.data.token,
-                        fans_id: res1.data.user_id
-                    },
-                    success: function (res2) {
-                        that.setData({
-                            inviteList: res2.data.data.invited_list,
-                            invited_count: res2.data.data.invited_count
-                        })
-                    }
-                })
-            }
-        })
+        this.getList();
     },
-
     onShareAppMessage: function (options) {
         var that = this;
         // 设置菜单中的转发按钮触发转发事件时的转发内容
@@ -74,10 +58,80 @@ Page({
         }
         return shareObj;
     },
+    //获取列表
+    getList: function () {
+        var that = this;
+        qq.getStorage({
+            key: 'staruserinfo',
+            success: function (res1) {
+                qq.request({
+                    method: "GET",
+                    url: request_host + '/fans/invited',
+                    data: {
+                        user_id: res1.data.user_id,
+                        api_token: res1.data.token,
+                        fans_id: res1.data.user_id
+                    },
+                    success: function (res2) {
+                        that.setData({
+                            inviteList: res2.data.data.invited_list,
+                            invited_count: res2.data.data.invited_count
+                        })
+                    }
+                })
+            }
+        })
+    },
     // 邀请方法
     inviteFun: function () {
-        qq.showShareMenu({
-
-        });
+        qq.showShareMenu();
+    },
+    // 领取方法
+    receiveFun: function (e) {
+        var that = this;
+        qq.showLoading({
+            title: "请稍后",
+            mask: true
+        })
+        qq.getStorage({
+            key: "staruserinfo",
+            success: function (res1) {
+                qq.request({
+                    method: "POST",
+                    url: request_host + '/ops/task',
+                    data: {
+                        user_id: res1.data.user_id,
+                        api_token: res1.data.token,
+                        task: "invite",
+                        invite_fans_id: e.currentTarget.dataset.invitedId
+                    },
+                    success: function (res2) {
+                        qq.hideLoading();
+                        console.log(res2);
+                        if(res2.data.code == 1){
+                            that.setData({
+                                showPrompt: true,
+                                promptType: 1,
+                                promptTxt: "成功领取助力" + res2.data.data.votes,
+                            });
+                            that.getList();
+                        }else{
+                            that.setData({
+                                showPrompt: true,
+                                promptType: 0,
+                                promptTxt: res2.data.msg
+                            });
+                        }
+                        setTimeout(function () {
+                            that.setData({
+                                showPrompt: false,
+                                promptType: 0,
+                                promptTxt: "",
+                            })
+                        }, 1000)
+                    }
+                })
+            }
+        })
     }
 })
