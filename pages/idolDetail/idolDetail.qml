@@ -9,7 +9,7 @@
             </view>
             <view class="idolInfo">
                 <view class="idolName">姓名：{{idolInfo.star_name}}</view>
-                <view>神力：{{idolInfo.star_votes}}</view>
+                <view>星运：{{idolInfo.star_votes}}</view>
             </view>
             <view class="btn btn-yellow assistBtn" data-star-id="{{idolInfo.star_id}}" bindtap="assistPopFun">助力</view>
         </view>
@@ -147,6 +147,14 @@
         <view class="promptTxtWrapper">
             <view class="promptTxt">{{promptTxt}}</view>
             <image class="poworIcon" hidden="{{!isVote}}" src="../../images/powerIcon2x.png" />
+        </view>
+    </view>
+    <view class="getUserInfo" qq:if="{{!hasUserInfo}}">
+        <view class="getUserInfoWrapper">
+            <image class="getUserInfoBg" src="../../images/bg_empower.png" />
+            <view class="getInfoTxt">为你的偶像助力星运，来，开始助力吧~</view>
+            <button class="getInfoBtn" qq:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">点击授权</button>
+            <view qq:else>请升级QQ版本</view>
         </view>
     </view>
 </view>

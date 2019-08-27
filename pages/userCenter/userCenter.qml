@@ -9,14 +9,14 @@
         </view>
         <view class="voteWrapper">
             <view class="voteItem">
-                <view class="voteTitle">剩余神力</view>
+                <view class="voteTitle">剩余星力</view>
                 <view class="powerWrapper">
                     <image class="poworIcon" src="../../images/powerIcon2x.png" />
                     <view class="power">{{fansInfo.votes_left}}</view>
                 </view>
             </view>
             <view class="voteItem">
-                <view class="voteTitle">贡献神力</view>
+                <view class="voteTitle">贡献星力</view>
                 <view class="powerWrapper">
                     <image class="poworIcon" src="../../images/powerIcon2x.png" />
                     <view class="power">{{fansInfo.votes_spent}}</view>
@@ -31,7 +31,7 @@
             </view>
         </view>
         <view class="voteDetail" bindtap="goVoteDetail">
-            <view>神力明细</view>
+            <view>星力明细</view>
         </view>
         <view class="contact">
             <view>客服QQ：3476347242</view>
@@ -81,6 +81,14 @@
         <view class="promptTxtWrapper">
             <view class="promptTxt">{{promptTxt}}</view>
             <image class="poworIcon" hidden="{{!isVote}}" src="../../images/powerIcon2x.png" />
+        </view>
+    </view>
+    <view class="getUserInfo" qq:if="{{!hasUserInfo}}">
+        <view class="getUserInfoWrapper">
+          <image class="getUserInfoBg" src="../../images/bg_empower.png" />
+          <view class="getInfoTxt">为你的偶像助力星运，来，开始助力吧~</view>
+          <button class="getInfoBtn" qq:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">点击授权</button>
+          <view qq:else>请升级QQ版本</view>
         </view>
     </view>
 </view>

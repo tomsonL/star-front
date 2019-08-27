@@ -441,3 +441,60 @@
     height: 28rpx;
     vertical-align: middle;
 }
+
+/* 获取授权弹框 */
+.getUserInfoBtn {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 4;
+}
+.getUserInfo {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: none;
+    border: none;
+    background: rgba(0, 0, 0, 0.3);
+}
+.getInfoTxt {
+    font-size: 32rpx;
+    color: #5c1166;
+    text-align: center;
+    position: relative;
+    top: 218rpx;
+    letter-spacing: -2rpx;
+}
+.getInfoBtn {
+    position: absolute;
+    bottom: 40rpx;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 10;
+    width: 374rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    background: linear-gradient(to right, #e43acf, #713bf0);
+    color: #fff;
+    font-size: 35rpx;
+    border-radius: 40rpx;
+}
+.getUserInfoWrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 644rpx;
+    height: 425rpx;
+}
+.getUserInfoBg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}

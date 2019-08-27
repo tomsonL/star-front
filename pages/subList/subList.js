@@ -70,14 +70,16 @@ Page({
         showErrorPop: false,
         errorTxt: "",
         // 投票数量
-        voteNum: 0,
+        voteNum: 1,
         // 提示框相关
         showPrompt: false,
         promptType: 1,
         promptTxt: "aaa",
         isVote: false,
         // 今天是否签到
-        todayCheck: false
+        todayCheck: false,
+        hasUserInfo: true, //是否有用户信息
+        canIUse: qq.canIUse('button.open-type.getUserInfo'),
     },
     onLoad: function (option) {
         qq.showShareMenu();
@@ -125,55 +127,48 @@ Page({
         })
         // type = 0: 刷新 type = 1: 加载更多
         var that = this;
-        qq.getStorage({
-            key: "staruserinfo",
-            success: function (res1) {
-                qq.request({
-                    method: "GET",
-                    url: request_host + '/ranks/stars',
-                    data: {
-                        cstl: option.cstl,
-                        page: that.data.pageNo,
-                        cstl_mon: option.cstl_id,
-                        api_token: res1.data.token,
-                        user_id: res1.data.user_id
-                    },
-                    success: function (res) {
-                        if (res.data.code == 1) {
-                            var list = res.data.data;
-                            if (list.length == 0) {
-                                return false;
-                            }
-                            for (var x = 0; x < list.length; x++) {
-                                for (var y = 0; y < horoList.length; y++) {
-                                    if (list[x].star_cstl === horoList[y].zh) {
-                                        list[x].smallImg = horoList[y].smallImg;
-                                    }
-                                }
-                            }
-                            if (type == 1) {
-                                var oldList = that.data.idolList;
-                                list = oldList.concat(list);
-                                that.setData({
-                                    idolList: list
-                                })
-                            } else {
-                                var first = list[0];
-                                var second = list[1];
-                                var third = list[2];
-                                list.splice(0, 3);
-                                that.setData({
-                                    firstIdol: first,
-                                    secondIdol: second,
-                                    thirdIdol: third,
-                                    idolList: list,
-                                    hasDate: true
-                                })
+        qq.request({
+            method: "GET",
+            url: request_host + '/ranks/stars',
+            data: {
+                cstl: option.cstl,
+                page: that.data.pageNo,
+                cstl_mon: option.cstl_id
+            },
+            success: function (res) {
+                if (res.data.code == 1) {
+                    var list = res.data.data;
+                    if (list.length == 0) {
+                        return false;
+                    }
+                    for (var x = 0; x < list.length; x++) {
+                        for (var y = 0; y < horoList.length; y++) {
+                            if (list[x].star_cstl === horoList[y].zh) {
+                                list[x].smallImg = horoList[y].smallImg;
                             }
                         }
-                        qq.hideLoading();
                     }
-                })
+                    if (type == 1) {
+                        var oldList = that.data.idolList;
+                        list = oldList.concat(list);
+                        that.setData({
+                            idolList: list
+                        })
+                    } else {
+                        var first = list[0];
+                        var second = list[1];
+                        var third = list[2];
+                        list.splice(0, 3);
+                        that.setData({
+                            firstIdol: first,
+                            secondIdol: second,
+                            thirdIdol: third,
+                            idolList: list,
+                            hasDate: true
+                        })
+                    }
+                }
+                qq.hideLoading();
             }
         })
     },
@@ -224,6 +219,13 @@ Page({
                         })
                         qq.hideLoading();
                     }
+                })
+            },
+            //没有获取到用户权限
+            fail: function () {
+                qq.hideLoading();
+                that.setData({
+                    hasUserInfo: false
                 })
             }
         })
@@ -429,5 +431,63 @@ Page({
             pageNo: pageNo
         })
         this.getList(this.data.urlParam, 1);
-    }
+    },
+    //授权成功保存信息
+    bindGetUserInfo: function (e) {
+        qq.showLoading({
+            title: "请稍后",
+            mask: true
+        })
+        if (e.detail.userInfo) {
+            var that = this;
+            // 存储用户登录信息
+            qq.setStorage({
+                key: 'userInfo',
+                data: e.detail.userInfo,
+                success: function () {
+                    qq.request({
+                        method: "POST",
+                        url: config.REQUEST_HOST + "/user/post_qqcode",
+                        data: {
+                            qqcode: qq.getStorageSync('qqcode')
+                        },
+                        success: function (res1) {
+                            var req = res1.data.data;
+                            qq.setStorage({
+                                key: "staruserinfo",
+                                data: req
+                            })
+                            if (req.need_create == 1) {
+                                var param = {
+                                    name: e.detail.userInfo.nickName,
+                                    gender: e.detail.userInfo.gender + "",
+                                    avatar: e.detail.userInfo.avatarUrl,
+                                    city: e.detail.userInfo.city,
+                                    province: e.detail.userInfo.province,
+                                    country: e.detail.userInfo.country,
+                                    user_id: req.user_id,
+                                    api_token: req.token,
+                                    invited_by: qq.getStorageSync('invite_id')
+                                };
+                                qq.request({
+                                    method: "POST",
+                                    url: config.REQUEST_HOST + "/user/create",
+                                    data: param,
+                                    success: function (res) {
+                                        qq.hideLoading();
+                                    }
+                                })
+                            } else {
+                                qq.hideLoading();
+                            }
+                            that.getList(that.data.urlParam);
+                        }
+                    })
+                }
+            })
+            that.setData({
+                hasUserInfo: true
+            })
+        }
+    },
 })
