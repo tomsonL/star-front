@@ -9,14 +9,14 @@
         </view>
         <view class="voteWrapper">
             <view class="voteItem">
-                <view class="voteTitle">剩余神力</view>
+                <view class="voteTitle">剩余星运值</view>
                 <view class="powerWrapper">
                     <image class="poworIcon" src="../../images/powerIcon2x.png" />
                     <view class="power">{{fansInfo.votes_left}}</view>
                 </view>
             </view>
             <view class="voteItem">
-                <view class="voteTitle">贡献神力</view>
+                <view class="voteTitle">贡献星运值</view>
                 <view class="powerWrapper">
                     <image class="poworIcon" src="../../images/powerIcon2x.png" />
                     <view class="power">{{fansInfo.votes_spent}}</view>
@@ -31,7 +31,7 @@
             </view>
         </view>
         <view class="voteDetail" bindtap="goVoteDetail">
-            <view>神力明细</view>
+            <view>星运值明细</view>
         </view>
         <view class="contact">
             <view>客服QQ：3476347242</view>
