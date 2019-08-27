@@ -54,13 +54,24 @@ Page({
         promptTxt: "",
         isVote: false,
         // 今天是否签到
-        todayCheck: false
+        todayCheck: false,
+        hasUserInfo: false, //是否有用户信息
+        canIUse: qq.canIUse('button.open-type.getUserInfo'),
     },
     onLoad: function () {
         this.getList();
         qq.showShareMenu();
     },
+    onShow: function(){
+        this.getList();
+    },
     getList: function () {
+        if(!qq.getStorageSync("staruserinfo")){
+            return false;
+        }
+        this.setData({
+            hasUserInfo: true
+        });
         qq.showLoading({
             title: "请稍后",
             mask: true
@@ -186,5 +197,63 @@ Page({
         qq.navigateTo({
             url: "../inviteList/inviteList"
         })
-    }
+    },
+    //授权成功保存信息  
+    bindGetUserInfo: function (e) {
+        qq.showLoading({
+            title: "请稍后",
+            mask: true
+        })
+        if (e.detail.userInfo) {
+            var that = this;
+            // 存储用户登录信息
+            qq.setStorage({
+                key: 'userInfo',
+                data: e.detail.userInfo,
+                success: function () {
+                    qq.request({
+                        method: "POST",
+                        url: config.REQUEST_HOST + "/user/post_qqcode",
+                        data: {
+                            qqcode: qq.getStorageSync('qqcode')
+                        },
+                        success: function (res1) {
+                            var req = res1.data.data;
+                            qq.setStorage({
+                                key: "staruserinfo",
+                                data: req
+                            })
+                            if (req.need_create == 1) {
+                                var param = {
+                                    name: e.detail.userInfo.nickName,
+                                    gender: e.detail.userInfo.gender + "",
+                                    avatar: e.detail.userInfo.avatarUrl,
+                                    city: e.detail.userInfo.city,
+                                    province: e.detail.userInfo.province,
+                                    country: e.detail.userInfo.country,
+                                    user_id: req.user_id,
+                                    api_token: req.token,
+                                    invited_by: qq.getStorageSync('invite_id')
+                                };
+                                qq.request({
+                                    method: "POST",
+                                    url: config.REQUEST_HOST + "/user/create",
+                                    data: param,
+                                    success: function (res) {
+                                        qq.hideLoading();
+                                    }
+                                })
+                            } else {
+                                qq.hideLoading();
+                            }
+                            that.getList();
+                        }
+                    })
+                }
+            })
+            that.setData({
+                hasUserInfo: true
+            })
+        }
+    },
 })

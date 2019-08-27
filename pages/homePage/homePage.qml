@@ -153,12 +153,4 @@
       </view>
     </view>
   </scroll-view>
-  <view class="getUserInfo" qq:if="{{!hasUserInfo}}">
-    <view class="getUserInfoWrapper">
-      <image class="getUserInfoBg" src="../../images/bg_empower.png" />
-      <view class="getInfoTxt">获取不到你的昵称和头像，请开启授权！</view>
-      <button class="getInfoBtn" qq:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">点击获取授权</button>
-      <view qq:else>请升级QQ版本</view>
-    </view>
-  </view>
 </view>
