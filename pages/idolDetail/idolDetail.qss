@@ -6,6 +6,9 @@
     width: 750rpx;
     height: 100vh;
 }
+.scrollWrapper{
+    bottom: 142rpx;
+}
 .idolBlock {
     position: relative;
     top: 33rpx;
@@ -123,6 +126,10 @@
     height: 15rpx;
     line-height: 15rpx;
 }
+.voteWrapper{
+    display: inline-block;
+    width: 166rpx;
+}
 .poworIcon {
     width: 15rpx;
     height: 16rpx;
@@ -136,12 +143,14 @@
     color: #8b45f2;
     font-size: 20rpx;
 }
+.closeWrapper{
+    display: inline-block;
+}
 .closenessIcon{
     width: 15rpx;
     height: 16rpx;
     display: inline-block;
     vertical-align: middle;
-    margin: 6rpx 7rpx 0 66rpx;
     margin-right: 7rpx;
     margin-top: 6rpx;
 }
@@ -219,13 +228,25 @@
     width: 697rpx;
     height: 112rpx;
     position: fixed;
-    bottom: 26rpx;
-    margin: 0 auto;
+    bottom: 26rpx; 
+    left: 27rpx;
 }
 .myBg{
     width: 100%;
     height: 100%;
     position: absolute;
+}
+.mySelfWrapper .fansAvatar{
+    left: 66rpx;
+}
+.mySelfWrapper .fansName{
+    padding-left: 175rpx;
+}
+.mySelfWrapper .powerWrapper{
+    padding-left: 175rpx;
+}
+.mySelfWrapper .rankNum{
+    width: 210rpx;
 }
 .votePopWrapper {
     position: fixed;
