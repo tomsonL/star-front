@@ -481,6 +481,11 @@ Page({
             that.setData({
                 hasUserInfo: true
             })
+        }else{
+            qq.hideLoading();
+            this.setData({
+                hasUserInfo: true
+            })
         }
     },
 })

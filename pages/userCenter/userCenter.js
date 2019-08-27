@@ -254,6 +254,8 @@ Page({
             that.setData({
                 hasUserInfo: true
             })
+        }else{
+            qq.hideLoading();
         }
     },
 })
