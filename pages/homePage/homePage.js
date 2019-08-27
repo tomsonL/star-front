@@ -20,7 +20,10 @@ Page({
         canIUse: qq.canIUse('button.open-type.getUserInfo'),
         rankData: []
     },
-    onLoad: function () {
+    onLoad: function (option) {
+        if(option.invite_id){
+            qq.setStorageSync('invite_id',option.invite_id);
+        }
         //qq.showShareMenu();
         var that = this;
         var cstlId = "";
