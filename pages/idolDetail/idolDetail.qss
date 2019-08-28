@@ -6,6 +6,9 @@
     width: 750rpx;
     height: 100vh;
 }
+.scrollWrapper{
+    bottom: 142rpx;
+}
 .idolBlock {
     position: relative;
     top: 33rpx;
@@ -123,6 +126,10 @@
     height: 15rpx;
     line-height: 15rpx;
 }
+.voteWrapper{
+    display: inline-block;
+    width: 166rpx;
+}
 .poworIcon {
     width: 15rpx;
     height: 16rpx;
@@ -136,12 +143,14 @@
     color: #8b45f2;
     font-size: 20rpx;
 }
+.closeWrapper{
+    display: inline-block;
+}
 .closenessIcon{
     width: 15rpx;
     height: 16rpx;
     display: inline-block;
     vertical-align: middle;
-    margin: 6rpx 7rpx 0 66rpx;
     margin-right: 7rpx;
     margin-top: 6rpx;
 }
@@ -219,13 +228,25 @@
     width: 697rpx;
     height: 112rpx;
     position: fixed;
-    bottom: 26rpx;
-    margin: 0 auto;
+    bottom: 26rpx; 
+    left: 27rpx;
 }
 .myBg{
     width: 100%;
     height: 100%;
     position: absolute;
+}
+.mySelfWrapper .fansAvatar{
+    left: 66rpx;
+}
+.mySelfWrapper .fansName{
+    padding-left: 175rpx;
+}
+.mySelfWrapper .powerWrapper{
+    padding-left: 175rpx;
+}
+.mySelfWrapper .rankNum{
+    width: 210rpx;
 }
 .votePopWrapper {
     position: fixed;
@@ -442,4 +463,61 @@
     width: 26rpx;
     height: 28rpx;
     vertical-align: middle;
+}
+
+/* 获取授权弹框 */
+.getUserInfoBtn {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 4;
+}
+.getUserInfo {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: none;
+    border: none;
+    background: rgba(0, 0, 0, 0.3);
+}
+.getInfoTxt {
+    font-size: 32rpx;
+    color: #5c1166;
+    text-align: center;
+    position: relative;
+    top: 218rpx;
+    letter-spacing: -2rpx;
+}
+.getInfoBtn {
+    position: absolute;
+    bottom: 40rpx;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 10;
+    width: 374rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    background: linear-gradient(to right, #e43acf, #713bf0);
+    color: #fff;
+    font-size: 35rpx;
+    border-radius: 40rpx;
+}
+.getUserInfoWrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 644rpx;
+    height: 425rpx;
+}
+.getUserInfoBg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }

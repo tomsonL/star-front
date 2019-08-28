@@ -3,11 +3,6 @@ const config = require('config.js');
 const ald = require('./utils/ald-stat.js')
 App({
   onLaunch: function (option) {
-    // 展示本地存储能力
-    var logs = qq.getStorageSync('logs') || [];
-    var that = this;
-    logs.unshift(Date.now())
-    qq.setStorageSync('logs', logs)
     // 获取用户信息
     qq.getSetting({
       success: res => {
@@ -33,48 +28,7 @@ App({
     qq.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        qq.request({
-          method: "POST",
-          url: config.REQUEST_HOST + "/user/post_qqcode",
-          data: {
-            qqcode: res.code
-          },
-          success: function (res1) {
-            var req = res1.data.data;
-            qq.setStorage({
-              key: "staruserinfo",
-              data: req
-            })
-            if (req.need_create == 1) {
-              qq.getStorage({
-                key: "userInfo",
-                success: function (res2) {
-                  var param = {
-                    name: res2.data.nickName,
-                    gender: res2.data.gender + "",
-                    avatar: res2.data.avatarUrl,
-                    city: res2.data.city,
-                    province: res2.data.province,
-                    country: res2.data.country,
-                    user_id: req.user_id,
-                    api_token: req.token,
-                    invited_by: qq.getStorageSync('invite_id')
-                  };
-                  qq.request({
-                    method: "POST",
-                    url: config.REQUEST_HOST + "/user/create",
-                    data: param,
-                    success: function (res) {
-                      qq.hideLoading();
-                    }
-                  })
-                }
-              })
-            } else {
-              qq.hideLoading();
-            }
-          }
-        })
+        qq.setStorageSync('qqcode',res.code);
       }
     })
 
@@ -92,12 +46,6 @@ App({
             key: 'userInfo',
             data: res.userInfo
           })
-          // qq.getShareInfo({
-          //   shareTicket: options.shareTicket,
-          //   complete(res5){
-          //     console.log(res5);
-          //   }
-          // })
         }
       });
     }

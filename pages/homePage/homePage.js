@@ -15,9 +15,6 @@ Page({
         cstl_id: "",
         //星座控制
         constellation: [],
-        hasUserInfo: false, //是否有用户信息
-        personInfo: '', //存储用户信息
-        canIUse: qq.canIUse('button.open-type.getUserInfo'),
         rankData: []
     },
     onLoad: function (option) {
@@ -45,20 +42,6 @@ Page({
                 break;
             }
         }
-        app.getUserInfo(function (cb) {
-            qq.setStorage({
-                key: 'userInfo',
-                data: cb
-            })
-            that.setData({
-                personInfo: cb
-            })
-            if (cb) {
-                that.setData({
-                    hasUserInfo: true
-                })
-            }
-        })
         that.getHoroData();
     },
     onShow: function () {
@@ -119,21 +102,6 @@ Page({
             cstl_id: horoList[e.detail.current].cstl_id
         })
         this.getHoroData(horoList[e.detail.current].cstl_id);
-    },
-    //授权成功保存信息  
-    bindGetUserInfo: function (e) {
-        if (e.detail.userInfo) {
-            var that = this;
-            qq.setStorage({
-                key: 'userInfo',
-                data: e.detail.userInfo
-            })
-            that.setData({
-                personInfo: e.detail.userInfo,
-                hasUserInfo: true
-            })
-            that.getHoroData();
-        }
     },
     // 总榜单
     goTotalRank: function () {
