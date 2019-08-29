@@ -164,6 +164,7 @@ Page({
                                 self: self
                             })
                             qq.hideLoading();
+                            app.aldstat.sendEvent('明星详情',{'明星': that.data.idolInfo.star_name})
                         }
                     }
                 })
@@ -199,6 +200,7 @@ Page({
         })
         var that = this;
         var idolId = this.data.urlParam.star_id;
+        app.aldstat.sendEvent('助力',{'明星': that.data.idolInfo.star_name, '页面':'明星详情'});
         qq.getStorage({
             key: "staruserinfo",
             success: function (res) {
@@ -309,6 +311,7 @@ Page({
                                     isVote: true
                                 })
                                 that.getList(that.data.urlParam);
+                                app.aldstat.sendEvent('助力成功',{'明星': that.data.idolInfo.star_name, '页面':'明星详情'});
                                 setTimeout(function () {
                                     that.setData({
                                         showPrompt: false,
@@ -419,6 +422,7 @@ Page({
             title: "请稍后",
             mask: true
         })
+        app.aldstat.sendEvent('授权');
         if (e.detail.userInfo) {
             var that = this;
             // 存储用户登录信息

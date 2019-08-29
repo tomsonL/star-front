@@ -365,6 +365,7 @@ Page({
             title: "请稍后",
             mask: true
         })
+        app.aldstat.sendEvent('授权');
         if (e.detail.userInfo) {
             var that = this;
             // 存储用户登录信息

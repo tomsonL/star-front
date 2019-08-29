@@ -66,6 +66,8 @@ Page({
         showVotePop: false,
         // 投票的明星id
         idolId: "",
+        // 投票的明星姓名
+        idolName: "",
         // 显示错误提示
         showErrorPop: false,
         errorTxt: "",
@@ -193,8 +195,12 @@ Page({
             title: "请稍后",
             mask: true
         })
+      
         var that = this;
         var idolId = e ? e.currentTarget.dataset.idolid : this.data.idolId;
+        var idolName = e ? e.currentTarget.dataset.idolname : this.data.idolName;
+        app.aldstat.sendEvent('助力',{'明星': idolName, '页面':'星座分榜'});
+
         qq.getStorage({
             key: "staruserinfo",
             success: function (res) {
@@ -213,6 +219,7 @@ Page({
                         that.setData({
                             fansInfo: res1.data.data,
                             idolId: idolId,
+                            idolName: idolName,
                             showVotePop: true,
                             checkInsList: checkList,
                             todayCheck: res1.data.data.checkedin == 1
@@ -314,11 +321,12 @@ Page({
                                     showVotePop: false,
                                     showPrompt: true,
                                     promptType: 1,
-                                    promptTxt: "成功助力" + that.data.voteNum,
+                                    promptTxt: "成功为 " + that.data.idolName + " 助力" + that.data.voteNum,
                                     isVote: true,
                                     pageNo: 0
                                 })
                                 that.getList(that.data.urlParam);
+                                app.aldstat.sendEvent('助力成功',{'明星': that.data.idolName, '页面':'星座分榜'});
                                 setTimeout(function () {
                                     that.setData({
                                         showPrompt: false,
@@ -438,6 +446,7 @@ Page({
             title: "请稍后",
             mask: true
         })
+        app.aldstat.sendEvent('授权');
         if (e.detail.userInfo) {
             var that = this;
             // 存储用户登录信息

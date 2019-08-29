@@ -18,6 +18,16 @@ Page({
         isVote: false,
     },
     onLoad: function () {
+
+        var pages = getCurrentPages()
+            if (pages.length >= 2) {
+                var prevpage = pages[pages.length - 2]
+                var s = prevpage.route.split('/');
+                var prevpage_route = s.pop();
+        }
+        app.aldstat.sendEvent('去邀请',{
+            '来源': prevpage_route
+        });
         qq.showShareMenu();
         this.getList();
     },
@@ -28,17 +38,19 @@ Page({
             title: "人生剧本任意变幻，因为“你”，让“他”星运无限……",        // 默认是小程序的名称(可以写slogan等)
             path: '/pages/homePage/homePage',        // 默认是当前页面，必须是以‘/’开头的完整路径
             imageUrl: 'http://image.3ceng.cn/res/share/share_500_400.jpg',
-            //imageUrl: 'http://img.mp.itc.cn/upload/20170624/1da4a6bd75dc4f56bae76a702cb4242c_th.jpg',
             success: function (res) {
                 // 转发成功之后的回调
                 if (res.errMsg == 'shareAppMessage:ok') {
+                    app.aldstat.sendEvent('转发成功');
                 }
             },
             fail: function (res) {
                 // 转发失败之后的回调
                 if (res.errMsg == 'shareAppMessage:fail cancel') {
+                    app.aldstat.sendEvent('取消转发');
                     // 用户取消转发
                 } else if (res.errMsg == 'shareAppMessage:fail') {
+                    app.aldstat.sendEvent('转发失败',{'msg':res.detail.message});
                     // 转发失败，其中 detail message 为详细失败信息
                 }
             },
@@ -84,6 +96,7 @@ Page({
     },
     // 邀请方法
     inviteFun: function () {
+        app.aldstat.sendEvent('邀请');
         qq.showShareMenu();
     },
     // 领取方法

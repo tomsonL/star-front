@@ -18,6 +18,7 @@ Page({
         rankData: []
     },
     onLoad: function (option) {
+        app.aldstat.sendEvent('星盘');
         if(option.invite_id){
             qq.setStorageSync('invite_id',option.invite_id);
         }
@@ -105,12 +106,17 @@ Page({
     },
     // 总榜单
     goTotalRank: function () {
+        app.aldstat.sendEvent('星座总榜');
         qq.navigateTo({
             url: '../totalList/totalList?cstl_id=' + this.data.cstl_id
         })
+
     },
     // 分榜单
     goSubList: function (e) {
+        app.aldstat.sendEvent('星座分榜',{
+                    '星座': horoList[e.currentTarget.dataset.index].zh
+        });
         qq.navigateTo({
             url: '../subList/subList?cstl_id=' + this.data.cstl_id + '&cstl=' + horoList[e.currentTarget.dataset.index].cstl_id
         })
