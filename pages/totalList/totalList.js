@@ -314,7 +314,7 @@ Page({
                             if (res1.data.code == 1) {
                                 that.setData({
                                     showErrorPop: false,
-                                    voteNum: 0,
+                                    voteNum: 1,
                                     idolId: "",
                                     showVotePop: false,
                                     showPrompt: true,
@@ -351,7 +351,7 @@ Page({
     closePop: function () {
         this.setData({
             showErrorPop: false,
-            voteNum: 0,
+            voteNum: 1,
             idolId: "",
             showVotePop: false,
             showPrompt: false,
