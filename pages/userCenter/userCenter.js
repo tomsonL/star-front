@@ -52,21 +52,24 @@ Page({
         showPrompt: false,
         promptType: 1,
         promptTxt: "",
+        popType: 1,
         isVote: false,
         // 今天是否签到
         todayCheck: false,
         hasUserInfo: false, //是否有用户信息
         canIUse: qq.canIUse('button.open-type.getUserInfo'),
+        //用户昵称
+        nickname: ""
     },
     onLoad: function () {
         this.getList();
         qq.showShareMenu();
     },
-    onShow: function(){
+    onShow: function () {
         this.getList();
     },
     getList: function () {
-        if(!qq.getStorageSync("staruserinfo")){
+        if (!qq.getStorageSync("staruserinfo")) {
             return false;
         }
         this.setData({
@@ -180,7 +183,8 @@ Page({
             showPrompt: false,
             promptType: 0,
             promptTxt: "",
-            isVote: false
+            isVote: false,
+            popType: 1
         })
     },
     callFun: function () {
@@ -197,6 +201,79 @@ Page({
         qq.navigateTo({
             url: "../inviteList/inviteList"
         })
+    },
+    //显示修改昵称弹框
+    editPop: function () {
+        var that = this;
+        that.setData({
+            popType: 2,
+            showPrompt: true,
+            nickname: that.data.userInfo.nickName
+        })
+    },
+    //bindInputFun
+    bindInputFun: function (e) {
+        this.setData({
+            nickname: e.detail.value
+        })
+    },
+    //确认修改昵称
+    confirmFun: function () {
+        var that = this;
+        qq.getStorage({
+            key: "staruserinfo",
+            success: function (res1) {
+                qq.request({
+                    method: "POST",
+                    url: request_host + '/fans/update',
+                    data: {
+                        user_id: res1.data.user_id,
+                        api_token: res1.data.token,
+                        name: that.data.nickname
+                    },
+                    success: function (res2) {
+                        if (res2.data.code == 1) {
+                            that.setData({
+                                showPrompt: true,
+                                promptType: 1,
+                                popType: 1,
+                                promptTxt: "成功修改昵称"
+                            })
+                            that.getList();
+                            setTimeout(function () {
+                                that.setData({
+                                    showPrompt: false,
+                                    promptType: 0,
+                                    promptTxt: "",
+                                    popType: 1
+                                })
+                            }, 1000)
+                        } else {
+                            that.setData({
+                                showPrompt: true,
+                                promptType: 0,
+                                popType: 1,
+                                promptTxt: res2.data.msg
+                            })
+                            console.log(that.data.promptType);
+                        }
+
+                    },
+                    fail: function () {
+                        that.setData({
+                            showPrompt: true,
+                            promptType: 1,
+                            popType: 1,
+                            promptTxt: "网络错误，请重试"
+                        })
+                    }
+                })
+            }
+        })
+    },
+    //检查输入
+    checkInput: function () {
+
     },
     //授权成功保存信息  
     bindGetUserInfo: function (e) {
@@ -255,7 +332,7 @@ Page({
             that.setData({
                 hasUserInfo: true
             })
-        }else{
+        } else {
             qq.hideLoading();
         }
     },
