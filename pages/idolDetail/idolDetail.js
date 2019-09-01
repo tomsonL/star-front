@@ -12,7 +12,7 @@ Page({
         // 路由传值
         urlParam: {},
         idolInfo: {},
-        lastTimer: new Date().getHours() + ":00:00",
+        lastTimer: "",
         page: 0,
         timeKing: {},
         totalKing: {},
@@ -83,6 +83,11 @@ Page({
             urlParam: option
         })
         this.getList(option)
+    },
+    onShow: function () {
+        this.setData({
+            lastTimer: new Date().getHours() + ":00:00"
+        })
     },
     getList: function (option) {
         qq.showLoading({
@@ -168,7 +173,8 @@ Page({
                             }
                             that.setData({
                                 fansList: list,
-                                self: self
+                                self: self,
+                                lastTimer: new Date().getHours() + ":00:00"
                             })
                             qq.hideLoading();
                             app.aldstat.sendEvent('明星详情', { '明星': that.data.idolInfo.star_name })
