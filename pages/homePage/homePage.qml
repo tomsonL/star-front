@@ -7,7 +7,7 @@
     </navigator>
     <view class="switch-ctrl">
       <swiper current="{{currentIndex}}" circular="{{true}}" bindchange="swipeCtrl" previous-margin="325rpx" display-multiple-items="4">
-        <swiper-item qq:for="{{constellation}}" qq:for-index="idx" qq:for-item="item" qq:key="idx">
+        <swiper-item catchtouchmove="forbidMove" qq:for="{{constellation}}" qq:for-index="idx" qq:for-item="item" qq:key="idx">
           <view class="ctrl-name {{currentIndex==idx?'active': ''}}">{{item.zh}}</view>
         </swiper-item>
       </swiper>
@@ -25,51 +25,51 @@
           <image class="totalAvatar" src="{{rankData[12].star_avatar}}" />
         </view>
         <view class="iconsWrapper">
-          <view class="ari_icon_wrapper icon_wrapper">
+          <view class="ari_icon_wrapper icon_wrapper" data-index="0" bindtap="goSubList">
             <image qq:if="{{rankData[12].star_id != rankData[0].star_id}}" src="{{constellation[0].home_icon}}"></image>
             <image qq:if="{{rankData[12].star_id == rankData[0].star_id}}" e src="{{constellation[0].home_active}}"></image>
           </view>
-          <view class="tau_icon_wrapper icon_wrapper">
+          <view class="tau_icon_wrapper icon_wrapper" data-index="1" bindtap="goSubList">
             <image qq:if="{{rankData[12].star_id != rankData[1].star_id}}" src="{{constellation[1].home_icon}}"></image>
             <image qq:if="{{rankData[12].star_id == rankData[1].star_id}}" e src="{{constellation[1].home_active}}"></image>
           </view>
-          <view class="gem_icon_wrapper icon_wrapper">
+          <view class="gem_icon_wrapper icon_wrapper" data-index="2" bindtap="goSubList">
             <image qq:if="{{rankData[12].star_id != rankData[2].star_id}}" src="{{constellation[2].home_icon}}"></image>
             <image qq:if="{{rankData[12].star_id == rankData[2].star_id}}" e src="{{constellation[2].home_active}}"></image>
           </view>
-          <view class="cnc_icon_wrapper icon_wrapper">
+          <view class="cnc_icon_wrapper icon_wrapper" data-index="3" bindtap="goSubList">
             <image qq:if="{{rankData[12].star_id != rankData[3].star_id}}" src="{{constellation[3].home_icon}}"></image>
             <image qq:if="{{rankData[12].star_id == rankData[3].star_id}}" e src="{{constellation[3].home_active}}"></image>
           </view>
-          <view class="leo_icon_wrapper icon_wrapper">
+          <view class="leo_icon_wrapper icon_wrapper" data-index="4" bindtap="goSubList">
             <image qq:if="{{rankData[12].star_id != rankData[4].star_id}}" src="{{constellation[4].home_icon}}"></image>
             <image qq:if="{{rankData[12].star_id == rankData[4].star_id}}" e src="{{constellation[4].home_active}}"></image>
           </view>
-          <view class="vir_icon_wrapper icon_wrapper">
+          <view class="vir_icon_wrapper icon_wrapper" data-index="5" bindtap="goSubList">
             <image qq:if="{{rankData[12].star_id != rankData[5].star_id}}" src="{{constellation[5].home_icon}}"></image>
             <image qq:if="{{rankData[12].star_id == rankData[5].star_id}}" e src="{{constellation[5].home_active}}"></image>
           </view>
-          <view class="lib_icon_wrapper icon_wrapper">
+          <view class="lib_icon_wrapper icon_wrapper" data-index="6" bindtap="goSubList">
             <image qq:if="{{rankData[12].star_id != rankData[6].star_id}}" src="{{constellation[6].home_icon}}"></image>
             <image qq:if="{{rankData[12].star_id == rankData[6].star_id}}" e src="{{constellation[6].home_active}}"></image>
           </view>
-          <view class="sco_icon_wrapper icon_wrapper">
+          <view class="sco_icon_wrapper icon_wrapper" data-index="7" bindtap="goSubList">
             <image qq:if="{{rankData[12].star_id != rankData[7].star_id}}" src="{{constellation[7].home_icon}}"></image>
             <image qq:if="{{rankData[12].star_id == rankData[7].star_id}}" e src="{{constellation[7].home_active}}"></image>
           </view>
-          <view class="sgr_icon_wrapper icon_wrapper">
+          <view class="sgr_icon_wrapper icon_wrapper" data-index="8" bindtap="goSubList">
             <image qq:if="{{rankData[12].star_id != rankData[8].star_id}}" src="{{constellation[8].home_icon}}"></image>
             <image qq:if="{{rankData[12].star_id == rankData[8].star_id}}" e src="{{constellation[8].home_active}}"></image>
           </view>
-          <view class="cap_icon_wrapper icon_wrapper">
+          <view class="cap_icon_wrapper icon_wrapper" data-index="9" bindtap="goSubList">
             <image qq:if="{{rankData[12].star_id != rankData[9].star_id}}" src="{{constellation[9].home_icon}}"></image>
             <image qq:if="{{rankData[12].star_id == rankData[9].star_id}}" e src="{{constellation[9].home_active}}"></image>
           </view>
-          <view class="agr_icon_wrapper icon_wrapper">
+          <view class="agr_icon_wrapper icon_wrapper" data-index="10" bindtap="goSubList">
             <image qq:if="{{rankData[12].star_id != rankData[10].star_id}}" src="{{constellation[10].home_icon}}"></image>
             <image qq:if="{{rankData[12].star_id == rankData[10].star_id}}" src="{{constellation[10].home_active}}"></image>
           </view>
-          <view class="psc_icon_wrapper icon_wrapper">
+          <view class="psc_icon_wrapper icon_wrapper" data-index="11" bindtap="goSubList">
             <image qq:if="{{rankData[12].star_id != rankData[11].star_id}}" src="{{constellation[11].home_icon}}"></image>
             <image qq:if="{{rankData[12].star_id == rankData[11].star_id}}" src="{{constellation[11].home_active}}"></image>
           </view>
@@ -157,6 +157,7 @@
   <!-- 提示框 -->
   <view class="votePopWrapper" bindtap="closePop" hidden="{{!showPrompt}}"></view>
   <view class="promptPop" hidden="{{!showPrompt}}">
+    <image class="promptClose" bindtap="closePop" src="../../images/icon_closePop.png"/>
     <image class="promptBg" src="../../images/icon_prompt_bg.png" />
     <image class="promptIcon" hidden="{{promptType != 1}}" src="../../images/icon_success.png" />
     <image class="promptIcon" hidden="{{promptType != 0}}" src="../../images/icon_fail.png" />

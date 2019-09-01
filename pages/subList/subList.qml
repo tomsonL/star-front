@@ -118,7 +118,7 @@
                 <view class="missionTxt">
                     连续签到，有收获！
                 </view>
-                 <view class="btn btn-yellow goWatch" qq:if="{{!todayCheck}}" catchtap="checkInFun">签到</view>
+                <view class="btn btn-yellow goWatch" qq:if="{{!todayCheck}}" catchtap="checkInFun">签到</view>
                 <view class="isCheckIn goWatch" qq:else>已签到</view>
                 <view class="checkinsWrapper">
                     <block qq:for="{{checkInsList}}" qq:for-item="item" qq:key="index">
@@ -134,9 +134,10 @@
     <!-- 提示框 -->
     <view class="votePopWrapper" bindtap="closePop" hidden="{{!showPrompt}}"></view>
     <view class="promptPop" hidden="{{!showPrompt}}">
-        <image class="promptBg" src="../../images/icon_prompt_bg.png"/>
-        <image class="promptIcon" hidden="{{promptType != 1}}" src="../../images/icon_success.png"/>
-        <image class="promptIcon" hidden="{{promptType != 0}}" src="../../images/icon_fail.png"/>
+        <image class="promptClose" bindtap="closePop" src="../../images/icon_closePop.png" />
+        <image class="promptBg" src="../../images/icon_prompt_bg.png" />
+        <image class="promptIcon" hidden="{{promptType != 1}}" src="../../images/icon_success.png" />
+        <image class="promptIcon" hidden="{{promptType != 0}}" src="../../images/icon_fail.png" />
         <view class="promptTxtWrapper">
             <view class="promptTxt">{{promptTxt}}</view>
             <image class="poworIcon" hidden="{{!isVote}}" src="../../images/powerIcon2x.png" />

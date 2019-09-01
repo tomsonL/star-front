@@ -363,14 +363,14 @@
     top: -84rpx;
     left: -88rpx;
 }
-.toBefore{
+.toBefore {
     position: absolute;
     width: 51rpx;
     height: 109rpx;
     left: 21rpx;
     bottom: 37rpx;
 }
-.toAfter{
+.toAfter {
     position: absolute;
     width: 51rpx;
     height: 109rpx;
@@ -389,11 +389,18 @@
 }
 .promptPop {
     position: fixed;
-    width: 697rpx;
-    height: 313rpx;
+    width: 644rpx;
+    height: 356rpx;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+.promptClose {
+    position: absolute;
+    width: 93rpx;
+    height: 93rpx;
+    top: -131rpx;
+    right: 0;
 }
 .promptBg {
     position: absolute;
@@ -402,23 +409,22 @@
 }
 .promptIcon {
     position: absolute;
-    width: 141rpx;
-    height: 141rpx;
-    top: 55rpx;
-    left: 50%;
-    transform: translate(-50%, 0);
+    width: 132rpx;
+    height: 132rpx;
+    top: 107rpx;
+    left: 268rpx;
 }
 .promptTxtWrapper {
     text-align: center;
     line-height: 31rpx;
     height: 31rpx;
     position: absolute;
-    top: 210rpx;
+    bottom: 47rpx;
     width: 100%;
 }
 .promptTxt {
-    color: #fff;
-    font-size: 31rpx;
+    color: #4b1913;
+    font-size: 27rpx;
     margin-right: 11rpx;
     display: inline-block;
     line-height: 31rpx;

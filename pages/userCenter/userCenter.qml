@@ -34,7 +34,7 @@
             <view>星力明细</view>
         </view>
         <view class="contact">
-            <text selectable='true'>客服QQ：3476347242</text>
+            <text selectable="true">客服QQ：3476347242</text>
         </view>
         <view class="missionWrapper">
             <view class="getMoreTxt">想获得更多星力？</view>
@@ -75,6 +75,7 @@
     <!-- 提示框 -->
     <view class="votePopWrapper" bindtap="closePop" hidden="{{!showPrompt}}"></view>
     <view class="promptPop" hidden="{{!showPrompt}}">
+        <image class="promptClose" bindtap="closePop" src="../../images/icon_closePop.png" />
         <image class="promptBg" src="../../images/icon_prompt_bg.png" />
         <view hidden="{{popType == 2}}">
             <image class="promptIcon" hidden="{{promptType != 1}}" src="../../images/icon_success.png" />
@@ -86,7 +87,7 @@
         </view>
         <view hidden="{{popType == 1}}" style="position: relative;">
             <view class="inputWrapper">
-                <input class="inputBar" value="{{nickname}}" bindinput="bindInputFun" maxlength="20"/>
+                <input class="inputBar" value="{{nickname}}" bindinput="bindInputFun" maxlength="20" />
                 <view class="inputPrompt">(20个字)</view>
             </view>
             <view class="buttonWrapper">
@@ -97,10 +98,10 @@
     </view>
     <view class="getUserInfo" qq:if="{{!hasUserInfo}}">
         <view class="getUserInfoWrapper">
-          <image class="getUserInfoBg" src="../../images/bg_empower.png" />
-          <view class="getInfoTxt">为你的偶像助力星运值，来，开始助力吧~</view>
-          <button class="getInfoBtn" qq:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">点击授权</button>
-          <view qq:else>请升级QQ版本</view>
+            <image class="getUserInfoBg" src="../../images/bg_empower.png" />
+            <view class="getInfoTxt">为你的偶像助力星运值，来，开始助力吧~</view>
+            <button class="getInfoBtn" qq:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">点击授权</button>
+            <view qq:else>请升级QQ版本</view>
         </view>
     </view>
 </view>

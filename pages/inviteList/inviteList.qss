@@ -71,7 +71,7 @@
     font-size: 21rpx;
     line-heigth: 30rpx;
     padding: 35rpx 153rpx 0;
-    color: #D1CDC7;
+    color: #d1cdc7;
 }
 .itemPower {
     position: relative;
@@ -82,7 +82,7 @@
 .power {
     display: inline-block;
     font-size: 20rpx;
-    color: #8B45F2;
+    color: #8b45f2;
 }
 .poworIcon {
     display: inline-block;
@@ -90,7 +90,7 @@
     height: 16rpx;
     margin-left: 7rpx;
 }
-.inviteBtn{
+.inviteBtn {
     position: absolute;
     top: 33rpx;
     right: 31rpx;
@@ -100,13 +100,28 @@
     line-height: 55rpx;
 }
 /* 提示框 */
+.votePopWrapper {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    left: 0;
+    right: 0;
+}
 .promptPop {
     position: fixed;
-    width: 697rpx;
-    height: 313rpx;
+    width: 644rpx;
+    height: 356rpx;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+.promptClose {
+    position: absolute;
+    width: 93rpx;
+    height: 93rpx;
+    top: -131rpx;
+    right: 0;
 }
 .promptBg {
     position: absolute;
@@ -115,23 +130,22 @@
 }
 .promptIcon {
     position: absolute;
-    width: 141rpx;
-    height: 141rpx;
-    top: 55rpx;
-    left: 50%;
-    transform: translate(-50%, 0);
+    width: 132rpx;
+    height: 132rpx;
+    top: 107rpx;
+    left: 268rpx;
 }
 .promptTxtWrapper {
     text-align: center;
     line-height: 31rpx;
     height: 31rpx;
     position: absolute;
-    top: 210rpx;
+    bottom: 47rpx;
     width: 100%;
 }
 .promptTxt {
-    color: #fff;
-    font-size: 31rpx;
+    color: #4b1913;
+    font-size: 27rpx;
     margin-right: 11rpx;
     display: inline-block;
     line-height: 31rpx;

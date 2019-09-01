@@ -23,11 +23,15 @@
     "list": [
       {
         "pagePath": "pages/homePage/homePage",
-        "text": "星盘"
+        "text": "星盘",
+        "selectedIconPath": "images/icon_tab_star_selected.png",
+        "iconPath": "images/icon_tab_star.png"
       },
       {
         "pagePath": "pages/userCenter/userCenter",
-        "text": "我的"
+        "text": "我的",
+        "selectedIconPath": "images/icon_tab_my_selected.png",
+        "iconPath": "images/icon_tab_my.png"
       }
     ]
   }

@@ -122,6 +122,9 @@ Page({
         })
     },
     //滑动控制
+    forbidMove: function (e){
+
+    },
     swipeCtrl: function (e) {
         this.setData({
             showLeft: true,
