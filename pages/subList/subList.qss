@@ -39,7 +39,7 @@
 .horoInfoWrapper {
     float: left;
     padding-left: 357rpx;
-    height: 249rpx;
+    height: 230rpx;
     margin-top: 22rpx;
     padding-top: 72rpx;
     width: 393rpx;
@@ -86,7 +86,6 @@
 .rankListWrapper {
     positon: relative;
     width: 100%;
-    margin-top: 31rpx;
 }
 .topWrapper {
     position: absolute;
@@ -100,11 +99,11 @@
 }
 .secondIdol {
     margin-top: 30rpx;
-    right: 27rpx;
+    left: 27rpx;
 }
 .thirdIdol {
     margin-top: 30rpx;
-    left: 27rpx;
+    right: 27rpx;
 }
 .topBg {
     position: absolute;

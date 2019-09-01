@@ -92,11 +92,11 @@
 }
 .secondIdol {
     margin-top: 30rpx;
-    right: 27rpx;
+    left: 27rpx;
 }
 .thirdIdol {
     margin-top: 30rpx;
-    left: 27rpx;
+    right: 27rpx;
 }
 .topBg {
     position: absolute;

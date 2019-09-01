@@ -181,7 +181,6 @@
 }
 .topThreeIcon {
     position: absolute;
-    display: none;
     width: 32rpx;
     height: 29rpx;
     top: 36rpx;
@@ -237,6 +236,9 @@
     width: 100%;
     height: 100%;
     position: absolute;
+}
+.mySelfWrapper .topThreeIcon{
+    left: 22rpx;
 }
 .mySelfWrapper .fansAvatar {
     left: 66rpx;
