@@ -74,7 +74,8 @@
                 </view>
             </block>
         </view>
-        <view class="mySelfWrapper fansItem">
+    </scroll-view>
+    <view class="mySelfWrapper fansItem">
             <image class="myBg" src="../../images/self_bg.png" />
             <image class="topThreeIcon" qq:if="{{self.topThree}}" src="{{self.topIcon ? self.topIcon : ''}}" />
             <image class="fansAvatar" src="{{self.current_avatar ? self.current_avatar : '../../images/icon_avatar.png'}}" />
@@ -91,7 +92,6 @@
             </view>
             <view class="rankNum {{self.topThree ? 'rankNumTop' : ''}}">{{self.current_no ? self.current_no : "暂无"}}</view>
         </view>
-    </scroll-view>
     <view class="votePopWrapper" bindtap="closePop" hidden="{{!showVotePop}}"> </view>
     <view class="votePop" qq:if="{{showVotePop}}">
         <view class="voteBlock">
