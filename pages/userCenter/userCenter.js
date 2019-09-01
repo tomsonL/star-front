@@ -240,7 +240,7 @@ Page({
         that.setData({
             popType: 2,
             showPrompt: true,
-            nickname: that.data.userInfo.nickName
+            nickname: that.data.fansInfo.fans_name
         })
     },
     //确认修改昵称
@@ -249,7 +249,7 @@ Page({
         qq.getStorage({
             key: "staruserinfo",
             success: function (res1) {
-                if (!res.data || res.data.length == 0) {
+                if (!res1.data || res1.data.length == 0) {
                     qq.hideLoading();
                     that.setData({
                         hasUserInfo: false
@@ -257,10 +257,11 @@ Page({
                     return false;
                 }
                 qq.request({
+                    method: "POST",
                     url: request_host + '/fans/update',
                     data: {
                         user_id: res1.data.user_id,
-                        token: res1.data.token,
+                        api_token: res1.data.token,
                         name: that.data.nickname
                     },
                     success: function (res2) {
@@ -268,12 +269,23 @@ Page({
                             that.setData({
                                 showPrompt: true,
                                 promptType: 1,
+                                popType: 1,
                                 promptTxt: "成功修改昵称"
                             })
+                            that.getList();
+                            setTimeout(function () {
+                                that.setData({
+                                    showPrompt: false,
+                                    promptType: 0,
+                                    popType: 1,
+                                    promptTxt: ""
+                                })
+                            }, 1000)
                         } else {
                             that.setData({
                                 showPrompt: true,
                                 promptType: 1,
+                                popType: 1,
                                 promptTxt: res2.data.msg
                             })
                         }
@@ -283,6 +295,7 @@ Page({
                         that.setData({
                             showPrompt: true,
                             promptType: 1,
+                            popType: 1,
                             promptTxt: "网络错误，请重试"
                         })
                     }
@@ -298,8 +311,10 @@ Page({
         })
     },
     //检查输入
-    checkInput: function () {
-
+    bindInputFun: function (e) {
+        this.setData({
+            nickname: e.detail.value
+        })
     },
     //授权成功保存信息  
     bindGetUserInfo: function (e) {
