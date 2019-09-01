@@ -172,6 +172,7 @@ Page({
         this.setData({
             showLeft: true,
             showRight: true,
+            temIndex: that.data.currentIndex,
             cstl_id: horoList[current].cstl_id
         })
         this.getHoroData(horoList[current].cstl_id, current, e.currentTarget.dataset.type);
