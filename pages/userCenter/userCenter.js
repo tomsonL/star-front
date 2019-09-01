@@ -75,7 +75,6 @@ Page({
             })
             return false;
         }
-        console.log(qq.getStorageSync("staruserinfo"));
         this.setData({
             hasUserInfo: true
         });
@@ -110,15 +109,21 @@ Page({
                         api_token: res.data.token
                     },
                     success: function (res1) {
-                        var checkList = that.data.checkInsList;
-                        for (var x = 0; x < parseInt(res1.data.data.checkins); x++) {
-                            checkList[x].isCkeck = true;
+                        if (res1.data.code == 1) {
+                            var checkList = that.data.checkInsList;
+                            for (var x = 0; x < parseInt(res1.data.data.checkins); x++) {
+                                checkList[x].isCkeck = true;
+                            }
+                            that.setData({
+                                fansInfo: res1.data.data,
+                                checkInsList: checkList,
+                                todayCheck: res1.data.data.checkedin == 1
+                            })
+                        } else {
+                            that.setData({
+                                hasUserInfo: false
+                            })
                         }
-                        that.setData({
-                            fansInfo: res1.data.data,
-                            checkInsList: checkList,
-                            todayCheck: res1.data.data.checkedin == 1
-                        })
                         qq.hideLoading();
                     }
                 })

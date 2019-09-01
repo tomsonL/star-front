@@ -171,7 +171,7 @@ Page({
                                 self: self
                             })
                             qq.hideLoading();
-                            app.aldstat.sendEvent('明星详情',{'明星': that.data.idolInfo.star_name})
+                            app.aldstat.sendEvent('明星详情', { '明星': that.data.idolInfo.star_name })
                         }
                     }
                 })
@@ -207,7 +207,7 @@ Page({
         })
         var that = this;
         var idolId = this.data.urlParam.star_id;
-        app.aldstat.sendEvent('助力',{'明星': that.data.idolInfo.star_name, '页面':'明星详情'});
+        app.aldstat.sendEvent('助力', { '明星': that.data.idolInfo.star_name, '页面': '明星详情' });
         qq.getStorage({
             key: "staruserinfo",
             success: function (res) {
@@ -226,17 +226,23 @@ Page({
                         api_token: res.data.token
                     },
                     success: function (res1) {
-                        var checkList = that.data.checkInsList;
-                        for (var x = 0; x < parseInt(res1.data.data.checkins); x++) {
-                            checkList[x].isCkeck = true;
+                        if (res1.data.code == 1) {
+                            var checkList = that.data.checkInsList;
+                            for (var x = 0; x < parseInt(res1.data.data.checkins); x++) {
+                                checkList[x].isCkeck = true;
+                            }
+                            that.setData({
+                                fansInfo: res1.data.data,
+                                idolId: idolId,
+                                showVotePop: true,
+                                checkInsList: checkList,
+                                todayCheck: res1.data.data.checkedin == 1
+                            })
+                        } else {
+                            that.setData({
+                                hasUserInfo: false
+                            })
                         }
-                        that.setData({
-                            fansInfo: res1.data.data,
-                            idolId: idolId,
-                            showVotePop: true,
-                            checkInsList: checkList,
-                            todayCheck: res1.data.data.checkedin == 1
-                        })
                         qq.hideLoading();
                     }
                 })
@@ -264,7 +270,7 @@ Page({
     // 输入方法
     bindInputFun: function (e) {
         var reg = /^[0-9]*$/;
-        if(!reg.test(e.detail.value)){
+        if (!reg.test(e.detail.value)) {
             this.setData({
                 showErrorPop: true,
                 voteNum: 1,
@@ -272,7 +278,7 @@ Page({
             })
             return false;
         }
-        if(parseInt(e.detail.value) < 1){
+        if (parseInt(e.detail.value) < 1) {
             this.setData({
                 showErrorPop: true,
                 voteNum: 1,
@@ -332,7 +338,7 @@ Page({
                                     isVote: true
                                 })
                                 that.getList(that.data.urlParam);
-                                app.aldstat.sendEvent('助力成功',{'明星': that.data.idolInfo.star_name, '页面':'明星详情'});
+                                app.aldstat.sendEvent('助力成功', { '明星': that.data.idolInfo.star_name, '页面': '明星详情' });
                                 setTimeout(function () {
                                     that.setData({
                                         showPrompt: false,
@@ -501,7 +507,7 @@ Page({
             that.setData({
                 hasUserInfo: true
             })
-        }else{
+        } else {
             qq.hideLoading();
         }
     },

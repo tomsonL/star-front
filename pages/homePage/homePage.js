@@ -109,7 +109,7 @@ Page({
                     that.setData({
                         showPrompt: true,
                         promptType: 0,
-                        promptTxt: "暂无数据",
+                        promptTxt: "本星月榜单暂未开启……",
                         showLeft: type == 1 ? false : true,
                         showRight: type == 2 ? false : true,
                     })
