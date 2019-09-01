@@ -171,7 +171,7 @@ Page({
                                 self: self
                             })
                             qq.hideLoading();
-                            app.aldstat.sendEvent('明星详情',{'明星': that.data.idolInfo.star_name})
+                            app.aldstat.sendEvent('明星详情', { '明星': that.data.idolInfo.star_name })
                         }
                     }
                 })
@@ -207,7 +207,7 @@ Page({
         })
         var that = this;
         var idolId = this.data.urlParam.star_id;
-        app.aldstat.sendEvent('助力',{'明星': that.data.idolInfo.star_name, '页面':'明星详情'});
+        app.aldstat.sendEvent('助力', { '明星': that.data.idolInfo.star_name, '页面': '明星详情' });
         qq.getStorage({
             key: "staruserinfo",
             success: function (res) {
@@ -264,7 +264,7 @@ Page({
     // 输入方法
     bindInputFun: function (e) {
         var reg = /^[0-9]*$/;
-        if(!reg.test(e.detail.value)){
+        if (!reg.test(e.detail.value)) {
             this.setData({
                 showErrorPop: true,
                 voteNum: 1,
@@ -272,7 +272,7 @@ Page({
             })
             return false;
         }
-        if(parseInt(e.detail.value) < 1){
+        if (parseInt(e.detail.value) < 1) {
             this.setData({
                 showErrorPop: true,
                 voteNum: 1,
@@ -332,7 +332,7 @@ Page({
                                     isVote: true
                                 })
                                 that.getList(that.data.urlParam);
-                                app.aldstat.sendEvent('助力成功',{'明星': that.data.idolInfo.star_name, '页面':'明星详情'});
+                                app.aldstat.sendEvent('助力成功', { '明星': that.data.idolInfo.star_name, '页面': '明星详情' });
                                 setTimeout(function () {
                                     that.setData({
                                         showPrompt: false,
@@ -458,42 +458,49 @@ Page({
                 key: 'userInfo',
                 data: e.detail.userInfo,
                 success: function () {
-                    qq.request({
-                        method: "POST",
-                        url: config.REQUEST_HOST + "/user/post_qqcode",
-                        data: {
-                            qqcode: qq.getStorageSync('qqcode')
-                        },
-                        success: function (res1) {
-                            var req = res1.data.data;
-                            qq.setStorage({
-                                key: "staruserinfo",
-                                data: req
-                            })
-                            if (req.need_create == 1) {
-                                var param = {
-                                    name: e.detail.userInfo.nickName,
-                                    gender: e.detail.userInfo.gender + "",
-                                    avatar: e.detail.userInfo.avatarUrl,
-                                    city: e.detail.userInfo.city,
-                                    province: e.detail.userInfo.province,
-                                    country: e.detail.userInfo.country,
-                                    user_id: req.user_id,
-                                    api_token: req.token,
-                                    invited_by: qq.getStorageSync('invite_id')
-                                };
-                                qq.request({
-                                    method: "POST",
-                                    url: config.REQUEST_HOST + "/user/create",
-                                    data: param,
-                                    success: function (res) {
+                    // 登录
+                    qq.login({
+                        success: res => {
+                            // 发送 res.code 到后台换取 openId, sessionKey, unionId
+                            qq.setStorageSync('qqcode', res.code);
+                            qq.request({
+                                method: "POST",
+                                url: config.REQUEST_HOST + "/user/post_qqcode",
+                                data: {
+                                    qqcode:  res.code
+                                },
+                                success: function (res1) {
+                                    var req = res1.data.data;
+                                    qq.setStorage({
+                                        key: "staruserinfo",
+                                        data: req
+                                    })
+                                    if (req.need_create == 1) {
+                                        var param = {
+                                            name: e.detail.userInfo.nickName,
+                                            gender: e.detail.userInfo.gender + "",
+                                            avatar: e.detail.userInfo.avatarUrl,
+                                            city: e.detail.userInfo.city,
+                                            province: e.detail.userInfo.province,
+                                            country: e.detail.userInfo.country,
+                                            user_id: req.user_id,
+                                            api_token: req.token,
+                                            invited_by: qq.getStorageSync('invite_id')
+                                        };
+                                        qq.request({
+                                            method: "POST",
+                                            url: config.REQUEST_HOST + "/user/create",
+                                            data: param,
+                                            success: function (res) {
+                                                qq.hideLoading();
+                                            }
+                                        })
+                                    } else {
                                         qq.hideLoading();
                                     }
-                                })
-                            } else {
-                                qq.hideLoading();
-                            }
-                            that.getList(that.data.urlParam);
+                                    that.getList(that.data.urlParam);
+                                }
+                            })
                         }
                     })
                 }
@@ -501,7 +508,7 @@ Page({
             that.setData({
                 hasUserInfo: true
             })
-        }else{
+        } else {
             qq.hideLoading();
         }
     },
