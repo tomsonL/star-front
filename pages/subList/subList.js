@@ -208,6 +208,13 @@ Page({
         qq.getStorage({
             key: "staruserinfo",
             success: function (res) {
+                if (!res.data || res.data.length == 0) {
+                    qq.hideLoading();
+                    that.setData({
+                        hasUserInfo: false
+                    })
+                    return false;
+                }
                 qq.request({
                     method: "GET",
                     url: config.REQUEST_HOST + "/fans/info",
@@ -308,6 +315,13 @@ Page({
             qq.getStorage({
                 key: "staruserinfo",
                 success: function (res) {
+                    if (!res.data || res.data.length == 0) {
+                        qq.hideLoading();
+                        that.setData({
+                            hasUserInfo: false
+                        })
+                        return false;
+                    }
                     qq.request({
                         method: "POST",
                         url: request_host + "/ops/vote",
@@ -379,6 +393,13 @@ Page({
         qq.getStorage({
             key: 'staruserinfo',
             success: function (res) {
+                if (!res.data || res.data.length == 0) {
+                    qq.hideLoading();
+                    that.setData({
+                        hasUserInfo: false
+                    })
+                    return false;
+                }
                 qq.request({
                     method: "POST",
                     url: request_host + "/ops/checkin",

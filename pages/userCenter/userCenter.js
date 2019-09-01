@@ -69,12 +69,13 @@ Page({
         this.getList();
     },
     getList: function () {
-        if (!qq.getStorageSync("staruserinfo")) {
+        if (!qq.getStorageSync("staruserinfo") || qq.getStorageSync("staruserinfo").length == 0) {
             this.setData({
                 hasUserInfo: false
             })
             return false;
         }
+        console.log(qq.getStorageSync("staruserinfo"));
         this.setData({
             hasUserInfo: true
         });
@@ -94,6 +95,13 @@ Page({
         qq.getStorage({
             key: "staruserinfo",
             success: function (res) {
+                if (!res.data || res.data.length == 0) {
+                    qq.hideLoading();
+                    that.setData({
+                        hasUserInfo: false
+                    })
+                    return false;
+                }
                 qq.request({
                     method: "GET",
                     url: config.REQUEST_HOST + "/fans/info",
@@ -134,6 +142,13 @@ Page({
         qq.getStorage({
             key: 'staruserinfo',
             success: function (res) {
+                if (!res.data || res.data.length == 0) {
+                    qq.hideLoading();
+                    that.setData({
+                        hasUserInfo: false
+                    })
+                    return false;
+                }
                 qq.request({
                     method: "POST",
                     url: request_host + "/ops/checkin",
@@ -234,6 +249,13 @@ Page({
         qq.getStorage({
             key: "staruserinfo",
             success: function (res1) {
+                if (!res.data || res.data.length == 0) {
+                    qq.hideLoading();
+                    that.setData({
+                        hasUserInfo: false
+                    })
+                    return false;
+                }
                 qq.request({
                     url: request_host + '/fans/update',
                     data: {
@@ -300,6 +322,13 @@ Page({
                             qqcode: qq.getStorageSync('qqcode')
                         },
                         success: function (res1) {
+                            if (!res.data || res.data.length == 0) {
+                                qq.hideLoading();
+                                that.setData({
+                                    hasUserInfo: false
+                                })
+                                return false;
+                            }
                             var req = res1.data.data;
                             qq.setStorage({
                                 key: "staruserinfo",
