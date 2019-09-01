@@ -363,19 +363,24 @@
     top: -84rpx;
     left: -88rpx;
 }
-.toBefore {
+.toWrapper {
     position: absolute;
+    bottom: 37rpx;
+    width: 102rpx;
+    height: 109rpx;
+}
+.toWrapper image {
     width: 51rpx;
     height: 109rpx;
-    left: 21rpx;
-    bottom: 37rpx;
+}
+.toBefore {
+    left: 0;
+    padding-left: 21rpx;
 }
 .toAfter {
-    position: absolute;
-    width: 51rpx;
-    height: 109rpx;
-    right: 19rpx;
-    bottom: 37rpx;
+    text-align:right;
+    right: 0;
+    padding-right: 19rpx;
 }
 
 /* 提示框 */

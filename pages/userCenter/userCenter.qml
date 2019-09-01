@@ -5,7 +5,9 @@
             <image class="userCardBg" src="../../images/myInfoBg.png" />
             <image class="userAvatar" src="{{fansInfo.fans_avatar ? fansInfo.fans_avatar : '../../images/icon_avatar.png'}}" />
             <view class="username">昵称：{{fansInfo.fans_name}}</view>
-            <image class="editName" bindtap="editPop" src="../../images/editIcon2x.png" />
+            <view class="editWrapper" bindtap="editPop">
+                <image class="editName" src="../../images/editIcon2x.png" />
+            </view>
         </view>
         <view class="voteWrapper">
             <view class="voteItem">

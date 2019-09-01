@@ -24,7 +24,7 @@
           <image class="totalBg" src="../../images/icon_total_box.png" />
           <image class="totalAvatar" src="{{rankData[12].star_avatar}}" />
         </view>
-        <view class="iconsWrapper">
+        <!-- <view class="iconsWrapper">
           <view class="ari_icon_wrapper icon_wrapper" data-index="0" bindtap="goSubList">
             <image qq:if="{{rankData[12].star_id != rankData[0].star_id}}" src="{{constellation[0].home_icon}}"></image>
             <image qq:if="{{rankData[12].star_id == rankData[0].star_id}}" e src="{{constellation[0].home_active}}"></image>
@@ -73,7 +73,7 @@
             <image qq:if="{{rankData[12].star_id != rankData[11].star_id}}" src="{{constellation[11].home_icon}}"></image>
             <image qq:if="{{rankData[12].star_id == rankData[11].star_id}}" src="{{constellation[11].home_active}}"></image>
           </view>
-        </view>
+        </view> -->
         <view class="avatarWrapper">
           <view class="ari_avatar_wrapper avatar_wrapper" data-index="0" bindtap="goSubList">
             <image class="avatar_border" qq:if="{{rankData[12].star_id == rankData[0].star_id}}" src="../../images/icon_avatar_border.png"></image>
@@ -136,8 +136,12 @@
             <image class="rankAvatar" src="{{rankData[11].star_avatar}}"></image>
           </view>
         </view>
-        <image class="toBefore" qq:if="{{showLeft}}" data-type="1" bindtap="toAnotherFun" src="../../images/icon_showLeft.png" />
-        <image class="toAfter" qq:if="{{showRight}}" data-type="2" bindtap="toAnotherFun" src="../../images/icon_showRight.png" />
+        <view class="toWrapper toBefore" bindtap="toAnotherFun">
+          <image qq:if="{{showLeft}}" data-type="1" src="../../images/icon_showLeft.png" />
+        </view>
+        <view class="toWrapper toAfter" bindtap="toAnotherFun">
+          <image qq:if="{{showRight}}" data-type="2" src="../../images/icon_showRight.png" />
+        </view>
       </view>
     </view>
     <view class="listRule">
@@ -157,7 +161,7 @@
   <!-- 提示框 -->
   <view class="votePopWrapper" bindtap="closePop" hidden="{{!showPrompt}}"></view>
   <view class="promptPop" hidden="{{!showPrompt}}">
-    <image class="promptClose" bindtap="closePop" src="../../images/icon_closePop.png"/>
+    <image class="promptClose" bindtap="closePop" src="../../images/icon_closePop.png" />
     <image class="promptBg" src="../../images/icon_prompt_bg.png" />
     <image class="promptIcon" hidden="{{promptType != 1}}" src="../../images/icon_success.png" />
     <image class="promptIcon" hidden="{{promptType != 0}}" src="../../images/icon_fail.png" />

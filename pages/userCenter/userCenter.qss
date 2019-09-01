@@ -39,12 +39,20 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+.editWrapper {
+    position: absolute;
+    top: 29rpx;
+    right: 100rpx;
+    height: 81rpx;
+    width: 81rpx;
+}
 .editName {
     width: 23rpx;
     height: 23rpx;
     position: absolute;
-    top: 60rpx;
-    right: 131rpx;
+    top: 28rpx;
+    left: 28rpx;
+
 }
 .voteWrapper {
     display: flex;
