@@ -347,7 +347,7 @@ Page({
                                     qqcode: res.code
                                 },
                                 success: function (res1) {
-                                    if (!res.data || res.data.length == 0) {
+                                    if (!res1.data || res1.data.length == 0) {
                                         qq.hideLoading();
                                         that.setData({
                                             hasUserInfo: false
