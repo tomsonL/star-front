@@ -34,7 +34,7 @@
             <view>星力明细</view>
         </view>
         <view class="contact">
-            <view>客服QQ：3476347242</view>
+            <text selectable='true'>客服QQ：3476347242</text>
         </view>
         <view class="missionWrapper">
             <view class="getMoreTxt">想获得更多星力？</view>
