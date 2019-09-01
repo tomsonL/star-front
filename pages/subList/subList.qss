@@ -86,7 +86,7 @@
 .rankListWrapper {
     positon: relative;
     width: 100%;
-    margin-top: 41rpx;
+    margin-top: -19rpx;
 }
 .topWrapper {
     position: absolute;

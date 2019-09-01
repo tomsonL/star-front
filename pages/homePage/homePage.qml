@@ -136,11 +136,11 @@
             <image class="rankAvatar" src="{{rankData[11].star_avatar}}"></image>
           </view>
         </view>
-        <view class="toWrapper toBefore" bindtap="toAnotherFun">
-          <image qq:if="{{showLeft}}" data-type="1" src="../../images/icon_showLeft.png" />
+        <view qq:if="{{showLeft}}" class="toWrapper toBefore" data-type="1" bindtap="toAnotherFun">
+          <image src="../../images/icon_showLeft.png" />
         </view>
-        <view class="toWrapper toAfter" bindtap="toAnotherFun">
-          <image qq:if="{{showRight}}" data-type="2" src="../../images/icon_showRight.png" />
+        <view qq:if="{{showRight}}" class="toWrapper toAfter" data-type="2" bindtap="toAnotherFun">
+          <image src="../../images/icon_showRight.png" />
         </view>
       </view>
     </view>
