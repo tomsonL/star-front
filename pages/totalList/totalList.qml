@@ -141,7 +141,7 @@
     <view class="getUserInfo" qq:if="{{!hasUserInfo}}">
         <view class="getUserInfoWrapper">
             <image class="getUserInfoBg" src="../../images/bg_empower.png" />
-            <view class="getInfoTxt">为你的偶像助力星运，来，开始助力吧~</view>
+            <view class="getInfoTxt">为你的偶像助力星运值，来，开始助力吧~</view>
             <button class="getInfoBtn" qq:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">点击授权</button>
             <view qq:else>请升级QQ版本</view>
         </view>

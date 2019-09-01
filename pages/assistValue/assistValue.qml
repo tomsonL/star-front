@@ -3,7 +3,7 @@
     <scroll-view scroll-y class="scrollWrapper">
         <view class="voteBlock">
             <image class="voteBlockBg" src="../../images/voteBlockBg.png" />
-            <view class="voteTitle">剩余星运值</view>
+            <view class="voteTitle">剩余星力</view>
             <view class="powerWrapper">
                 <view class="power">{{voteNum}}</view>
                 <image class="poworIcon" src="../../images/powerIcon2x.png" />
