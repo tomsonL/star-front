@@ -10,6 +10,7 @@ const horoList = config.HORO;
 var interval = "";
 Page({
     data: {
+        scrollTop: 0,
         // 倒计时
         countDown: "",
         // 路由传值
@@ -105,10 +106,13 @@ Page({
         }, 1000)
     },
     onShow: function () {
+        this.getList(this.data.urlParam, 0);
+    },
+    onHide: function () {
         this.setData({
-            pageNo: 0
-        },this.getList(this.data.urlParam, 0));
-        
+            pageNo: 0,
+            scrollTop: 0
+        })
     },
     // 获取倒计时
     getCountDown: function () {

@@ -1,6 +1,6 @@
 <view class="searchList container">
     <image class="bg" src="../../images/bg2.jpg" />
-    <scroll-view scroll-y class="scrollWrapper" bindscrolltolower="loadMore">
+    <scroll-view scroll-top="{{scrollTop}}"scroll-y class="scrollWrapper" bindscrolltolower="loadMore">
         <view class="searchWrapper">
             <image class="searchIcon" src="../../images/searchIcon2x.png" />
             <input class="searchInput" auto-focus bindconfirm="bindConfirm" placeholder="为喜欢的爱豆助力" />

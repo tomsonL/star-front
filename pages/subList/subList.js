@@ -10,6 +10,7 @@ const horoList = config.HORO;
 var interval = "";
 Page({
     data: {
+        scrollTop: 0,
         // 倒计时
         countDown: "",
         hasDate: false,
@@ -100,9 +101,13 @@ Page({
         }, 1000)
     },
     onShow: function () {
+        this.getList(this.data.urlParam);
+    },
+    onHide: function () {
         this.setData({
-            pageNo: 0
-        },this.getList(this.data.urlParam));
+            pageNo: 0,
+            scrollTop: 0
+        })
     },
     // 获取倒计时
     getCountDown: function () {

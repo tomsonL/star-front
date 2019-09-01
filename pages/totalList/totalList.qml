@@ -1,6 +1,6 @@
 <view class="totalList container">
     <image class="bg" src="../../images/bg3.jpg" />
-    <scroll-view scroll-y class="scrollWrapper" bindscrolltolower="loadMore">
+    <scroll-view scroll-top="{{scrollTop}}" scroll-y class="scrollWrapper" bindscrolltolower="loadMore">
         <navigator class="searchBtn" url="../searchList/searchList">
             <image class="searchIcon" src="../../images/searchIcon2x.png" />
             搜索

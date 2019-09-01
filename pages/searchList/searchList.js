@@ -8,6 +8,7 @@ const app = getApp()
 
 Page({
     data: {
+        scrollTop: 0,
         // 页码
         pageNo: 0,
         //明星List
@@ -77,11 +78,14 @@ Page({
     },
     onShow: function () {
         if (this.data.keyword) {
-            this.setData({
-                pageNo: 0
-            }, this.getList(this.data.keyword, 0));
-
+            this.getList(this.data.keyword, 0);
         }
+    },
+    onHide: function () {
+        this.setData({
+            pageNo: 0,
+            scrollTop: 0
+        })
     },
     getList: function (keyword, type) {
         qq.showLoading({
