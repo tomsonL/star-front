@@ -102,6 +102,7 @@
     margin: 35rpx auto;
     width: 750rpx;
     height: 781rpx;
+    position: relative;
 }
 .horoBg {
     position: absolute;
@@ -362,6 +363,72 @@
     top: -84rpx;
     left: -88rpx;
 }
+.toBefore{
+    position: absolute;
+    width: 51rpx;
+    height: 109rpx;
+    left: 21rpx;
+    bottom: 37rpx;
+}
+.toAfter{
+    position: absolute;
+    width: 51rpx;
+    height: 109rpx;
+    right: 19rpx;
+    bottom: 37rpx;
+}
+
+/* 提示框 */
+.votePopWrapper {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    left: 0;
+    right: 0;
+}
+.promptPop {
+    position: fixed;
+    width: 697rpx;
+    height: 313rpx;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.promptBg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.promptIcon {
+    position: absolute;
+    width: 141rpx;
+    height: 141rpx;
+    top: 55rpx;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+.promptTxtWrapper {
+    text-align: center;
+    line-height: 31rpx;
+    height: 31rpx;
+    position: absolute;
+    top: 210rpx;
+    width: 100%;
+}
+.promptTxt {
+    color: #fff;
+    font-size: 31rpx;
+    margin-right: 11rpx;
+    display: inline-block;
+    line-height: 31rpx;
+}
+.promptPop .poworIcon {
+    width: 26rpx;
+    height: 28rpx;
+    vertical-align: middle;
+}
+
 /* 底部规则 */
 .listRule {
     position: relative;

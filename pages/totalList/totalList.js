@@ -87,20 +87,24 @@ Page({
         todayCheck: false,
         hasUserInfo: true, //是否有用户信息
         canIUse: qq.canIUse('button.open-type.getUserInfo'),
+        // 是否是当前月
+        isThisMonth: true,
     },
     onLoad: function (option) {
         qq.showShareMenu();
         var that = this;
+        var nowCstl = qq.getStorageSync("cstl_id");
         this.getMonthInfo(option.cstl_id);
         this.getList(option, 0);
         this.setData({
-            urlParam: option
+            urlParam: option,
+            isThisMonth: nowCstl == option.cstl_id ? true : false
         })
         interval = setInterval(function () {
             that.getCountDown();
         }, 1000)
     },
-    onShow: function(){
+    onShow: function () {
         this.getList(this.data.urlParam, 0);
     },
     // 获取倒计时
@@ -202,7 +206,7 @@ Page({
         var that = this;
         var idolId = e ? e.currentTarget.dataset.idolid : this.data.idolId;
         var idolName = e ? e.currentTarget.dataset.idolname : this.data.idolName;
-        app.aldstat.sendEvent('助力',{'明星': idolName, '页面':'星座总榜'});
+        app.aldstat.sendEvent('助力', { '明星': idolName, '页面': '星座总榜' });
         qq.getStorage({
             key: "staruserinfo",
             success: function (res) {
@@ -241,9 +245,11 @@ Page({
     },
     // 明星详情
     goIdolDetail: function (e) {
-        qq.navigateTo({
-            url: "../idolDetail/idolDetail?star_id=" + e.currentTarget.dataset.idolid
-        })
+        if (this.data.isThisMonth) {
+            qq.navigateTo({
+                url: "../idolDetail/idolDetail?star_id=" + e.currentTarget.dataset.idolid
+            })
+        }
     },
     // 计算方法
     calculateFun: function (e) {
@@ -266,7 +272,7 @@ Page({
     // 输入方法
     bindInputFun: function (e) {
         var reg = /^[0-9]*$/;
-        if(!reg.test(e.detail.value)){
+        if (!reg.test(e.detail.value)) {
             this.setData({
                 showErrorPop: true,
                 voteNum: 1,
@@ -274,7 +280,7 @@ Page({
             })
             return false;
         }
-        if(parseInt(e.detail.value) < 1){
+        if (parseInt(e.detail.value) < 1) {
             this.setData({
                 showErrorPop: true,
                 voteNum: 1,
@@ -324,7 +330,7 @@ Page({
                                     pageNo: 0
                                 })
                                 that.getList(that.data.urlParam, 0);
-                                app.aldstat.sendEvent('助力成功',{'明星': that.data.idolName, '页面':'星座总榜'});
+                                app.aldstat.sendEvent('助力成功', { '明星': that.data.idolName, '页面': '星座总榜' });
                                 setTimeout(function () {
                                     that.setData({
                                         showPrompt: false,
@@ -342,6 +348,13 @@ Page({
                                 })
                             }
                         }
+                    })
+                },
+                //没有获取到用户权限
+                fail: function () {
+                    qq.hideLoading();
+                    that.setData({
+                        hasUserInfo: false
                     })
                 }
             })
@@ -413,6 +426,13 @@ Page({
                             })
                         }
                     }
+                })
+            },
+            //没有获取到用户权限
+            fail: function () {
+                qq.hideLoading();
+                that.setData({
+                    hasUserInfo: false
                 })
             }
         })
@@ -488,7 +508,7 @@ Page({
             that.setData({
                 hasUserInfo: true
             })
-        }else{
+        } else {
             qq.hideLoading();
             this.setData({
                 hasUserInfo: true

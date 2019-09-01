@@ -270,6 +270,13 @@ Page({
                             }
                         }
                     })
+                },
+                //没有获取到用户权限
+                fail: function () {
+                    qq.hideLoading();
+                    that.setData({
+                        hasUserInfo: false
+                    })
                 }
             })
         }
@@ -341,6 +348,13 @@ Page({
                             })
                         }
                     }
+                })
+            },
+            //没有获取到用户权限
+            fail: function () {
+                qq.hideLoading();
+                that.setData({
+                    hasUserInfo: false
                 })
             }
         })

@@ -82,14 +82,18 @@ Page({
         todayCheck: false,
         hasUserInfo: true, //是否有用户信息
         canIUse: qq.canIUse('button.open-type.getUserInfo'),
+         // 是否是当前月
+        isThisMonth: true
     },
     onLoad: function (option) {
         qq.showShareMenu();
         var that = this;
+        var nowCstl = qq.getStorageSync("cstl_id");
         this.getMonthInfo(option.cstl);
         this.getList(option);
         this.setData({
-            urlParam: option
+            urlParam: option,
+            isThisMonth: nowCstl == option.cstl_id ? true : false
         })
         interval = setInterval(function () {
             that.getCountDown();
@@ -239,9 +243,11 @@ Page({
     },
     // 明星详情
     goIdolDetail: function (e) {
-        qq.navigateTo({
-            url: "../idolDetail/idolDetail?star_id=" + e.currentTarget.dataset.idolid
-        })
+       if (this.data.isThisMonth) {
+            qq.navigateTo({
+                url: "../idolDetail/idolDetail?star_id=" + e.currentTarget.dataset.idolid
+            })
+        }
     },
     // 计算方法
     calculateFun: function (e) {

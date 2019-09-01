@@ -7,7 +7,7 @@
     </navigator>
     <view class="switch-ctrl">
       <view class="swiperShadow"></view>
-      <swiper current="{{currentIndex}}" circular="{{true}}" previous-margin="325rpx" display-multiple-items="4" bindchange="swipeCtrl">
+      <swiper current="{{currentIndex}}" circular="{{true}}" previous-margin="325rpx" display-multiple-items="4">
         <swiper-item qq:for="{{constellation}}" qq:for-index="idx" qq:for-item="item" qq:key="idx">
           <view class="ctrl-name {{currentIndex==idx?'active': ''}}">{{item.zh}}</view>
         </swiper-item>
@@ -137,6 +137,8 @@
             <image class="rankAvatar" src="{{rankData[11].star_avatar}}"></image>
           </view>
         </view>
+        <image class="toBefore" qq:if="{{showLeft}}" data-type="1" bindtap="toAnotherFun" src="../../images/icon_showLeft.png" />
+        <image class="toAfter" qq:if="{{showRight}}" data-type="2" bindtap="toAnotherFun" src="../../images/icon_showRight.png" />
       </view>
     </view>
     <view class="listRule">
@@ -153,4 +155,15 @@
       </view>
     </view>
   </scroll-view>
+  <!-- 提示框 -->
+  <view class="votePopWrapper" bindtap="closePop" hidden="{{!showPrompt}}"></view>
+  <view class="promptPop" hidden="{{!showPrompt}}">
+    <image class="promptBg" src="../../images/icon_prompt_bg.png" />
+    <image class="promptIcon" hidden="{{promptType != 1}}" src="../../images/icon_success.png" />
+    <image class="promptIcon" hidden="{{promptType != 0}}" src="../../images/icon_fail.png" />
+    <view class="promptTxtWrapper">
+      <view class="promptTxt">{{promptTxt}}</view>
+      <image class="poworIcon" hidden="{{!isVote}}" src="../../images/powerIcon2x.png" />
+    </view>
+  </view>
 </view>

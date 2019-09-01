@@ -26,7 +26,7 @@
                     <image class="poworIcon" src="../../images/powerIcon2x.png" />
                     <view class="power">{{firstIdol.star_votes}}</view>
                 </view>
-                <view class="btn btn-yellow assistBtn" data-idolId="{{firstIdol.star_id}}" data-idolName="{{firstIdol.star_name}}" catchtap="assistPopFun">助力</view>
+                <view class="btn btn-yellow assistBtn" qq:if="{{isThisMonth}}" data-idolId="{{firstIdol.star_id}}" data-idolName="{{firstIdol.star_name}}" catchtap="assistPopFun">助力</view>
 
             </view>
             <view class="secondIdol topWrapper" data-idolId="{{secondIdol.star_id}}" bindtap="goIdolDetail">
@@ -38,7 +38,7 @@
                     <image class="poworIcon" src="../../images/powerIcon2x.png" />
                     <view class="power">{{secondIdol.star_votes}}</view>
                 </view>
-                <view class="btn btn-yellow assistBtn" data-idolId="{{secondIdol.star_id}}" data-idolName="{{secondIdol.star_name}}" catchtap="assistPopFun">助力</view>
+                <view class="btn btn-yellow assistBtn" qq:if="{{isThisMonth}}" data-idolId="{{secondIdol.star_id}}" data-idolName="{{secondIdol.star_name}}" catchtap="assistPopFun">助力</view>
             </view>
             <view class="thirdIdol topWrapper" data-idolId="{{thirdIdol.star_id}}" bindtap="goIdolDetail">
                 <image class="topBg" src="../../images/3.png" />
@@ -49,7 +49,7 @@
                     <image class="poworIcon" src="../../images/powerIcon2x.png" />
                     <view class="power">{{thirdIdol.star_votes}}</view>
                 </view>
-                <view class="btn btn-yellow assistBtn" data-idolId="{{thirdIdol.star_id}}" data-idolName="{{thirdIdol.star_name}}" catchtap="assistPopFun">助力</view>
+                <view class="btn btn-yellow assistBtn" qq:if="{{isThisMonth}}" data-idolId="{{thirdIdol.star_id}}" data-idolName="{{thirdIdol.star_name}}" catchtap="assistPopFun">助力</view>
             </view>
             <view class="rankList">
                 <block qq:for="{{idolList}}" qq:for-item="item" qq:key="index">
@@ -67,7 +67,7 @@
                                 <view class="power">{{item.star_votes}}</view>
                             </view>
                         </view>
-                        <view class="btn btn-yellow assistListBtn" data-idolId="{{item.star_id}}" data-idolName="{{item.star_name}}" catchtap="assistPopFun">助力</view>
+                        <view class="btn btn-yellow assistListBtn" qq:if="{{isThisMonth}}" data-idolId="{{item.star_id}}" data-idolName="{{item.star_name}}" catchtap="assistPopFun">助力</view>
                     </view>
                 </block>
             </view>
