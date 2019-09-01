@@ -116,6 +116,7 @@ Page({
                         promptTxt: "本星月榜单暂未开启……",
                         showLeft: type == 1 ? false : true,
                         showRight: type == 2 ? false : true,
+                        cstl_id: horoList[that.data.currentIndex].cstl_id
                     })
                 }
             }
