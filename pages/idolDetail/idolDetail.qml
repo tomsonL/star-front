@@ -105,13 +105,13 @@
                 <image class="addBtn btnFun" src="../../images/icon_add_btn.png" catchtap="calculateFun" data-type="2" />
             </view>
             <view class="voteBottom">
-                <view class="myNum">我的助力值: {{fansInfo.votes_left}}</view>
+                <view class="myNum">我的星力: {{fansInfo.votes_left}}</view>
                 <image class="poworIcon" src="../../images/powerIcon2x.png" />
                 <view class="btn btn-yellow assist {{showErrorPop ? 'btn-gray':''}}" catchtap="assistBtn">助力</view>
             </view>
         </view>
         <view class="missionWrapper">
-            <view class="getMoreTxt">想获得更多助力值？</view>
+            <view class="getMoreTxt">想获得更多星力？</view>
             <!-- <view class="missionItem">
                 <image class="corner" src="../../images/starCorner2x.png" />
                 <view class="missionTxt">

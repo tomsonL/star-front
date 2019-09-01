@@ -46,7 +46,7 @@
             </view>
         </view>
         <view class="missionWrapper">
-            <view class="getMoreTxt">想获得更多助力值？</view>
+            <view class="getMoreTxt">想获得更多星力？</view>
             <!-- <view class="missionItem">
                 <image class="corner" src="../../images/starCorner2x.png" />
                 <view class="missionTxt">
