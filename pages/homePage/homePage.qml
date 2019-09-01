@@ -6,8 +6,7 @@
       搜索
     </navigator>
     <view class="switch-ctrl">
-      <view class="swiperShadow"></view>
-      <swiper current="{{currentIndex}}" circular="{{true}}" previous-margin="325rpx" display-multiple-items="4">
+      <swiper current="{{currentIndex}}" circular="{{true}}" bindchange="swipeCtrl" previous-margin="325rpx" display-multiple-items="4">
         <swiper-item qq:for="{{constellation}}" qq:for-index="idx" qq:for-item="item" qq:key="idx">
           <view class="ctrl-name {{currentIndex==idx?'active': ''}}">{{item.zh}}</view>
         </swiper-item>

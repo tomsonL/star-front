@@ -11,6 +11,8 @@ Page({
     data: {
         //当前星座index
         currentIndex: 0,
+        // 临时index
+        temIndex: 0,
         //星座id
         cstl_id: "",
         //星座控制
@@ -107,6 +109,8 @@ Page({
                     })
                 } else {
                     that.setData({
+                        currentIndex: that.data.temIndex,
+                        temIndex: "",
                         showPrompt: true,
                         promptType: 0,
                         promptTxt: "本星月榜单暂未开启……",
@@ -120,10 +124,13 @@ Page({
     //滑动控制
     swipeCtrl: function (e) {
         this.setData({
+            showLeft: true,
+            showRight: true,
+            temIndex: this.data.currentIndex,
             currentIndex: e.detail.current,
             cstl_id: horoList[e.detail.current].cstl_id
         })
-        this.getHoroData(horoList[e.detail.current].cstl_id);
+        this.getHoroData(horoList[e.detail.current].cstl_id, e.detail.current);
     },
     // 总榜单
     goTotalRank: function () {
