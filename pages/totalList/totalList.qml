@@ -27,7 +27,6 @@
                     <view class="power">{{firstIdol.star_votes}}</view>
                 </view>
                 <view class="btn btn-yellow assistBtn" qq:if="{{isThisMonth}}" data-idolId="{{firstIdol.star_id}}" data-idolName="{{firstIdol.star_name}}" catchtap="assistPopFun">助力</view>
-
             </view>
             <view class="secondIdol topWrapper" data-idolId="{{secondIdol.star_id}}" bindtap="goIdolDetail">
                 <image class="topBg" src="../../images/2.png" />
@@ -130,9 +129,9 @@
     <!-- 提示框 -->
     <view class="votePopWrapper" bindtap="closePop" hidden="{{!showPrompt}}"></view>
     <view class="promptPop" hidden="{{!showPrompt}}">
-        <image class="promptBg" src="../../images/icon_prompt_bg.png"/>
-        <image class="promptIcon" hidden="{{promptType != 1}}" src="../../images/icon_success.png"/>
-        <image class="promptIcon" hidden="{{promptType != 0}}" src="../../images/icon_fail.png"/>
+        <image class="promptBg" src="../../images/icon_prompt_bg.png" />
+        <image class="promptIcon" hidden="{{promptType != 1}}" src="../../images/icon_success.png" />
+        <image class="promptIcon" hidden="{{promptType != 0}}" src="../../images/icon_fail.png" />
         <view class="promptTxtWrapper">
             <view class="promptTxt">{{promptTxt}}</view>
             <image class="poworIcon" hidden="{{!isVote}}" src="../../images/powerIcon2x.png" />

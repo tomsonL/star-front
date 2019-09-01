@@ -100,7 +100,9 @@ Page({
         }, 1000)
     },
     onShow: function () {
-        this.getList(this.data.urlParam);
+        this.setData({
+            pageNo: 0
+        },this.getList(this.data.urlParam));
     },
     // 获取倒计时
     getCountDown: function () {

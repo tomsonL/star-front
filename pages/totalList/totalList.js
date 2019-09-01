@@ -105,7 +105,10 @@ Page({
         }, 1000)
     },
     onShow: function () {
-        this.getList(this.data.urlParam, 0);
+        this.setData({
+            pageNo: 0
+        },this.getList(this.data.urlParam, 0));
+        
     },
     // 获取倒计时
     getCountDown: function () {
@@ -464,6 +467,7 @@ Page({
             }
         })
     },
+    // 去邀请页面
     goInvite: function () {
         qq.navigateTo({
             url: "../inviteList/inviteList"

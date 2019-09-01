@@ -77,7 +77,10 @@ Page({
     },
     onShow: function () {
         if (this.data.keyword) {
-            this.getList(this.data.keyword, 0);
+            this.setData({
+                pageNo: 0
+            }, this.getList(this.data.keyword, 0));
+
         }
     },
     getList: function (keyword, type) {
