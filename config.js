@@ -1,5 +1,5 @@
-//module.exports.REQUEST_HOST = 'https://tstar.3ceng.cn';//配置api地址 测试
-module.exports.REQUEST_HOST = 'https://star.3ceng.cn';//配置api地址  正式
+module.exports.REQUEST_HOST = 'https://tstar.3ceng.cn';//配置api地址 测试
+//module.exports.REQUEST_HOST = 'https://star.3ceng.cn';//配置api地址  正式
 const imgUrl = "http://image.3ceng.cn/icon/cstl";
 module.exports.HORO = [
     {
