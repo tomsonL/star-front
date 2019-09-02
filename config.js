@@ -1,6 +1,12 @@
-module.exports.REQUEST_HOST = 'https://tstar.3ceng.cn';//配置api地址 测试
-//module.exports.REQUEST_HOST = 'https://star.3ceng.cn';//配置api地址  正式
+module.exports.REQUEST_HOST = 'https://tstar.3ceng.cn';//配置api地址    测试环境
+module.exports.ALDKEY='1fe965d3c8eeb7e0813110a4d3286410';//阿拉丁key    测试环境
+
+//module.exports.REQUEST_HOST = 'https://star.3ceng.cn';//配置api地址  正式环境
+//module.exports.ALDKEY='fb9ef194b22b9e44a6412822372fbded';//阿拉丁key    正式环境
+
+
 const imgUrl = "http://image.3ceng.cn/icon/cstl";
+
 module.exports.HORO = [
     {
         'cstl_id': 'ari',
