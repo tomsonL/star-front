@@ -126,6 +126,9 @@ Page({
                         that.setData({
                             idolInfo: res2.data.data
                         })
+                        qq.setNavigationBarTitle({
+                            title: res2.data.data.star_name
+                        });
                         qq.hideLoading();
                     }
                 })

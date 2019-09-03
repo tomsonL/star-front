@@ -304,7 +304,7 @@ Page({
             this.setData({
                 showErrorPop: true,
                 voteNum: 1,
-                errorTxt: "投票必须大于票"
+                errorTxt: "投票必须大于零"
             })
         }
         if (parseInt(e.detail.value) > this.data.fansInfo.votes_left) {

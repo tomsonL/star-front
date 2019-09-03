@@ -38,6 +38,9 @@
         <view class="contact">
             <text selectable="true">客服QQ：3476347242</text>
         </view>
+        <view class="goPay" bindtap="goPay">
+            <text selectable="true">充 值</text>
+        </view>
         <view class="missionWrapper">
             <view class="getMoreTxt">想获得更多星力？</view>
             <!-- <view class="missionItem">

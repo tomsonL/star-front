@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/myOrder/myOrder",
     "pages/homePage/homePage",
     "pages/idolDetail/idolDetail",
     "pages/totalList/totalList",
@@ -8,7 +9,8 @@
     "pages/userCenter/userCenter",
     "pages/subList/subList",
     "pages/inviteList/inviteList",
-    "pages/rulePage/rulePage"
+    "pages/rulePage/rulePage",
+    "pages/recharge/recharge"
   ],
   "window": {
     "navigationBarBackgroundColor": "#000000",

@@ -1,0 +1,323 @@
+.recharge {
+}
+.bg {
+    position: fixed;
+    width: 750rpx;
+    height: 100vh;
+}
+.voteBlock {
+    position: relative;
+    top: 27rpx;
+    width: 697rpx;
+    height: 185rpx;
+    margin: 0 auto;
+}
+.voteBlockBg {
+    position: absolute;
+    width: 697rpx;
+    height: 185rpx;
+}
+.voteTitle {
+    position: relative;
+    padding-top: 46rpx;
+    padding-left: 53rpx;
+    line-heigth: 25rpx;
+    font-size: 27rpx;
+    color: #401d04;
+}
+.myOrder {
+    float: right;
+    margin-right: 74rpx;
+}
+.orderIcon {
+    float: left;
+    width: 21rpx;
+    height: 24rpx;
+    vertical-align: middle;
+    margin: 6rpx;
+}
+.powerWrapper {
+    position: relative;
+    margin: 16rpx auto 0;
+    width: 589rpx;
+    height: 53rpx;
+    text-align: center;
+    background: #a26d2b;
+    border-radius: 27rpx;
+}
+.power {
+    display: inline-block;
+    font-size: 31rpx;
+    color: #fff;
+}
+.poworIcon {
+    display: inline-block;
+    width: 22rpx;
+    height: 24rpx;
+    margin-left: 13rpx;
+}
+
+.rechargeList {
+    margin-top: 54rpx;
+}
+.rechargeTitle {
+    height: 39rpx;
+    line-heigth: 39rpx;
+    color: #fff;
+    font-size: 27rpx;
+    margin-bottom: 20rpx;
+}
+.blankBlock {
+    height: 39rpx;
+    width: 5rpx;
+    background: #fff;
+    margin-right: 22rpx;
+    display: inline-block;
+    vertical-align: middle;
+}
+.rechargeTypeWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 44rpx 0 41rpx;
+    margin-bottom: 36rpx;
+}
+.typeItem {
+    width: 211rpx;
+    height: 158rpx;
+    border: 1rpx solid #828282;
+    border-radius: 7rpx;
+    margin-bottom: 13rpx;
+}
+.typeItem .powerWrapper {
+    width: 200rpx;
+    height: 47rpx;
+    line-heigth: 47rpx;
+    border-radius: 23rpx;
+    background: none;
+    margin-top: 43rpx;
+}
+.typeItem .powerWrapper .power {
+    font-size: 32rpx;
+    line-heigth: 32rpx;
+}
+.typeItem .money {
+    text-align: center;
+    font-size: 27rpx;
+    color: #f9b35c;
+    margin-top: 11rpx;
+}
+.typeItemActive {
+    width: 213rpx;
+    height: 160rpx;
+    border: none;
+    background: linear-gradient(to bottom, #f9c685, #e7a552);
+}
+.typeItemActive .powerWrapper {
+    background: #a26d2b;
+}
+.typeItemActive .money {
+    color: #703a0a;
+}
+
+.inputWrapper {
+    height: 55rpx;
+    padding: 0 27rpx;
+    line-heigth: 55rpx;
+}
+.leftWrapper {
+    width: 617rpx;
+    height: 55rpx;
+    border-bottom: 2rpx solid #8d8d91;
+    float: left;
+}
+.leftTxt {
+    float: left;
+    height: 25rpx;
+    line-heigth: 55rpx;
+    color: #fff;
+    font-size: 27rpx;
+    margin-top: 15rpx;
+}
+.leftInput {
+    line-heigth: 55rpx;
+    height: 55rpx;
+    display: inline-block;
+    margin-left: 18rpx;
+    width: 310rpx;
+    font-size: 48rpx;
+    color: #fff;
+    font-weight: bold;
+}
+.unit {
+    float: right;
+    font-size: 27rpx;
+    color: #fff;
+    height: 55rpx;
+    padding-top: 8rpx;
+}
+.rechargeBar {
+    position: fixed;
+    width: 100%;
+    height: 172rpx;
+    bottom: 0;
+    background: #141452;
+}
+.rechargeRule {
+    position: absolute;
+    width: 100%;
+    top: -33rpx;
+    text-align: center;
+    color: #fff;
+    font-size: 21rpx;
+}
+.rechargeRule view {
+    display: inline-block;
+    color: #1fa9f8;
+}
+.needToPay {
+    float: left;
+    width: 409rpx;
+    height: 113rpx;
+    margin: 10rpx 0 0 26rpx;
+    border-bottom: 3rpx solid #8d8d91;
+}
+.needToPayTxt {
+    display: inline-block;
+    color: #fff;
+    font-size: 20rpx;
+    line-height: 113rpx;
+}
+.payMoney {
+    display: inline-block;
+    font-size: 67rpx;
+    font-weight: bold;
+    color: #fff;
+    line-height: 113rpx;
+    vertical-align: middle;
+}
+.payBtn {
+    float: right;
+    width: 285rpx;
+    height: 103rpx;
+    line-height: 103rpx;
+    border-radius: 51rpx;
+    margin: 23rpx 13rpx 0 0;
+    background: linear-gradient(to right, #f9c685, #e7a552);
+    text-align: center;
+    color: #713b0c;
+    font-size: 40rpx;
+    font-weight: bold;
+}
+/* 提示框 */
+.votePopWrapper {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    left: 0;
+    right: 0;
+}
+.promptPop {
+    position: fixed;
+    width: 644rpx;
+    height: 356rpx;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.promptClose {
+    position: absolute;
+    width: 93rpx;
+    height: 93rpx;
+    top: -131rpx;
+    right: 0;
+}
+.promptBg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.promptIcon {
+    position: absolute;
+    width: 132rpx;
+    height: 132rpx;
+    top: 107rpx;
+    left: 268rpx;
+}
+.promptTxtWrapper {
+    text-align: center;
+    line-height: 31rpx;
+    height: 31rpx;
+    position: absolute;
+    bottom: 47rpx;
+    width: 100%;
+}
+.promptTxt {
+    color: #4b1913;
+    font-size: 27rpx;
+    margin-right: 11rpx;
+    display: inline-block;
+    line-height: 31rpx;
+}
+.promptPop .poworIcon {
+    width: 26rpx;
+    height: 28rpx;
+    vertical-align: middle;
+}
+/* 获取授权弹框 */
+.getUserInfoBtn {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 4;
+}
+.getUserInfo {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: none;
+    border: none;
+    background: rgba(0, 0, 0, 0.3);
+}
+.getInfoTxt {
+    font-size: 32rpx;
+    color: #5c1166;
+    text-align: center;
+    position: relative;
+    top: 218rpx;
+    letter-spacing: -2rpx;
+}
+.getInfoBtn {
+    position: absolute;
+    bottom: 40rpx;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 10;
+    width: 374rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    background: linear-gradient(to right, #e43acf, #713bf0);
+    color: #fff;
+    font-size: 35rpx;
+    border-radius: 40rpx;
+}
+.getUserInfoWrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 644rpx;
+    height: 425rpx;
+}
+.getUserInfoBg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}

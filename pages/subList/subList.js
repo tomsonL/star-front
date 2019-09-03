@@ -197,6 +197,9 @@ Page({
                 this.setData({
                     titleInfo: obj
                 })
+                qq.setNavigationBarTitle({
+                    title: obj.monthName+"明星榜单"
+                })
             }
         }
     },

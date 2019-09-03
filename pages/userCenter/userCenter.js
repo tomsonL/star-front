@@ -234,6 +234,11 @@ Page({
             url: "../assistValue/assistValue?voteNum=" + this.data.fansInfo.votes_left,
         })
     },
+    goPay: function () {
+        qq.navigateTo({
+            url: "../recharge/recharge"
+        })
+    },
     goInvite: function () {
         qq.navigateTo({
             url: "../inviteList/inviteList"

@@ -94,7 +94,8 @@
     color: #fff;
 }
 .voteDetail,
-.contact {
+.contact,
+.goPay {
     width: 697rpx;
     height: 96rpx;
     line-height: 96rpx;
@@ -104,6 +105,9 @@
     text-align: center;
     font-size: 32rpx;
     color: #fff;
+}
+.goPay{
+    background: linear-gradient(to right, #FAC786, #E8A653);
 }
 .missionWrapper {
     width: 670rpx;
