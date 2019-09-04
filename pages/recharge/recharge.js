@@ -42,8 +42,8 @@ Page({
                 isChoose: false
             },
         ],
-        inputVoteNum: 10000,
-        payMoney: 10.00,
+        inputVoteNum: null,
+        payMoney: "10.00",
         // 提示框相关
         showPrompt: false,
         promptType: 1,
@@ -171,6 +171,19 @@ Page({
         }
         this.setData({
             voteTypeList: typeList,
+            inputVoteNum: null,
+            payMoney: (voteNum / 1000).toFixed(2)
+        })
+    },
+    //聚焦事件
+    focusInput: function () {
+        var typeList = this.data.voteTypeList;
+        var voteNum = this.data.inputVoteNum;
+        for (var x = 0; x < typeList.length; x++) {
+            typeList[x].isChoose = false;
+        }
+        this.setData({
+            voteTypeList: typeList,
             inputVoteNum: voteNum,
             payMoney: (voteNum / 1000).toFixed(2)
         })
@@ -184,31 +197,12 @@ Page({
                 showPrompt: true,
                 promptType: 0,
                 promptTxt: "充值助力值只能是正整数",
-                inputVoteNum: 100,
-                payMoney: 0.10
+                inputVoteNum: 0,
+                payMoney: 0.00
             })
-            return 100;
-        }
-        if (parseInt(e.detail.value) < 100) {
-            this.setData({
-                showPrompt: true,
-                promptType: 0,
-                promptTxt: "充值助力值必须大于100票",
-                inputVoteNum: 100,
-                payMoney: 0.10
-            })
-            return 100;
-        }
-        var typeList = this.data.voteTypeList;
-        for (var x = 0; x < typeList.length; x++) {
-            if (voteNum == typeList[x].voteNum) {
-                typeList[x].isChoose = true;
-            } else {
-                typeList[x].isChoose = false;
-            }
+            return 0;
         }
         this.setData({
-            voteTypeList: typeList,
             inputVoteNum: voteNum,
             payMoney: (voteNum / 1000).toFixed(2)
         })
@@ -224,6 +218,27 @@ Page({
     // 支付方法
     payMoneyFun: function () {
         var that = this;
+        var voteNum = 0;
+        if (this.data.inputVoteNum != null) {
+            if (parseInt(this.data.inputVoteNum) < 100) {
+                this.setData({
+                    showPrompt: true,
+                    promptType: 0,
+                    promptTxt: "充值助力值必须大于100票",
+                    inputVoteNum: 0,
+                    payMoney: 0.10
+                })
+                return false;
+            }
+            voteNum = this.data.inputVoteNum;
+        } else {
+            var typeList = this.data.voteTypeList;
+            for (var x = 0; x < typeList.length; x++) {
+                if (typeList[x].isChoose) {
+                    voteNum = typeList[x].voteNum;
+                }
+            }
+        }
         qq.getStorage({
             key: 'staruserinfo',
             success: function (res) {
@@ -240,11 +255,31 @@ Page({
                     data: {
                         user_id: res.data.user_id,
                         api_token: res.data.token,
-                        total_fee: that.data.payMoney.toFixed(2),
-                        good_desc: that.data.inputVoteNum + ""
+                        total_fee: typeof (that.data.payMoney) == 'number' ? that.data.payMoney.toFixed(2) : that.data.payMoney,
+                        good_desc: voteNum + ""
                     },
                     success: function (res2) {
-                        console.log(res2);
+                        qq.requestPayment({
+                            package: "prepay_id=" + res2.data.data.prepay_id,
+                            bargainor_id: config.BUSSINESSNO,
+                            success(res) {
+                                that.setData({
+                                    showPrompt: true,
+                                    promptType: 1,
+                                    promptTxt: "充值成功",
+                                    inputVoteNum: null,
+                                    payMoney: "10.00",
+                                })
+                                that.getList();
+                            },
+                            fail(res) {
+                                that.setData({
+                                    showPrompt: true,
+                                    promptType: 0,
+                                    promptTxt: "充值失败"
+                                })
+                            }
+                        })
                     }
                 })
             },

@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/myOrder/myOrder",
     "pages/homePage/homePage",
     "pages/idolDetail/idolDetail",
     "pages/totalList/totalList",
@@ -10,6 +9,7 @@
     "pages/subList/subList",
     "pages/inviteList/inviteList",
     "pages/rulePage/rulePage",
+    "pages/myOrder/myOrder", 
     "pages/recharge/recharge"
   ],
   "window": {

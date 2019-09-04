@@ -106,9 +106,6 @@
     font-size: 32rpx;
     color: #fff;
 }
-.goPay{
-    background: linear-gradient(to right, #FAC786, #E8A653);
-}
 .missionWrapper {
     width: 670rpx;
     margin: 27rpx;

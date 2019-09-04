@@ -1,7 +1,18 @@
 <view class="myOrderPage">
     <image class="bg" src="../../images/bg2.jpg" />
-    <scroll-view scroll-y class="scrollWrapper">
-        
+    <scroll-view scroll-y class="scrollWrapper" bindscrolltolower="loadMore">
+        <block qq:for="{{orderList}}" qq:for-item="item" qq:key="index">
+            <view class="orderItem">
+                <view class="orderTitleWrapper">
+                    <view class="orderTitle">{{item.title}}</view>
+                    <view class="orderMoney">{{item.votes}}</view>
+                    <image class="poworIcon" src="../../images/powerIcon2x.png" />
+                    <button class="goPay" qq:if="{{item.paid == 0}}" data-prepayId="{{item.prepay_id}}" bindtap="goPay">去支付</button>
+                </view>
+                <view class="orderTime">{{item.createTime}}</view>
+            </view>
+        </block>
+        <view class="noMore" hidden="{{hasMore}}">没有更多了~</view>
     </scroll-view>
     <!-- 提示框 -->
     <view class="votePopWrapper" bindtap="closePop" hidden="{{!showPrompt}}"></view>

@@ -13,6 +13,7 @@ Page({
         pageNo: 0,
         //明星List
         idolList: [],
+        hasMore: true,
         checkInsList: [
             {
                 dayName: "第一天",
@@ -103,6 +104,10 @@ Page({
             },
             success: function (res2) {
                 var list = res2.data.data.stars;
+                var hasMore = true;
+                if (list.length < 10) {
+                    hasMore = false;
+                }
                 for (var x = 0; x < list.length; x++) {
                     for (var y = 0; y < horoList.length; y++) {
                         if (list[x].star_cstl === horoList[y].cstl_id) {
@@ -115,7 +120,8 @@ Page({
                     list = oldList.concat(list);
                 }
                 that.setData({
-                    idolList: list
+                    idolList: list,
+                    hasMore: hasMore
                 })
                 qq.hideLoading();
             }
@@ -400,12 +406,14 @@ Page({
     },
     // 加载更多
     loadMore: function () {
-        var pageNo = this.data.pageNo;
-        pageNo += 1;
-        this.setData({
-            pageNo: pageNo
-        })
-        this.getList(this.data.urlParam, 1);
+        if (this.data.hasMore) {
+            var pageNo = this.data.pageNo;
+            pageNo += 1;
+            this.setData({
+                pageNo: pageNo
+            })
+            this.getList(this.data.urlParam, 1);
+        }
     },
     //授权成功保存信息
     bindGetUserInfo: function (e) {

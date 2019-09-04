@@ -1,9 +1,68 @@
-.myOrderPage{
+.myOrderPage {
 }
 .bg {
     position: fixed;
     width: 750rpx;
     height: 100vh;
+}
+.orderItem {
+    width: 645rpx;
+    height: 74rpx;
+    border-radius: 7rpx;
+    background: rgba(20, 9, 47, 0.6);
+    padding: 33rpx 27rpx 12rpx 25rpx;
+    margin: 0 27rpx 13rpx;
+}
+.orderItem:first-child{
+    margin-top: 27rpx;
+}
+.orderItem:last-child{
+    margin-bottom: 0;
+}
+.orderTitleWrapper {
+    height: 53rpx;
+    line-height: 53rpx;
+}
+.orderTitle {
+    font-size: 32rpx;
+    color: #f6c07c;
+    float: left;
+}
+.orderMoney {
+    font-size: 32rpx;
+    color: #fff;
+    margin-left: 43rpx;
+    float: left;
+}
+.poworIcon {
+    display: inline-block;
+    width: 22rpx;
+    height: 25rpx;
+    margin-left: 7rpx;
+    float: left;
+    margin-top: 14rpx;
+}
+.goPay {
+    float: right;
+    width: 183rpx;
+    height: 53rpx;
+    border-radius: 27rpx;
+    border: none;
+    line-height: 53rpx;
+    font-size: 27rpx;
+    color: #fff;
+    background: linear-gradient(to right, #21d20f, #18760c);
+}
+.orderTime {
+    margin-top: 6rpx;
+    color: #6a491f;
+    font-size: 20rpx;
+}
+.noMore {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 28rpx;
+    text-align: center;
+    margin: 50rpx 0;
 }
 /* 提示框 */
 .votePopWrapper {
@@ -40,6 +99,7 @@
     height: 132rpx;
     top: 107rpx;
     left: 268rpx;
+    margin-top:12rpx;
 }
 .promptTxtWrapper {
     text-align: center;

@@ -10,7 +10,9 @@ const horoList = config.HORO;
 Page({
     data: {
         pageNo: 0,
-         // 提示框相关
+        orderList: [],
+        hasMore: true,
+        // 提示框相关
         showPrompt: false,
         promptType: 1,
         promptTxt: "",
@@ -61,7 +63,7 @@ Page({
         return shareObj;
     },
     //获取列表
-    getList: function () {
+    getList: function (type) {
         if (!qq.getStorageSync("staruserinfo") || qq.getStorageSync("staruserinfo").length == 0) {
             this.setData({
                 hasUserInfo: false
@@ -95,8 +97,22 @@ Page({
                         page: that.data.pageNo
                     },
                     success: function (res1) {
+                        var list = res1.data.data.order_list;
+                        var hasMore = true;
+                        if (list.length < 10) {
+                            hasMore = false;
+                        }
+                        for (var x = 0; x < list.length; x++) {
+                            list[x].title = "助力值购买";
+                            list[x].createTime = "2019-09-04 20:20";
+                        }
+                        if (type == 1) {
+                            var oldList = that.data.orderList;
+                            list = oldList.concat(list);
+                        }
                         that.setData({
-                            orderList: res1.data.data.order_list
+                            orderList: list,
+                            hasMore: hasMore
                         })
                         qq.hideLoading();
                     }
@@ -111,7 +127,18 @@ Page({
             }
         })
     },
-     // 关闭弹窗
+    // 加载更多
+    loadMore: function () {
+        if (this.data.hasMore) {
+            var pageNo = this.data.pageNo;
+            pageNo += 1;
+            this.setData({
+                pageNo: pageNo
+            })
+            this.getList(1);
+        }
+    },
+    // 关闭弹窗
     closePop: function () {
         this.setData({
             showPrompt: false,
@@ -119,7 +146,47 @@ Page({
             promptTxt: ""
         })
     },
-     //授权成功保存信息  
+    // 去支付
+    goPay: function (e) {
+        qq.showLoading({
+            title: "请稍后",
+            mask: true
+        })
+        var that = this;
+        console.log(e.currentTarget.dataset.prepayid);
+        qq.requestPayment({
+            package: "prepay_id=" + e.currentTarget.dataset.prepayid,
+            bargainor_id: config.BUSSINESSNO,
+            success(res) {
+                qq.hideLoading();
+                that.setData({
+                    showPrompt: true,
+                    promptType: 1,
+                    promptTxt: "充值成功"
+                })
+                that.getList();
+                setTimeout(function () {
+                    that.setData({
+                        showPrompt: false,
+                        promptType: 0,
+                        promptTxt: ""
+                    })
+                }, 1000)
+                console.log(res);
+            },
+            fail(res) {
+                qq.hideLoading();
+                console.log(res);
+                that.setData({
+                    showPrompt: true,
+                    promptType: 0,
+                    promptTxt: "充值失败"
+                })
+                that.getList();
+            }
+        })
+    },
+    //授权成功保存信息  
     bindGetUserInfo: function (e) {
         qq.showLoading({
             title: "请稍后",

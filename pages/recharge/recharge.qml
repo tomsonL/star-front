@@ -37,8 +37,8 @@
             </view>
             <view class="inputWrapper">
                 <view class="leftWrapper">
-                    <view class="leftTxt">请输入充值助力值的数量</view>
-                    <input class="leftInput" type="number" value="{{inputVoteNum}}" bindinput="checkInput" />
+                    <view class="leftTxt"></view>
+                    <input class="leftInput" placeholder-class="inputPlaceholder" placeholder="请输入充值助力值的数量" bindfocus="focusInput" type="number" value="{{inputVoteNum}}" bindinput="checkInput" />
                 </view>
                 <view class="unit"> 助力值</view>
             </view>

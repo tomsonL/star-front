@@ -144,10 +144,13 @@
     height: 55rpx;
     display: inline-block;
     margin-left: 18rpx;
-    width: 310rpx;
     font-size: 48rpx;
     color: #fff;
     font-weight: bold;
+}
+.inputPlaceholder{
+    font-size: 27rpx;
+    color: rgba(255,255,255,0.3);
 }
 .unit {
     float: right;
