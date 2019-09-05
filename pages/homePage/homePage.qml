@@ -6,10 +6,15 @@
       搜索
     </navigator>
     <view class="switch-ctrl">
-      <swiper current="{{currentIndex}}" circular="{{true}}" bindchange="swipeCtrl" previous-margin="325rpx" display-multiple-items="4">
-        <swiper-item catchtouchmove="forbidMove" qq:for="{{constellation}}" qq:for-index="idx" qq:for-item="item" qq:key="idx">
+      <swiper current="{{currentIndex}}" circular="{{false}}" bindchange="swipeCtrl" previous-margin="325rpx" display-multiple-items="4">
+        <swiper-item qq:for="{{hasMons}}" qq:for-index="idx" qq:for-item="item" qq:key="idx">
           <view class="ctrl-name {{currentIndex==idx?'active': ''}}">{{item.zh}}</view>
         </swiper-item>
+        <swiper-item><view class="ctrl-name future"></view></swiper-item>
+        <swiper-item><view class="ctrl-name future"></view></swiper-item>
+        <swiper-item><view class="ctrl-name future"></view></swiper-item>
+
+
       </swiper>
     </view>
     <view class="body">
@@ -76,63 +81,63 @@
         </view> -->
         <view class="avatarWrapper">
           <view class="ari_avatar_wrapper avatar_wrapper" data-index="0" bindtap="goSubList">
-            <image class="avatar_border" qq:if="{{rankData[12].star_id == rankData[0].star_id}}" src="../../images/icon_avatar_border.png"></image>
-            <image class="activeBg" qq:if="{{rankData[12].star_id == rankData[0].star_id}}" src="../../images/icon_active_bg.png" />
+            <image class="avatar_border" qq:if="{{cstl_id == 'ari'}}" src="../../images/icon_avatar_border.png"></image>
+            <image class="activeBg" qq:if="{{cstl_id == 'ari'}}" src="../../images/icon_active_bg.png" />
             <image class="rankAvatar" src="{{rankData[0].star_avatar}}"></image>
           </view>
           <view class="tau_avatar_wrapper avatar_wrapper" data-index="1" bindtap="goSubList">
-            <image class="avatar_border" qq:if="{{rankData[12].star_id == rankData[1].star_id}}" src="../../images/icon_avatar_border.png"></image>
-            <image class="activeBg" qq:if="{{rankData[12].star_id == rankData[1].star_id}}" src="../../images/icon_active_bg.png" />
+            <image class="avatar_border" qq:if="{{cstl_id == 'tau'}}" src="../../images/icon_avatar_border.png"></image>
+            <image class="activeBg" qq:if="{{cstl_id == 'tau'}}" src="../../images/icon_active_bg.png" />
             <image class="rankAvatar" src="{{rankData[1].star_avatar}}"></image>
           </view>
           <view class="gem_avatar_wrapper avatar_wrapper" data-index="2" bindtap="goSubList">
-            <image class="avatar_border" qq:if="{{rankData[12].star_id == rankData[2].star_id}}" src="../../images/icon_avatar_border.png"></image>
-            <image class="activeBg" qq:if="{{rankData[12].star_id == rankData[2].star_id}}" src="../../images/icon_active_bg.png" />
+            <image class="avatar_border" qq:if="{{cstl_id == 'gem'}}" src="../../images/icon_avatar_border.png"></image>
+            <image class="activeBg" qq:if="{{cstl_id == 'gem'}}" src="../../images/icon_active_bg.png" />
             <image class="rankAvatar" src="{{rankData[2].star_avatar}}"></image>
           </view>
           <view class="cnc_avatar_wrapper avatar_wrapper" data-index="3" bindtap="goSubList">
-            <image class="avatar_border" qq:if="{{rankData[12].star_id == rankData[3].star_id}}" src="../../images/icon_avatar_border.png"></image>
-            <image class="activeBg" qq:if="{{rankData[12].star_id == rankData[3].star_id}}" src="../../images/icon_active_bg.png" />
+            <image class="avatar_border" qq:if="{{cstl_id == 'cnc'}}" src="../../images/icon_avatar_border.png"></image>
+            <image class="activeBg" qq:if="{{cstl_id == 'cnc'}}" src="../../images/icon_active_bg.png" />
             <image class="rankAvatar" src="{{rankData[3].star_avatar}}"></image>
           </view>
           <view class="leo_avatar_wrapper avatar_wrapper" data-index="4" bindtap="goSubList">
-            <image class="avatar_border" qq:if="{{rankData[12].star_id == rankData[4].star_id}}" src="../../images/icon_avatar_border.png"></image>
-            <image class="activeBg" qq:if="{{rankData[12].star_id == rankData[4].star_id}}" src="../../images/icon_active_bg.png" />
+            <image class="avatar_border" qq:if="{{cstl_id == 'leo'}}" src="../../images/icon_avatar_border.png"></image>
+            <image class="activeBg" qq:if="{{cstl_id == 'leo'}}" src="../../images/icon_active_bg.png" />
             <image class="rankAvatar" src="{{rankData[4].star_avatar}}"></image>
           </view>
           <view class="vir_avatar_wrapper avatar_wrapper" data-index="5" bindtap="goSubList">
-            <image class="avatar_border" qq:if="{{rankData[12].star_id == rankData[5].star_id}}" src="../../images/icon_avatar_border.png"></image>
-            <image class="activeBg" qq:if="{{rankData[12].star_id == rankData[5].star_id}}" src="../../images/icon_active_bg.png" />
+            <image class="avatar_border" qq:if="{{cstl_id == 'vir'}}" src="../../images/icon_avatar_border.png"></image>
+            <image class="activeBg" qq:if="{{cstl_id == 'vir'}}" src="../../images/icon_active_bg.png" />
             <image class="rankAvatar" src="{{rankData[5].star_avatar}}"></image>
           </view>
           <view class="lib_avatar_wrapper avatar_wrapper" data-index="6" bindtap="goSubList">
-            <image class="avatar_border" qq:if="{{rankData[12].star_id == rankData[6].star_id}}" src="../../images/icon_avatar_border.png"></image>
-            <image class="activeBg" qq:if="{{rankData[12].star_id == rankData[6].star_id}}" src="../../images/icon_active_bg.png" />
+            <image class="avatar_border" qq:if="{{cstl_id == 'lib'}}" src="../../images/icon_avatar_border.png"></image>
+            <image class="activeBg" qq:if="{{cstl_id == 'lib'}}" src="../../images/icon_active_bg.png" />
             <image class="rankAvatar" src="{{rankData[6].star_avatar}}"></image>
           </view>
           <view class="sco_avatar_wrapper avatar_wrapper" data-index="7" bindtap="goSubList">
-            <image class="avatar_border" qq:if="{{rankData[12].star_id == rankData[7].star_id}}" src="../../images/icon_avatar_border.png"></image>
-            <image class="activeBg" qq:if="{{rankData[12].star_id == rankData[7].star_id}}" src="../../images/icon_active_bg.png" />
+            <image class="avatar_border" qq:if="{{cstl_id == 'sco'}}" src="../../images/icon_avatar_border.png"></image>
+            <image class="activeBg" qq:if="{{cstl_id == 'sco'}}" src="../../images/icon_active_bg.png" />
             <image class="rankAvatar" src="{{rankData[7].star_avatar}}"></image>
           </view>
           <view class="sgr_avatar_wrapper avatar_wrapper" data-index="8" bindtap="goSubList">
-            <image class="avatar_border" qq:if="{{rankData[12].star_id == rankData[8].star_id}}" src="../../images/icon_avatar_border.png"></image>
-            <image class="activeBg" qq:if="{{rankData[12].star_id == rankData[8].star_id}}" src="../../images/icon_active_bg.png" />
+            <image class="avatar_border" qq:if="{{cstl_id == 'sgr'}}" src="../../images/icon_avatar_border.png"></image>
+            <image class="activeBg" qq:if="{{cstl_id == 'sgr'}}" src="../../images/icon_active_bg.png" />
             <image class="rankAvatar" src="{{rankData[8].star_avatar}}"></image>
           </view>
           <view class="cap_avatar_wrapper avatar_wrapper" data-index="9" bindtap="goSubList">
-            <image class="avatar_border" qq:if="{{rankData[12].star_id == rankData[9].star_id}}" src="../../images/icon_avatar_border.png"></image>
-            <image class="activeBg" qq:if="{{rankData[12].star_id == rankData[9].star_id}}" src="../../images/icon_active_bg.png" />
+            <image class="avatar_border" qq:if="{{cstl_id == 'cap'}}" src="../../images/icon_avatar_border.png"></image>
+            <image class="activeBg" qq:if="{{cstl_id == 'cap'}}" src="../../images/icon_active_bg.png" />
             <image class="rankAvatar" src="{{rankData[9].star_avatar}}"></image>
           </view>
           <view class="agr_avatar_wrapper avatar_wrapper" data-index="10" bindtap="goSubList">
-            <image class="avatar_border" qq:if="{{rankData[12].star_id == rankData[10].star_id}}" src="../../images/icon_avatar_border.png"></image>
-            <image class="activeBg" qq:if="{{rankData[12].star_id == rankData[10].star_id}}" src="../../images/icon_active_bg.png" />
+            <image class="avatar_border" qq:if="{{cstl_id == 'agr'}}" src="../../images/icon_avatar_border.png"></image>
+            <image class="activeBg" qq:if="{{cstl_id == 'agr'}}" src="../../images/icon_active_bg.png" />
             <image class="rankAvatar" src="{{rankData[10].star_avatar}}"></image>
           </view>
           <view class="psc_avatar_wrapper avatar_wrapper" data-index="11" bindtap="goSubList">
-            <image class="avatar_border" qq:if="{{rankData[12].star_id == rankData[11].star_id}}" src="../../images/icon_avatar_border.png"></image>
-            <image class="activeBg" qq:if="{{rankData[12].star_id == rankData[11].star_id}}" src="../../images/icon_active_bg.png" />
+            <image class="avatar_border" qq:if="{{cstl_id == 'psc'}}" src="../../images/icon_avatar_border.png"></image>
+            <image class="activeBg" qq:if="{{cstl_id == 'psc'}}" src="../../images/icon_active_bg.png" />
             <image class="rankAvatar" src="{{rankData[11].star_avatar}}"></image>
           </view>
         </view>

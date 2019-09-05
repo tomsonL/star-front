@@ -17,9 +17,10 @@ Page({
         cstl_id: "",
         //星座控制
         constellation: [],
+        hasMons: [],
         rankData: [],
         showLeft: true,
-        showRight: true,
+        showRight: false,
         // 提示框相关
         showPrompt: false,
         promptType: 1,
@@ -34,31 +35,38 @@ Page({
         var that = this;
         var cstlId = "";
         var today = new Date().getTime();
-        //判断当前日期星座
-        for (var x = 0; x < horoList.length; x++) {
-            var start = new Date(new Date().getFullYear() + '/' + horoList[x].start).getTime();
-            var end = new Date(new Date().getFullYear() + '/' + horoList[x + 1].start).getTime();
-            var horoArr = JSON.parse(JSON.stringify(horoList));
-            for (var y = 0; y < horoArr.length; y++) {
-                horoArr[y].zh = horoArr[y].zh.replace("座", "月");
-            }
-            if (today > start && today < end) {
+        //获取有数据的星座列表
+        qq.request({
+            method: "GET",
+            url: request_host + '/ranks/has_mons',
+            data: {},
+            success: function (res) {
+                //赋值给hasMons
                 that.setData({
-                    currentIndex: x,
-                    cstl_id: horoList[x].cstl_id,
+                    hasMons: res.data.data,
+                })
+                //判断当前日期星座
+                var horoArr = JSON.parse(JSON.stringify(horoList));
+                for (var y = 0; y < horoArr.length; y++) {
+                    horoArr[y].zh = horoArr[y].zh.replace("座", "月");
+                }
+                that.setData({
+                    currentIndex: that.data.hasMons.length - 1,
+                    cstl_id: that.data.hasMons[that.data.hasMons.length - 1].id,
                     constellation: horoArr
                 })
                 qq.setStorage({
                     key: "cstl_id",
-                    data: horoList[x].cstl_id
+                    data: that.data.hasMons[that.data.hasMons.length - 1].id
                 });
-                break;
+                that.getHoroData('',that.data.hasMons.length - 1);
             }
-        }
-        that.getHoroData();
+        });
+        
     },
     onShow: function () {
-        this.getHoroData();
+        //console.log('onshow');
+        //this.getHoroData();
     },
     onShareAppMessage: function (options) {
         var that = this;
@@ -94,47 +102,39 @@ Page({
             mask: true
         })
         var that = this;
-        qq.request({
-            method: "GET",
-            url: request_host + '/ranks/cstl',
-            data: {
-                cstl_mon: cstl ? cstl : ''
-            },
-            success: function (res) {
-                qq.hideLoading();
-                if (res.data.data.length > 0) {
+        that.setData({
+            currentIndex: index,
+            showLeft: index <= 0 ? false : true,
+            showRight: index >= that.data.hasMons.length - 1 ? false : true,
+        })
+        if (type == undefined) {
+            qq.request({
+                method: "GET",
+                url: request_host + '/ranks/cstl',
+                data: {
+                    cstl_mon: cstl ? cstl : ''
+                },
+                success: function (res) {
+                    qq.hideLoading();
                     that.setData({
-                        currentIndex: index ? index : that.data.currentIndex,
-                        rankData: res.data.data
-                    })
-                } else {
-                    that.setData({
-                        currentIndex: that.data.temIndex,
-                        temIndex: "",
-                        showPrompt: true,
-                        promptType: 0,
-                        promptTxt: horoList[that.data.currentIndex].zh.replace('座', '月') + "榜单暂未开启……",
-                        showLeft: type == 1 ? false : true,
-                        showRight: type == 2 ? false : true,
-                        cstl_id: horoList[that.data.currentIndex].cstl_id
+                        rankData: res.data.data,
                     })
                 }
-            }
-        })
+            })
+        }
+
     },
     //滑动控制
-    forbidMove: function (e){
+    forbidMove: function (e) {
 
     },
     swipeCtrl: function (e) {
         this.setData({
-            showLeft: true,
-            showRight: true,
             temIndex: this.data.currentIndex,
             currentIndex: e.detail.current,
-            cstl_id: horoList[e.detail.current].cstl_id
+            cstl_id: this.data.hasMons[e.detail.current].id
         })
-        this.getHoroData(horoList[e.detail.current].cstl_id, e.detail.current);
+        this.getHoroData(this.data.hasMons[e.detail.current].id, e.detail.current);
     },
     // 总榜单
     goTotalRank: function () {
@@ -142,7 +142,6 @@ Page({
         qq.navigateTo({
             url: '../totalList/totalList?cstl_id=' + this.data.cstl_id
         })
-
     },
     // 分榜单
     goSubList: function (e) {
@@ -171,11 +170,9 @@ Page({
         var that = this;
         var current = e.currentTarget.dataset.type == 1 ? that.data.currentIndex - 1 : that.data.currentIndex + 1;
         this.setData({
-            showLeft: true,
-            showRight: true,
             temIndex: that.data.currentIndex,
-            cstl_id: horoList[current].cstl_id
+            cstl_id: that.data.hasMons[current].id
         })
-        this.getHoroData(horoList[current].cstl_id, current, e.currentTarget.dataset.type);
+        this.getHoroData(that.data.hasMons[current].id, current, e.currentTarget.dataset.type);
     }
 })

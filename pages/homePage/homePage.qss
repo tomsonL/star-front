@@ -64,13 +64,24 @@
 .switch-ctrl swiper-item .ctrl-name {
     text-align: center;
     font-size: 28rpx;
-    color: #7f7e7f;
+    font-weight: bold;
+    color: #ffffff;
 }
 .switch-ctrl swiper-item .active {
-    color: #fff;
+    color: #ffd27a;
     font-size: 34rpx;
-    border-bottom: 1px solid #fff;
+    font-weight: bold;
+    border-bottom: 2px solid #fff;
 }
+
+.switch-ctrl swiper-item .future {
+    display:none;
+    text-align: center;
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #000000;
+}
+
 /* body轮盘 */
 .body {
     position: relative;
