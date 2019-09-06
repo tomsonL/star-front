@@ -243,8 +243,8 @@
     width: 100rpx;
     height: 100rpx;
     border-radius: 50%;
-    animation: avatarAni 1.5s infinite;
-    -webkit-animation: avatarAni 1.5s infinite;
+    animation: avatarAni 1s infinite;
+    -webkit-animation: avatarAni 1s infinite;
 }
 
 @keyframes avatarAni {
