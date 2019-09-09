@@ -79,6 +79,9 @@ Page({
 
             case "init":
                 return "初始赠送";
+                
+            case "return":
+                return "助力获赠";
         }
     }
 })

@@ -82,14 +82,6 @@
     <view class="promptPop" hidden="{{!showPrompt}}">
         <image class="promptClose" bindtap="closePop" src="../../images/icon_closePop.png" />
         <image class="promptBg" src="../../images/icon_prompt_bg.png" />
-        <view hidden="{{popType == 2}}">
-            <image class="promptIcon" hidden="{{promptType != 1}}" src="../../images/icon_success.png" />
-            <image class="promptIcon" hidden="{{promptType != 0}}" src="../../images/icon_fail.png" />
-            <view class="promptTxtWrapper">
-                <view class="promptTxt">{{promptTxt}}</view>
-                <image class="poworIcon" hidden="{{!isVote}}" src="../../images/powerIcon2x.png" />
-            </view>
-        </view>
         <view hidden="{{popType == 1}}" style="position: relative;">
             <view class="inputWrapper">
                 <input class="inputBar" value="{{nickname}}" bindinput="bindInputFun" maxlength="20" />
@@ -101,6 +93,8 @@
             </view>
         </view>
     </view>
+    <prompt-pop qq:if="{{showPop}}" pop-param="{{popParam}}" bind:closePop="closePop"></prompt-pop>
+    <!-- 授权框 -->
     <view class="getUserInfo" qq:if="{{!hasUserInfo}}">
         <view class="getUserInfoWrapper">
             <image class="getUserInfoBg" src="../../images/bg_empower.png" />

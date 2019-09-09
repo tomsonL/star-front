@@ -12,20 +12,17 @@ Page({
         inviteList: [],
         invited_count: "",
         // 提示框相关
-        showPrompt: false,
-        promptType: 1,
-        promptTxt: "",
-        isVote: false,
+        showPop: false,
+        popParam: {},
     },
     onLoad: function () {
-
         var pages = getCurrentPages()
-            if (pages.length >= 2) {
-                var prevpage = pages[pages.length - 2]
-                var s = prevpage.route.split('/');
-                var prevpage_route = s.pop();
+        if (pages.length >= 2) {
+            var prevpage = pages[pages.length - 2]
+            var s = prevpage.route.split('/');
+            var prevpage_route = s.pop();
         }
-        app.aldstat.sendEvent('去邀请',{
+        app.aldstat.sendEvent('去邀请', {
             '来源': prevpage_route
         });
         qq.showShareMenu();
@@ -50,7 +47,7 @@ Page({
                     app.aldstat.sendEvent('取消转发');
                     // 用户取消转发
                 } else if (res.errMsg == 'shareAppMessage:fail') {
-                    app.aldstat.sendEvent('转发失败',{'msg':res.detail.message});
+                    app.aldstat.sendEvent('转发失败', { 'msg': res.detail.message });
                     // 转发失败，其中 detail message 为详细失败信息
                 }
             },
@@ -143,25 +140,24 @@ Page({
                         qq.hideLoading();
                         if (res2.data.code == 1) {
                             that.setData({
-                                showPrompt: true,
-                                promptType: 1,
-                                promptTxt: "成功领取助力" + res2.data.data.votes,
-                            });
+                                showPop: true,
+                                popParam: {
+                                    popType: "reward",
+                                    popTitle: "邀请奖励",
+                                    getVotes: res2.data.data.votes,
+                                    rewardTxt: "邀请奖励无上限，冲鸭～"
+                                }
+                            })
                             that.getList();
                         } else {
                             that.setData({
-                                showPrompt: true,
-                                promptType: 0,
-                                promptTxt: res2.data.msg
-                            });
-                        }
-                        setTimeout(function () {
-                            that.setData({
-                                showPrompt: false,
-                                promptType: 0,
-                                promptTxt: "",
+                                showPop: true,
+                                popParam: {
+                                    popType: "fail",
+                                    popContent: res2.data.msg
+                                }
                             })
-                        }, 1000)
+                        }
                     }
                 })
             },

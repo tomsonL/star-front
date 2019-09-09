@@ -22,7 +22,9 @@
                             <view class="power">{{item.star_votes}}</view>
                         </view>
                     </view>
-                    <view class="btn btn-yellow assistListBtn" data-idolId="{{item.star_id}}" catchtap="assistPopFun">助力</view>
+                    <view class="btn btn-yellow assistListBtn" data-idolId="{{item.star_id}}" data-idolName="{{item.star_name}}" data-star_avatar="{{item.star_avatar}}" catchtap="assistPopFun"
+                        >助力</view
+                    >
                 </view>
             </block>
         </view>
@@ -83,17 +85,8 @@
         </view>
     </view>
     <!-- 提示框 -->
-    <view class="votePopWrapper" bindtap="closePop" hidden="{{!showPrompt}}"></view>
-    <view class="promptPop" hidden="{{!showPrompt}}">
-        <image class="promptClose" bindtap="closePop" src="../../images/icon_closePop.png" />
-        <image class="promptBg" src="../../images/icon_prompt_bg.png" />
-        <image class="promptIcon" hidden="{{promptType != 1}}" src="../../images/icon_success.png" />
-        <image class="promptIcon" hidden="{{promptType != 0}}" src="../../images/icon_fail.png" />
-        <view class="promptTxtWrapper">
-            <view class="promptTxt">{{promptTxt}}</view>
-            <image class="poworIcon" hidden="{{!isVote}}" src="../../images/powerIcon2x.png" />
-        </view>
-    </view>
+    <prompt-pop qq:if="{{showPop}}" pop-param="{{popParam}}" bind:closePop="closePop"></prompt-pop>
+    <!-- 授权框 -->
     <view class="getUserInfo" qq:if="{{!hasUserInfo}}">
         <view class="getUserInfoWrapper">
             <image class="getUserInfoBg" src="../../images/bg_empower.png" />

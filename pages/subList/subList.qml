@@ -31,7 +31,15 @@
                     <image class="poworIcon" src="../../images/powerIcon2x.png" />
                     <view class="power">{{firstIdol.star_votes}}</view>
                 </view>
-                <view class="btn btn-yellow assistBtn" qq:if="{{isThisMonth}}" data-idolId="{{firstIdol.star_id}}" data-idolName="{{firstIdol.star_name}}" catchtap="assistPopFun">助力</view>
+                <view
+                    class="btn btn-yellow assistBtn"
+                    qq:if="{{isThisMonth}}"
+                    data-idolId="{{firstIdol.star_id}}"
+                    data-idolName="{{firstIdol.star_name}}"
+                    data-star_avatar="{{firstIdol.star_avatar}}"
+                    catchtap="assistPopFun"
+                    >助力</view
+                >
             </view>
             <view class="secondIdol topWrapper" data-idolId="{{secondIdol.star_id}}" bindtap="goIdolDetail">
                 <image class="topBg" src="../../images/2.png" />
@@ -42,7 +50,15 @@
                     <image class="poworIcon" src="../../images/powerIcon2x.png" />
                     <view class="power">{{secondIdol.star_votes}}</view>
                 </view>
-                <view class="btn btn-yellow assistBtn" qq:if="{{isThisMonth}}" data-idolId="{{secondIdol.star_id}}" data-idolName="{{secondIdol.star_name}}" catchtap="assistPopFun">助力</view>
+                <view
+                    class="btn btn-yellow assistBtn"
+                    qq:if="{{isThisMonth}}"
+                    data-idolId="{{secondIdol.star_id}}"
+                    data-idolName="{{secondIdol.star_name}}"
+                    data-star_avatar="{{secondIdol.star_avatar}}"
+                    catchtap="assistPopFun"
+                    >助力</view
+                >
             </view>
             <view class="thirdIdol topWrapper" data-idolId="{{thirdIdol.star_id}}" bindtap="goIdolDetail">
                 <image class="topBg" src="../../images/3.png" />
@@ -53,7 +69,15 @@
                     <image class="poworIcon" src="../../images/powerIcon2x.png" />
                     <view class="power">{{thirdIdol.star_votes}}</view>
                 </view>
-                <view class="btn btn-yellow assistBtn" qq:if="{{isThisMonth}}" data-idolId="{{thirdIdol.star_id}}" data-idolName="{{thirdIdol.star_name}}" catchtap="assistPopFun">助力</view>
+                <view
+                    class="btn btn-yellow assistBtn"
+                    qq:if="{{isThisMonth}}"
+                    data-idolId="{{thirdIdol.star_id}}"
+                    data-idolName="{{thirdIdol.star_name}}"
+                    data-star_avatar="{{thirdIdol.star_avatar}}"
+                    catchtap="assistPopFun"
+                    >助力</view
+                >
             </view>
             <view class="rankList">
                 <block qq:for="{{idolList}}" qq:for-item="item" qq:key="index">
@@ -71,7 +95,15 @@
                                 <view class="power">{{item.star_votes}}</view>
                             </view>
                         </view>
-                        <view class="btn btn-yellow assistListBtn" qq:if="{{isThisMonth}}" data-idolId="{{item.star_id}}" data-idolName="{{item.star_name}}" catchtap="assistPopFun">助力</view>
+                        <view
+                            class="btn btn-yellow assistListBtn"
+                            qq:if="{{isThisMonth}}"
+                            data-idolId="{{item.star_id}}"
+                            data-idolName="{{item.star_name}}"
+                            data-star_avatar="{{item.star_avatar}}"
+                            catchtap="assistPopFun"
+                            >助力</view
+                        >
                     </view>
                 </block>
             </view>
@@ -132,17 +164,8 @@
         </view>
     </view>
     <!-- 提示框 -->
-    <view class="votePopWrapper" bindtap="closePop" hidden="{{!showPrompt}}"></view>
-    <view class="promptPop" hidden="{{!showPrompt}}">
-        <image class="promptClose" bindtap="closePop" src="../../images/icon_closePop.png" />
-        <image class="promptBg" src="../../images/icon_prompt_bg.png" />
-        <image class="promptIcon" hidden="{{promptType != 1}}" src="../../images/icon_success.png" />
-        <image class="promptIcon" hidden="{{promptType != 0}}" src="../../images/icon_fail.png" />
-        <view class="promptTxtWrapper">
-            <view class="promptTxt">{{promptTxt}}</view>
-            <image class="poworIcon" hidden="{{!isVote}}" src="../../images/powerIcon2x.png" />
-        </view>
-    </view>
+    <prompt-pop qq:if="{{showPop}}" pop-param="{{popParam}}" bind:closePop="closePop"></prompt-pop>
+    <!-- 授权框 -->
     <view class="getUserInfo" qq:if="{{!hasUserInfo}}">
         <view class="getUserInfoWrapper">
             <image class="getUserInfoBg" src="../../images/bg_empower.png" />

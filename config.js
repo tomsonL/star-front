@@ -165,3 +165,8 @@ module.exports.HORO = [
         'home_active': imgUrl +'/icon_psc_active.png' 
     }
 ];
+module.exports.voteTxt = [
+    "你知道你和猴子什么区别吗” “一个住在山洞，一个住在我心里”……",
+    "你闻到空气中有烧焦的味道吗？那是我的心在为你燃烧……",
+    "你知道我喜欢喝什么吗？ 呵护你……"
+]

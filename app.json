@@ -6,10 +6,10 @@
     "pages/searchList/searchList",
     "pages/assistValue/assistValue",
     "pages/userCenter/userCenter",
+    "pages/rulePage/rulePage",
     "pages/subList/subList",
     "pages/inviteList/inviteList",
-    "pages/rulePage/rulePage",
-    "pages/myOrder/myOrder", 
+    "pages/myOrder/myOrder",
     "pages/recharge/recharge"
   ],
   "window": {

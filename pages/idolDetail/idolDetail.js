@@ -68,10 +68,8 @@ Page({
         // 投票数量
         voteNum: 1,
         // 提示框相关
-        showPrompt: false,
-        promptType: 1,
-        promptTxt: "aaa",
-        isVote: false,
+        showPop: false,
+        popParam: {},
         // 今天是否签到
         todayCheck: false,
         hasUserInfo: false, //是否有用户信息
@@ -208,6 +206,17 @@ Page({
             }
         })
     },
+    // 抢点王规则
+    showRule: function () {
+        this.setData({
+            showPop: true,
+            popParam: {
+                popType: 'desc',
+                popTitle: '抢点王玩法介绍',
+                popContent: '1.每逢整点助力成功者，将成为抢点王。\n 2.当整点时，多名星粉助力成功，当次值最高者，成为抢点王。\n 3.若整点无助力星粉，抢点王坐席暂为空'
+            }
+        })
+    },
     // 投票方法
     assistPopFun: function (e) {
         qq.showLoading({
@@ -308,12 +317,12 @@ Page({
     },
     // 投票方法
     assistBtn: function () {
-        qq.showLoading({
-            title: "请稍后",
-            mask: true
-        })
         var that = this;
         if (!that.data.showErrorPop) {
+            qq.showLoading({
+                title: "请稍后",
+                mask: true
+            })
             qq.getStorage({
                 key: "staruserinfo",
                 success: function (res) {
@@ -341,27 +350,27 @@ Page({
                                     voteNum: 1,
                                     idolId: "",
                                     showVotePop: false,
-                                    showPrompt: true,
-                                    promptType: 1,
-                                    promptTxt: "成功助力" + that.data.voteNum,
-                                    isVote: true
+                                    // 弹出框
+                                    showPop: true,
+                                    popParam: {
+                                        popType: "voteSuccess",
+                                        popTitle: "助力成功",
+                                        voteNum: that.data.voteNum,
+                                        promptTxt: res1.data.data.info,
+                                        voteIdolAvatar: that.data.idolInfo.star_avatar,
+                                        idolRank: res1.data.data.rank,
+                                    },
                                 })
                                 that.getList(that.data.urlParam);
                                 app.aldstat.sendEvent('助力成功', { '明星': that.data.idolInfo.star_name, '页面': '明星详情' });
-                                setTimeout(function () {
-                                    that.setData({
-                                        showPrompt: false,
-                                        promptType: 0,
-                                        promptTxt: "",
-                                        isVote: false
-                                    })
-                                }, 1000)
                             } else {
                                 that.setData({
-                                    showPrompt: true,
-                                    promptType: 0,
-                                    promptTxt: res1.data.msg,
-                                    isVote: false
+                                    showPop: true,
+                                    popParam: {
+                                        popType: "fail",
+                                        popTitle: "提示",
+                                        popContent: res1.data.msg
+                                    },
                                 })
                             }
                             qq.hideLoading();
@@ -370,19 +379,6 @@ Page({
                 }
             })
         }
-    },
-    // 关闭弹窗
-    closePop: function () {
-        this.setData({
-            showErrorPop: false,
-            voteNum: 1,
-            idolId: "",
-            showVotePop: false,
-            showPrompt: false,
-            promptType: 0,
-            promptTxt: "",
-            isVote: false
-        })
     },
     // 签到
     checkInFun: function (e) {
@@ -412,40 +408,32 @@ Page({
                         if (res2.data.code == 1) {
                             if (res2.data.data.votes != 0) {
                                 that.setData({
-                                    showPrompt: true,
-                                    promptType: 1,
-                                    promptTxt: "成功签到" + res2.data.data.votes,
-                                    isVote: true
+                                    showPop: true,
+                                    popParam: {
+                                        popType: "reward",
+                                        popTitle: "签到成功",
+                                        getVotes: res2.data.data.votes,
+                                        rewardTxt: "连续签到，助力值翻倍！"
+                                    }
                                 })
                                 that.assistPopFun();
-                                setTimeout(function () {
-                                    that.setData({
-                                        showPrompt: false,
-                                        promptType: 0,
-                                        promptTxt: ""
-                                    })
-                                }, 1000)
                             } else {
                                 that.setData({
-                                    showPrompt: true,
-                                    promptType: 0,
-                                    promptTxt: "今天已签到",
-                                    isVote: false
+                                    showPop: true,
+                                    popParam: {
+                                        popType: "fail",
+                                        popContent: "今天已签到"
+                                    }
                                 })
                                 that.assistPopFun();
-                                setTimeout(function () {
-                                    that.setData({
-                                        showPrompt: false,
-                                        promptType: 0,
-                                        promptTxt: ""
-                                    })
-                                }, 1000)
                             }
                         } else {
                             that.setData({
-                                showPrompt: true,
-                                promptType: 0,
-                                promptTxt: res2.data.msg
+                                showPop: true,
+                                popParam: {
+                                    popType: "fail",
+                                    popContent: res2.data.msg
+                                }
                             })
                         }
                         qq.hideLoading();
@@ -454,9 +442,20 @@ Page({
             }
         })
     },
+    // 去邀请页面
     goInvite: function () {
         qq.navigateTo({
             url: "../inviteList/inviteList"
+        })
+    },
+     // 关闭弹窗
+    closePop: function () {
+        this.setData({
+            showErrorPop: false,
+            voteNum: 1,
+            idolId: "",
+            showVotePop: false,
+            showPop: false,
         })
     },
     //授权成功保存信息

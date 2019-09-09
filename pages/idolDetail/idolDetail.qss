@@ -91,6 +91,13 @@
     color: #d9ab5f;
     text-align: center;
 }
+.ruleMarks {
+    position: absolute;
+    width: 21rpx;
+    height: 22rpx;
+    top: 50rpx;
+    left: 15rpx;
+}
 .userAvatar {
     width: 100rpx;
     height: 100rpx;
@@ -237,7 +244,7 @@
     height: 100%;
     position: absolute;
 }
-.mySelfWrapper .topThreeIcon{
+.mySelfWrapper .topThreeIcon {
     left: 22rpx;
 }
 .mySelfWrapper .fansAvatar {

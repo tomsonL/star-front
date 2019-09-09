@@ -21,10 +21,6 @@ Page({
         rankData: [],
         showLeft: true,
         showRight: false,
-        // 提示框相关
-        showPrompt: false,
-        promptType: 1,
-        promptTxt: "aaa",
     },
     onLoad: function (option) {
         app.aldstat.sendEvent('星盘');
@@ -150,19 +146,6 @@ Page({
         });
         qq.navigateTo({
             url: '../subList/subList?cstl_id=' + this.data.cstl_id + '&cstl=' + horoList[e.currentTarget.dataset.index].cstl_id
-        })
-    },
-    // 关闭弹窗
-    closePop: function () {
-        this.setData({
-            showErrorPop: false,
-            voteNum: 1,
-            idolId: "",
-            showVotePop: false,
-            showPrompt: false,
-            promptType: 0,
-            promptTxt: "",
-            isVote: false
         })
     },
     // 去其他星月

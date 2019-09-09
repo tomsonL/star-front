@@ -45,9 +45,8 @@ Page({
         inputVoteNum: null,
         payMoney: "10.00",
         // 提示框相关
-        showPrompt: false,
-        promptType: 1,
-        promptTxt: "",
+        showPop: false,
+        popParam: {},
         hasUserInfo: false, //是否有用户信息
         canIUse: qq.canIUse('button.open-type.getUserInfo'),
     },
@@ -194,9 +193,12 @@ Page({
         var voteNum = e.detail.value;
         if (!reg.test(voteNum)) {
             this.setData({
-                showPrompt: true,
-                promptType: 0,
-                promptTxt: "充值助力值只能是正整数",
+                showPop: true,
+                popParam: {
+                    popType: "fail",
+                    popTitle: "提示",
+                    popContent: "充值助力值只能是正整数"
+                },
                 inputVoteNum: 0,
                 payMoney: 0.00
             })
@@ -207,14 +209,6 @@ Page({
             payMoney: (voteNum / 1000).toFixed(2)
         })
     },
-    // 关闭弹窗
-    closePop: function () {
-        this.setData({
-            showPrompt: false,
-            promptType: 0,
-            promptTxt: ""
-        })
-    },
     // 支付方法
     payMoneyFun: function () {
         var that = this;
@@ -222,9 +216,12 @@ Page({
         if (this.data.inputVoteNum != null) {
             if (parseInt(this.data.inputVoteNum) < 100) {
                 this.setData({
-                    showPrompt: true,
-                    promptType: 0,
-                    promptTxt: "充值助力值必须大于100票",
+                    showPop: true,
+                    popParam: {
+                        popType: "fail",
+                        popTitle: "提示",
+                        popContent: "充值助力值必须大于100票"
+                    },
                     inputVoteNum: 0,
                     payMoney: 0.10
                 })
@@ -264,9 +261,13 @@ Page({
                             bargainor_id: config.BUSSINESSNO,
                             success(res) {
                                 that.setData({
-                                    showPrompt: true,
-                                    promptType: 1,
-                                    promptTxt: "充值成功",
+                                    showPop: true,
+                                    popParam: {
+                                        popType: "fail",
+                                        isSuccess: true,
+                                        popTitle: "充值结果",
+                                        popContent: "充值成功"
+                                    },
                                     inputVoteNum: null,
                                     payMoney: "10.00",
                                 })
@@ -274,9 +275,12 @@ Page({
                             },
                             fail(res) {
                                 that.setData({
-                                    showPrompt: true,
-                                    promptType: 0,
-                                    promptTxt: "充值失败"
+                                    showPop: true,
+                                    popParam: {
+                                        popType: "fail",
+                                        popTitle: "充值结果",
+                                        popContent: "充值失败"
+                                    },
                                 })
                             }
                         })
@@ -290,6 +294,12 @@ Page({
                     hasUserInfo: false
                 })
             }
+        })
+    },
+    // 关闭弹窗
+    closePop: function () {
+        this.setData({
+            showPop: false,
         })
     },
     //授权成功保存信息  

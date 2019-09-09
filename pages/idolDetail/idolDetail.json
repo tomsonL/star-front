@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "prompt-pop": "../../components/prompt-pop/prompt-pop"
+  }
 }

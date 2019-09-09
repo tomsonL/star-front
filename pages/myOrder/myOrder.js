@@ -13,9 +13,8 @@ Page({
         orderList: [],
         hasMore: true,
         // 提示框相关
-        showPrompt: false,
-        promptType: 1,
-        promptTxt: "",
+        showPop: false,
+        popParam: {},
         hasUserInfo: false, //是否有用户信息
         canIUse: qq.canIUse('button.open-type.getUserInfo'),
     },
@@ -138,14 +137,6 @@ Page({
             this.getList(1);
         }
     },
-    // 关闭弹窗
-    closePop: function () {
-        this.setData({
-            showPrompt: false,
-            promptType: 0,
-            promptTxt: ""
-        })
-    },
     // 去支付
     goPay: function (e) {
         qq.showLoading({
@@ -160,30 +151,33 @@ Page({
             success(res) {
                 qq.hideLoading();
                 that.setData({
-                    showPrompt: true,
-                    promptType: 1,
-                    promptTxt: "充值成功"
+                    showPop: true,
+                    popParam: {
+                        popType: "fail",
+                        isSuccess: true,
+                        popTitle: "充值结果",
+                        popContent: "充值成功"
+                    },
                 })
                 that.getList();
-                setTimeout(function () {
-                    that.setData({
-                        showPrompt: false,
-                        promptType: 0,
-                        promptTxt: ""
-                    })
-                }, 1000)
-                console.log(res);
             },
             fail(res) {
-                qq.hideLoading();
-                console.log(res);
                 that.setData({
-                    showPrompt: true,
-                    promptType: 0,
-                    promptTxt: "充值失败"
+                    showPop: true,
+                    popParam: {
+                        popType: "fail",
+                        popTitle: "充值结果",
+                        popContent: "充值失败"
+                    },
                 })
                 that.getList();
             }
+        })
+    },
+    // 关闭弹窗
+    closePop: function () {
+        this.setData({
+            showPop: false,
         })
     },
     //授权成功保存信息  

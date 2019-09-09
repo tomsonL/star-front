@@ -50,10 +50,9 @@ Page({
         ],
         // 提示框相关
         showPrompt: false,
-        promptType: 1,
-        promptTxt: "",
         popType: 1,
-        isVote: false,
+        showPop: false,
+        popParam: {},
         // 今天是否签到
         todayCheck: false,
         hasUserInfo: false, //是否有用户信息
@@ -165,40 +164,32 @@ Page({
                         if (res2.data.code == 1) {
                             if (res2.data.data.votes != 0) {
                                 that.setData({
-                                    showPrompt: true,
-                                    promptType: 1,
-                                    promptTxt: "成功签到" + res2.data.data.votes,
-                                    isVote: true
+                                    showPop: true,
+                                    popParam: {
+                                        popType: "reward",
+                                        popTitle: "签到成功",
+                                        getVotes: res2.data.data.votes,
+                                        rewardTxt: "连续签到，助力值翻倍！"
+                                    }
                                 })
                                 that.getList();
-                                setTimeout(function () {
-                                    that.setData({
-                                        showPrompt: false,
-                                        promptType: 0,
-                                        promptTxt: ""
-                                    })
-                                }, 1000)
                             } else {
                                 that.setData({
-                                    showPrompt: true,
-                                    promptType: 0,
-                                    promptTxt: "今天已签到",
-                                    isVote: false
+                                    showPop: true,
+                                    popParam: {
+                                        popType: "fail",
+                                        popContent: "今天已签到"
+                                    }
                                 })
                                 that.getList();
-                                setTimeout(function () {
-                                    that.setData({
-                                        showPrompt: false,
-                                        promptType: 0,
-                                        promptTxt: ""
-                                    })
-                                }, 1000)
                             }
                         } else {
                             that.setData({
-                                showPrompt: true,
-                                promptType: 0,
-                                promptTxt: res2.data.msg
+                                showPop: true,
+                                popParam: {
+                                    popType: "fail",
+                                    popContent: res2.data.msg
+                                }
                             })
                         }
                         qq.hideLoading();
@@ -212,16 +203,6 @@ Page({
                     hasUserInfo: false
                 })
             }
-        })
-    },
-    // 关闭弹窗
-    closePop: function () {
-        this.setData({
-            showPrompt: false,
-            promptType: 0,
-            promptTxt: "",
-            isVote: false,
-            popType: 1
         })
     },
     callFun: function () {
@@ -277,36 +258,35 @@ Page({
                     success: function (res2) {
                         if (res2.data.code == 1) {
                             that.setData({
-                                showPrompt: true,
-                                promptType: 1,
-                                popType: 1,
-                                promptTxt: "成功修改昵称"
+                                showPrompt: false,
+                                showPop: true,
+                                popParam: {
+                                    popType: "fail",
+                                    isSuccess: true,
+                                    popContent: "成功修改昵称！"
+                                }
                             })
                             that.getList();
-                            setTimeout(function () {
-                                that.setData({
-                                    showPrompt: false,
-                                    promptType: 0,
-                                    popType: 1,
-                                    promptTxt: ""
-                                })
-                            }, 1000)
                         } else {
                             that.setData({
-                                showPrompt: true,
-                                promptType: 1,
-                                popType: 1,
-                                promptTxt: res2.data.msg
+                                showPrompt: false,
+                                showPop: true,
+                                popParam: {
+                                    popType: "fail",
+                                    popContent: res2.data.msg
+                                }
                             })
                         }
 
                     },
                     fail: function () {
                         that.setData({
-                            showPrompt: true,
-                            promptType: 1,
-                            popType: 1,
-                            promptTxt: "网络错误，请重试"
+                            showPrompt: false,
+                            showPop: true,
+                            popParam: {
+                                popType: "fail",
+                                popContent: "网络错误，请重试"
+                            }
                         })
                     }
                 })
@@ -324,6 +304,14 @@ Page({
     bindInputFun: function (e) {
         this.setData({
             nickname: e.detail.value
+        })
+    },
+    // 关闭弹窗
+    closePop: function () {
+        this.setData({
+            showPrompt: false,
+            popType: 1,
+            showPop: false,
         })
     },
     //授权成功保存信息  

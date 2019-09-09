@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "prompt-pop": "../../components/prompt-pop/prompt-pop"
+  },
   "navigationBarTitleText": "总榜"
 }
