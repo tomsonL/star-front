@@ -365,6 +365,8 @@ Page({
                                         promptTxt: res1.data.data.info,
                                         voteIdolAvatar: that.data.idolInfo.star_avatar,
                                         idolRank: res1.data.data.rank,
+                                        voteImg: res1.data.data.img,
+                                        tip: res1.data.data.tip
                                     },
                                 })
                                 that.getList(that.data.urlParam);

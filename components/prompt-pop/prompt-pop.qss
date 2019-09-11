@@ -97,7 +97,7 @@
     background: #fae8ba;
     border-radius: 20rpx;
     position: relative;
-    padding: 27rpx 48rpx 27rpx 37rpx;
+    padding: 27rpx 21rpx 25rpx 20rpx;
 }
 .sayTrigle {
     position: absolute;
@@ -113,6 +113,18 @@
     line-height: 32rpx;
     font-size: 27rpx;
     color: #f9651c;
+}
+.voteImg{
+    width: 496rpx;
+    height: 273rpx;
+    border-radius: 13rpx;
+    margin: 0 auto 15rpx;
+}
+.tips{
+    text-align: center;
+    color: #9A9A9A;
+    margin-top: 14rpx;
+    font-size: 20rpx;
 }
 .getVotesWrapper {
     text-align: center;
