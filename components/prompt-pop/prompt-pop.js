@@ -29,7 +29,7 @@ Component({
                 // 获取助力值文案
                 rewardTxt: "",
                 // 下方提示
-                tip: ""
+                tip: "",
                 // 获奖图片
                 voteImg: ""
             },
