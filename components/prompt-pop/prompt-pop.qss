@@ -91,13 +91,12 @@
     clear: both;
 }
 .idolSay {
-    width: 452rpx;
-    height: 66rpx;
+    width: 496rpx;
     margin: 19rpx auto 0;
     background: #fae8ba;
     border-radius: 20rpx;
     position: relative;
-    padding: 27rpx 21rpx 25rpx 20rpx;
+    padding: 27rpx 20rpx 25rpx 20rpx;
 }
 .sayTrigle {
     position: absolute;
@@ -115,6 +114,7 @@
     color: #f9651c;
 }
 .voteImg{
+    position: relative;
     width: 496rpx;
     height: 273rpx;
     border-radius: 13rpx;
