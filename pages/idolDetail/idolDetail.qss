@@ -45,11 +45,36 @@
 }
 .idolInfo {
     position: relative;
-    color: #fff;
-    font-size: 24rpx;
+    color: #FFED76;
+    font-size: 21rpx;
     padding-left: 305rpx;
-    padding-top: 50rpx;
-    line-height: 40rpx;
+    padding-top: 39rpx;
+    line-height: 20rpx;
+}
+.idolInfo view{
+    margin-bottom: 9rpx;
+}
+.idolInfo view:nth-child(2n){
+    color: #fff
+}
+.idolInfo view text{
+    display: inline-block;
+}
+.idolInfo view .green{
+    color: #45D53B;
+}
+.idolInfo view .red{
+    color: #FF1C04;
+}
+.idolInfo view image{
+    margin: 0 7rpx;
+    display: inline-block;
+    width: 17rpx;
+    height: 17rpx;
+}
+.idolHoroImg{
+    position: absolute;
+    display: none;
 }
 .assistBtn {
     position: relative;

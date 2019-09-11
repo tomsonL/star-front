@@ -115,14 +115,20 @@ Page({
                         api_token: res1.data.token
                     },
                     success: function (res2) {
-                        var idol = res2.data.data;
+                        var idol = JSON.parse(JSON.stringify(res2.data.data));
                         for (var y = 0; y < horoList.length; y++) {
                             if (idol.star_cstl === horoList[y].cstl_id) {
                                 idol.bigImg = horoList[y].bigImg;
+                                idol.horoName = horoList[y].zh;
+                                idol.bgImg = horoList[y].bg;
+                                idol.isUp = parseInt(idol.up) >= 0;
+                                idol.upNum = Math.abs(parseInt(idol.up));
+                                idol.cstl_isUp = parseInt(idol.cstl_up) >= 0;
+                                idol.cstl_upNum = Math.abs(parseInt(idol.cstl_up));
                             }
                         }
                         that.setData({
-                            idolInfo: res2.data.data
+                            idolInfo: idol
                         })
                         qq.setNavigationBarTitle({
                             title: res2.data.data.star_name
