@@ -31,7 +31,24 @@ Component({
                 // 下方提示
                 tip: "",
                 // 获奖图片
-                voteImg: ""
+                voteImg: "",
+                // 按钮
+                btns: [
+                    {
+                        // 按钮类型
+                        type: '',
+                        // 按钮宽度类型
+                        longType: '',
+                        // 按钮方法
+                        btnFun: '',
+                        // 按钮文本
+                        text: '',
+                        // 是否有图标
+                        hasIcon: false,
+                        // 是否是分享
+                        isShare: false
+                    }
+                ]
             },
             observer(newVal, oldVal, changedPath) {
                 // 属性被改变时执行的函数（可选），也可以写成在methods段中定义的方法名字符串, 如：'_propertyChange'
@@ -54,8 +71,16 @@ Component({
     ready() {
     },
     methods: {
+        // 关闭弹窗方法
         closePop: function () {
-             this.triggerEvent('closePop', {}, {})
+            this.triggerEvent('closePop', {}, {});
+        },
+        // 分享方法
+        shareFun: function () {
+            this.triggerEvent('shareFun', {}, {});
+        },
+        voteFun: function () {
+            this.triggerEvent('voteFun', this.data.popParam, {});
         }
     }
 })

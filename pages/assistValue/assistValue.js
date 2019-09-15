@@ -11,11 +11,16 @@ Page({
     data: {
         voteList: [],
         voteNum: "",
-        page: 0
+        pageNo: 0
     },
     onLoad: function (option) {
-         qq.showShareMenu();
-         qq.showLoading({
+        this.getList();
+        this.setData({
+            voteNum: option.voteNum
+        })
+    },
+    getList: function (type) {
+        qq.showLoading({
             title: "请稍后",
             mask: true
         })
@@ -37,17 +42,25 @@ Page({
                         user_id: res1.data.user_id,
                         api_token: res1.data.token,
                         fans_id: res1.data.user_id,
-                        page: that.data.page
+                        page: that.data.pageNo
                     },
                     success: function (res2) {
                         var list = res2.data.data.income_list;
                         for (var x = 0; x < list.length; x++) {
                             list[x].getType = that.formatType(list[x].income_from);
-                            list[x].getTime = utils.formatTime(new Date(list[x].income_time*1000));
+                            list[x].getTime = utils.formatTime(new Date(list[x].income_time * 1000));
+                        }
+                        var hasMore = true;
+                        if (list.length < 10) {
+                            hasMore = false;
+                        }
+                        if (type == 1) {
+                            var oldList = that.data.voteList;
+                            list = oldList.concat(list);
                         }
                         that.setData({
-                            voteNum: option.voteNum,
-                            voteList: list
+                            voteList: list,
+                            hasMore: hasMore
                         })
                         qq.hideLoading();
                     }
@@ -79,9 +92,20 @@ Page({
 
             case "init":
                 return "初始赠送";
-                
+
             case "return":
                 return "助力获赠";
         }
-    }
+    },
+    // 加载更多
+    loadMore: function () {
+        if (this.data.hasMore) {
+            var pageNo = this.data.pageNo;
+            pageNo += 1;
+            this.setData({
+                pageNo: pageNo
+            })
+            this.getList(1);
+        }
+    },
 })

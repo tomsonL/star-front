@@ -13,11 +13,13 @@ Page({
         urlParam: {},
         idolInfo: {},
         lastTimer: "",
-        page: 0,
+        pageNo: 0,
         timeKing: {},
         totalKing: {},
         todayKing: {},
         fansList: [],
+        // 是否有更多
+        hasMore: true,
         self: {},
         checkInsList: [
             {
@@ -87,7 +89,47 @@ Page({
             lastTimer: new Date().getHours() + ":00:00"
         })
     },
-    getList: function (option) {
+    onShareAppMessage: function (options) {
+        var that = this;
+        // 设置菜单中的转发按钮触发转发事件时的转发内容
+        var shareObj = {
+            title: "人生剧本任意变幻，因为“你”，让“他”星运无限……",        // 默认是小程序的名称(可以写slogan等)
+            path: '/pages/homePage/homePage',        // 默认是当前页面，必须是以‘/’开头的完整路径
+            imageUrl: 'http://image.3ceng.cn/res/share/share_500_400.jpg',
+            success: function (res) {
+                // 转发成功之后的回调
+                if (res.errMsg == 'shareAppMessage:ok') {
+                    app.aldstat.sendEvent('转发成功');
+                }
+            },
+            fail: function (res) {
+                // 转发失败之后的回调
+                if (res.errMsg == 'shareAppMessage:fail cancel') {
+                    app.aldstat.sendEvent('取消转发');
+                    // 用户取消转发
+                } else if (res.errMsg == 'shareAppMessage:fail') {
+                    app.aldstat.sendEvent('转发失败', { 'msg': res.detail.message });
+                    // 转发失败，其中 detail message 为详细失败信息
+                }
+            },
+            complete: function (res) {
+                // 转发结束之后的回调（转发成不成功都会执行）
+            }
+        };
+        // 来自页面内的按钮的转发
+        if (options.from == 'button') {
+            qq.getStorage({
+                key: "staruserinfo",
+                success: function (res) {
+                    // 此处可以修改 shareObj 中的内容
+                    shareObj.path = '/pages/homePage/homePage?invite_id=' + res.data.user_id;
+                }
+            })
+            // 添加获取随机助力值的ajax
+        }
+        return shareObj;
+    },
+    getList: function (option, type) {
         qq.showLoading({
             title: "请稍后",
             mask: true
@@ -141,13 +183,17 @@ Page({
                     url: request_host + "/ranks/fans",
                     data: {
                         star_id: option.star_id,
-                        page: that.data.page,
+                        page: that.data.pageNo,
                         user_id: res1.data.user_id,
                         api_token: res1.data.token
                     },
                     success: function (res3) {
                         if (res3.data.data) {
                             var list = res3.data.data.rank;
+                            var hasMore = true;
+                            if (list.length < 10) {
+                                hasMore = false;
+                            }
                             var self = res3.data.data.current;
                             if (list[0]) {
                                 list[0].topThree = true;
@@ -178,10 +224,15 @@ Page({
                                 default:
                                     break;
                             }
+                            if (type == 1) {
+                                var oldList = that.data.fansList;
+                                list = oldList.concat(list);
+                            }
                             that.setData({
                                 fansList: list,
                                 self: self,
-                                lastTimer: new Date().getHours() + ":00:00"
+                                lastTimer: new Date().getHours() + ":00:00",
+                                hasMore: hasMore
                             })
                             qq.hideLoading();
                             app.aldstat.sendEvent('明星详情', { '明星': that.data.idolInfo.star_name })
@@ -366,7 +417,24 @@ Page({
                                         voteIdolAvatar: that.data.idolInfo.star_avatar,
                                         idolRank: res1.data.data.rank,
                                         voteImg: res1.data.data.img,
-                                        tip: res1.data.data.tip
+                                        tip: res1.data.data.tip,
+                                        btns: [
+                                            {
+                                                type: 1,
+                                                longType: 0,
+                                                btnFun: 'shareFun',
+                                                text: '赢1万',
+                                                hasIcon: true,
+                                                isShare: true
+                                            },
+                                            {
+                                                type: 2,
+                                                longType: 0,
+                                                btnFun: 'voteFun',
+                                                text: '继续助力' + that.data.voteNum,
+                                                hasIcon: false
+                                            },
+                                        ]
                                     },
                                 })
                                 that.getList(that.data.urlParam);
@@ -421,7 +489,24 @@ Page({
                                         popType: "reward",
                                         popTitle: "签到成功",
                                         getVotes: res2.data.data.votes,
-                                        rewardTxt: "连续签到，助力值翻倍！"
+                                        rewardTxt: "连续签到，助力值翻倍！",
+                                        btns: [
+                                            {
+                                                type: 1,
+                                                longType: 0,
+                                                btnFun: 'closePop',
+                                                text: '去助力',
+                                                hasIcon: false
+                                            },
+                                            {
+                                                type: 2,
+                                                longType: 0,
+                                                btnFun: 'shareFun',
+                                                text: '赢1万',
+                                                hasIcon: true,
+                                                isShare: true
+                                            },
+                                        ]
                                     }
                                 })
                                 that.assistPopFun();
@@ -456,7 +541,31 @@ Page({
             url: "../inviteList/inviteList"
         })
     },
-     // 关闭弹窗
+    // 加载更多
+    loadMore: function () {
+        if (this.data.hasMore) {
+            var pageNo = this.data.pageNo;
+            pageNo += 1;
+            this.setData({
+                pageNo: pageNo
+            })
+            this.getList(this.data.urlParam, 1);
+        }
+    },
+    // 手动分享方法
+    shareFun: function () {
+        app.aldstat.sendEvent('邀请');
+        qq.showShareMenu();
+    },
+    // 弹框投票方法
+    voteFun: function (e) {
+        this.setData({
+            showPop: false,
+            voteNum: e.detail.voteNum
+        })
+        this.assistPopFun();
+    },
+    // 关闭弹窗
     closePop: function () {
         this.setData({
             showErrorPop: false,

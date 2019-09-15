@@ -1,6 +1,6 @@
 <view class="assistValue container">
     <image class="bg" src="../../images/bg2.jpg" />
-    <scroll-view scroll-y class="scrollWrapper">
+    <scroll-view scroll-y class="scrollWrapper" bindscrolltolower="loadMore">
         <view class="voteBlock">
             <image class="voteBlockBg" src="../../images/voteBlockBg.png" />
             <view class="voteTitle">剩余助力值</view>
@@ -21,5 +21,6 @@
             </view>
             </block>
         </view>
+        <view class="noMore" hidden="{{hasMore}}">没有更多了~</view>
     </scroll-view>
 </view>

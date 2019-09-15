@@ -289,6 +289,7 @@
     display: inline-block;
     width: 282rpx;
     height: 87rpx;
+    line-height:87rpx;
     border-radius: 44rpx;
     background: linear-gradient(to right, #e43acf, #713bf0);
     color: #ffffff;

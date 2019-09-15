@@ -39,5 +39,13 @@
                   </view>
                   <view class="promptTxt">{{popParam.rewardTxt}}</view>
             </view>
+            <view class="btnWrapper">
+                  <view qq:for="{{popParam.btns}}" qq:for-item="btn" qq:key="index" class="{{btn.type == 1 ? 'btnType1' : 'btnType2'}} {{btn.longType == 1 ? 'longBtn':''}}" bindtap="{{btn.btnFun}}">
+                        <button open-type="{{btn.isShare ? 'share': ''}}">
+                              <text class="btnTxt">{{btn.text}}</text>
+                              <image qq:if="{{btn.hasIcon}}" class="poworIcon" src="../../images/powerIcon2x.png" />
+                        </button>
+                  </view>
+            </view>
       </view>
 </view>

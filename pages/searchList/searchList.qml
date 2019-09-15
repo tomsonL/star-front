@@ -85,7 +85,7 @@
         </view>
     </view>
     <!-- 提示框 -->
-    <prompt-pop qq:if="{{showPop}}" pop-param="{{popParam}}" bind:closePop="closePop"></prompt-pop>
+    <prompt-pop qq:if="{{showPop}}" pop-param="{{popParam}}" bind:closePop="closePop" bind:shareFun="shareFun" bind:voteFun="voteFun"></prompt-pop>
     <!-- 授权框 -->
     <view class="getUserInfo" qq:if="{{!hasUserInfo}}">
         <view class="getUserInfoWrapper">

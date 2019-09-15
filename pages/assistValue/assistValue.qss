@@ -78,3 +78,9 @@
     background: linear-gradient(to bottom, rgba(99, 68, 28, 0.76), rgba(149, 91, 34, 0.76));
     border-radius: 27rpx;
 }
+.noMore {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 28rpx;
+    text-align: center;
+    margin: 50rpx 0;
+}

@@ -64,6 +64,7 @@ Page({
                     shareObj.path = '/pages/homePage/homePage?invite_id=' + res.data.user_id;
                 }
             })
+            // 添加获取随机助力ajax
         }
         return shareObj;
     },
@@ -145,7 +146,24 @@ Page({
                                     popType: "reward",
                                     popTitle: "邀请奖励",
                                     getVotes: res2.data.data.votes,
-                                    rewardTxt: "邀请奖励无上限，冲鸭～"
+                                    rewardTxt: "邀请奖励无上限，冲鸭～",
+                                    btns: [
+                                        {
+                                            type: 1,
+                                            longType: 0,
+                                            btnFun: 'closePop',
+                                            text: '去助力',
+                                            hasIcon: false
+                                        },
+                                        {
+                                            type: 2,
+                                            longType: 0,
+                                            btnFun: 'shareFun',
+                                            text: '赢1万',
+                                            hasIcon: true,
+                                            isShare: true
+                                        },
+                                    ]
                                 }
                             })
                             that.getList();

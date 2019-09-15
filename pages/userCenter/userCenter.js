@@ -67,6 +67,46 @@ Page({
     onShow: function () {
         this.getList();
     },
+    onShareAppMessage: function (options) {
+        var that = this;
+        // 设置菜单中的转发按钮触发转发事件时的转发内容
+        var shareObj = {
+            title: "人生剧本任意变幻，因为“你”，让“他”星运无限……",        // 默认是小程序的名称(可以写slogan等)
+            path: '/pages/homePage/homePage',        // 默认是当前页面，必须是以‘/’开头的完整路径
+            imageUrl: 'http://image.3ceng.cn/res/share/share_500_400.jpg',
+            success: function (res) {
+                // 转发成功之后的回调
+                if (res.errMsg == 'shareAppMessage:ok') {
+                    app.aldstat.sendEvent('转发成功');
+                }
+            },
+            fail: function (res) {
+                // 转发失败之后的回调
+                if (res.errMsg == 'shareAppMessage:fail cancel') {
+                    app.aldstat.sendEvent('取消转发');
+                    // 用户取消转发
+                } else if (res.errMsg == 'shareAppMessage:fail') {
+                    app.aldstat.sendEvent('转发失败', { 'msg': res.detail.message });
+                    // 转发失败，其中 detail message 为详细失败信息
+                }
+            },
+            complete: function (res) {
+                // 转发结束之后的回调（转发成不成功都会执行）
+            }
+        };
+        // 来自页面内的按钮的转发
+        if (options.from == 'button') {
+            qq.getStorage({
+                key: "staruserinfo",
+                success: function (res) {
+                    // 此处可以修改 shareObj 中的内容
+                    shareObj.path = '/pages/homePage/homePage?invite_id=' + res.data.user_id;
+                }
+            })
+            // 添加获取随机助力值的ajax
+        }
+        return shareObj;
+    },
     getList: function () {
         if (!qq.getStorageSync("staruserinfo") || qq.getStorageSync("staruserinfo").length == 0) {
             this.setData({
@@ -169,7 +209,24 @@ Page({
                                         popType: "reward",
                                         popTitle: "签到成功",
                                         getVotes: res2.data.data.votes,
-                                        rewardTxt: "连续签到，助力值翻倍！"
+                                        rewardTxt: "连续签到，助力值翻倍！",
+                                        btns: [
+                                            {
+                                                type: 1,
+                                                longType: 0,
+                                                btnFun: 'closePop',
+                                                text: '去助力',
+                                                hasIcon: false
+                                            },
+                                            {
+                                                type: 2,
+                                                longType: 0,
+                                                btnFun: 'shareFun',
+                                                text: '赢1万',
+                                                hasIcon: true,
+                                                isShare: true
+                                            },
+                                        ]
                                     }
                                 })
                                 that.getList();
@@ -305,6 +362,11 @@ Page({
         this.setData({
             nickname: e.detail.value
         })
+    },    
+    // 手动分享方法
+    shareFun: function () {
+        app.aldstat.sendEvent('邀请');
+        qq.showShareMenu();
     },
     // 关闭弹窗
     closePop: function () {

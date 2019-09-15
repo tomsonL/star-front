@@ -113,16 +113,16 @@
     font-size: 27rpx;
     color: #f9651c;
 }
-.voteImg{
+.voteImg {
     position: relative;
     width: 496rpx;
     height: 273rpx;
     border-radius: 13rpx;
     margin: 0 auto 15rpx;
 }
-.tips{
+.tips {
     text-align: center;
-    color: #9A9A9A;
+    color: #9a9a9a;
     margin-top: 14rpx;
     font-size: 20rpx;
 }
@@ -130,7 +130,7 @@
     text-align: center;
 }
 .getVotes {
-    display:inline-block;
+    display: inline-block;
     margin-top: 15rpx;
     text-align: center;
     font-size: 77rpx;
@@ -141,4 +141,51 @@
     color: #998b89;
     font-size: 24rpx;
     text-align: center;
+}
+.btnWrapper {
+    margin-top: 39rpx;
+    text-align: center;
+}
+.btnWrapper > view:first-child {
+    margin-right: 31rpx;
+}
+.btnWrapper > view {
+    display: inline-block;
+    width: 253rpx;
+    height: 84rpx;
+    border-radius: 43rpx;
+    padding: 3rpx;
+}
+.btnType1 {
+    background: linear-gradient(to bottom, #d53ad4, #583df8);
+}
+.btnType2 {
+    background: linear-gradient(to right, #e43acf, #713bf0);
+}
+.btnWrapper > view > button {
+    margin-top: 4rpx;
+    line-height: 75rpx;
+    border-radius: 40rpx;
+    background: none;
+    display: inline-block;
+}
+.btnWrapper .btnType1 > button {
+    width: 247rpx;
+    margin: 4rpx auto;
+    background: #fff;
+}
+.btnWrapper .longBtn {
+    width: 535rpx;
+}
+.btnTxt {
+    font-size: 27rpx;
+}
+.btnType1 .btnTxt {
+    color: #3b190d;
+}
+.btnType2 .btnTxt {
+    color: #ffffff;
+}
+.btnWrapper .poworIcon {
+    margin-left: 7rpx;
 }

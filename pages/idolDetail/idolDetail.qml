@@ -1,6 +1,6 @@
 <view class="idolDetail container">
     <image class="bg" src="../../images/bg4.jpg" />
-    <scroll-view scroll-y class="scrollWrapper">
+    <scroll-view scroll-y class="scrollWrapper" bindscrolltolower="loadMore">
         <view class="idolBlock">
             <image class="idolBlockBg" src="../../images/idolBlockBg.png" />
             <view class="avatarWrapper">
@@ -10,8 +10,18 @@
             <view class="idolInfo">
                 <view class="idolName">姓名：{{idolInfo.star_name}}</view>
                 <view>星运值：{{idolInfo.star_votes}}</view>
-                <view>总榜排位：{{idolInfo.star_no}}<image src="{{idolInfo.isUp ? '../../images/icon_rank_up.png':'../../images/icon_rank_down.png'}}"/><text class="{{idolInfo.isUp ? 'green' : 'red'}}">{{idolInfo.upNum}}</text></view>
-                <view>{{idolInfo.horoName}}排位：{{idolInfo.star_no_cstl}}<image src="{{idolInfo.cstl_isUp ? '../../images/icon_rank_up.png':'../../images/icon_rank_down.png'}}"/><text class="{{idolInfo.cstl_isUp ? 'green' : 'red'}}">{{idolInfo.cstl_upNum}}</text></view>
+                <view
+                    >总榜排位：{{idolInfo.star_no}}<image src="{{idolInfo.isUp ? '../../images/icon_rank_up.png':'../../images/icon_rank_down.png'}}" /><text
+                        class="{{idolInfo.isUp ? 'green' : 'red'}}"
+                        >{{idolInfo.upNum}}</text
+                    ></view
+                >
+                <view
+                    >{{idolInfo.horoName}}排位：{{idolInfo.star_no_cstl}}<image src="{{idolInfo.cstl_isUp ? '../../images/icon_rank_up.png':'../../images/icon_rank_down.png'}}" /><text
+                        class="{{idolInfo.cstl_isUp ? 'green' : 'red'}}"
+                        >{{idolInfo.cstl_upNum}}</text
+                    ></view
+                >
             </view>
             <image class="idolHoroImg" src="{{idolInfo.bgImg}}" />
             <view class="btn btn-yellow assistBtn" data-star-id="{{idolInfo.star_id}}" bindtap="assistPopFun">助力</view>
@@ -78,6 +88,7 @@
                 </view>
             </block>
         </view>
+        <view class="noMore" hidden="{{hasMore}}">没有更多了~</view>
     </scroll-view>
     <view class="mySelfWrapper fansItem">
         <image class="myBg" src="../../images/self_bg.png" />
@@ -151,7 +162,7 @@
         </view>
     </view>
     <!-- 提示框 -->
-    <prompt-pop qq:if="{{showPop}}" pop-param="{{popParam}}" bind:closePop="closePop"></prompt-pop>
+    <prompt-pop qq:if="{{showPop}}" pop-param="{{popParam}}" bind:closePop="closePop" bind:shareFun="shareFun" bind:voteFun="voteFun"></prompt-pop>
     <!-- 授权框 -->
     <view class="getUserInfo" qq:if="{{!hasUserInfo}}">
         <view class="getUserInfoWrapper">
