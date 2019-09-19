@@ -63,13 +63,18 @@
 .idolInfo {
     float: left;
 }
+.name{
+    font-size: 24rpx;
+    color: #9A9A9A;
+    margin-top: 30rpx;
+}
 .rank {
-    margin-top: 25rpx;
+    margin-top: 1rpx;
     font-size: 20rpx;
     color: #9a9a9a;
 }
 .rank .value {
-    font-size: 67rpx;
+    font-size: 40rpx;
     color: #f58b3d;
 }
 .voteNum {

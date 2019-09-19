@@ -49,16 +49,6 @@ Page({
                 // 转发结束之后的回调（转发成不成功都会执行）
             }
         };
-        // 来自页面内的按钮的转发
-        if (options.from == 'button') {
-            qq.getStorage({
-                key: "staruserinfo",
-                success: function (res) {
-                    // 此处可以修改 shareObj 中的内容
-                    shareObj.path = '/pages/homePage/homePage?invite_id=' + res.data.user_id;
-                }
-            })
-        }
         return shareObj;
     },
     //获取列表

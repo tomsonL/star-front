@@ -14,6 +14,7 @@
             <view qq:if="{{popParam.popType == 'voteSuccess'}}">
                   <image class="idolAvatar" src="{{popParam.voteIdolAvatar}}" />
                   <view class="idolInfo">
+                        <view class="name">{{popParam.idolName}}</view>
                         <view class="rank"
                               >总榜排位：
                               <text class="value">{{popParam.idolRank}}</text>

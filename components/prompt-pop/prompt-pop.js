@@ -24,6 +24,8 @@ Component({
                 voteIdolAvatar: '',
                 // 投票明星排行
                 idolRank: 0,
+                // 投票明星姓名
+                idolName: "",
                 // 获取助力值
                 getVotes: 0,
                 // 获取助力值文案

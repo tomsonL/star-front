@@ -101,6 +101,47 @@ Page({
                 if (res.errMsg == 'shareAppMessage:ok') {
                     app.aldstat.sendEvent('转发成功');
                 }
+                // 来自页面内的按钮的转发
+                if (options.from == 'button') {
+                    qq.getStorage({
+                        key: "staruserinfo",
+                        success: function (res1) {
+                            // 此处可以修改 shareObj 中的内容
+                            shareObj.path = '/pages/homePage/homePage?invite_id=' + res1.data.user_id;
+                            // 添加获取随机助力值的ajax
+                            qq.request({
+                                method: "POST",
+                                url: request_host + "/ops/task",
+                                data: {
+                                    task: "share",
+                                    user_id: res1.data.user_id,
+                                    api_token: res1.data.token
+                                },
+                                success: function (res2) {
+                                    that.setData({
+                                        // 弹出框
+                                        showPop: true,
+                                        popParam: {
+                                            popType: "reward",
+                                            popTitle: "获得奖励",
+                                            getVotes: res2.data.data.votes,
+                                            btns: [
+                                                {
+                                                    type: 2,
+                                                    longType: 1,
+                                                    btnFun: 'closePop',
+                                                    text: '去助力',
+                                                    hasIcon: false
+                                                }
+                                            ]
+                                        }
+                                    })
+                                }
+                            })
+                        }
+                    })
+
+                }
             },
             fail: function (res) {
                 // 转发失败之后的回调
@@ -116,17 +157,6 @@ Page({
                 // 转发结束之后的回调（转发成不成功都会执行）
             }
         };
-        // 来自页面内的按钮的转发
-        if (options.from == 'button') {
-            qq.getStorage({
-                key: "staruserinfo",
-                success: function (res) {
-                    // 此处可以修改 shareObj 中的内容
-                    shareObj.path = '/pages/homePage/homePage?invite_id=' + res.data.user_id;
-                }
-            })
-            // 添加获取随机助力值的ajax
-        }
         return shareObj;
     },
     getList: function (option, type) {
@@ -415,6 +445,7 @@ Page({
                                         voteNum: that.data.voteNum,
                                         promptTxt: res1.data.data.info,
                                         voteIdolAvatar: that.data.idolInfo.star_avatar,
+                                        idolName: that.data.idolInfo.star_name,
                                         idolRank: res1.data.data.rank,
                                         voteImg: res1.data.data.img,
                                         tip: res1.data.data.tip,
