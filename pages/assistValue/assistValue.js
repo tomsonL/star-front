@@ -95,6 +95,9 @@ Page({
 
             case "return":
                 return "助力获赠";
+            
+            case "gift":
+                return "助力获赠";    
         }
     },
     // 加载更多
