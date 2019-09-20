@@ -98,6 +98,9 @@ Page({
             
             case "gift":
                 return "助力获赠";    
+            
+            case "share":
+                return "分享获赠";   
         }
     },
     // 加载更多
