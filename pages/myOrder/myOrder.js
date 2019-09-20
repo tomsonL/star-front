@@ -134,7 +134,7 @@ Page({
             mask: true
         })
         var that = this;
-        console.log(e.currentTarget.dataset.prepayid);
+        //console.log(e.currentTarget.dataset.prepayid);
         qq.requestPayment({
             package: "prepay_id=" + e.currentTarget.dataset.prepayid,
             bargainor_id: config.BUSSINESSNO,
