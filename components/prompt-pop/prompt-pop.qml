@@ -30,7 +30,7 @@
                         <view class="sayTrigle"></view>
                         <image class="voteImg" qq:if="{{popParam.voteImg}}" src="{{popParam.voteImg}}" />
                         <view class="sayPrompt">
-                        <text selectable="true">{{popParam.promptTxt}}</text>
+                              <text selectable="true">{{popParam.promptTxt}}</text>
                         </view>
                   </view>
                   <view class="tips">{{popParam.tip}}</view>

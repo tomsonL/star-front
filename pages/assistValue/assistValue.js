@@ -95,12 +95,15 @@ Page({
 
             case "return":
                 return "助力获赠";
-            
+
             case "gift":
-                return "助力获赠";    
-            
+                return "助力获赠";
+
             case "share":
-                return "分享获赠";   
+                return "分享获赠";
+
+            case "exchage":
+                return "兑换码兑换";
         }
     },
     // 加载更多
