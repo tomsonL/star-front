@@ -448,7 +448,7 @@ Page({
                                                 type: 1,
                                                 longType: 0,
                                                 btnFun: 'shareFun',
-                                                text: '赢1万',
+                                                text: '分享赢1万',
                                                 hasIcon: true,
                                                 isShare: true
                                             },
@@ -528,7 +528,7 @@ Page({
                                                 type: 2,
                                                 longType: 0,
                                                 btnFun: 'shareFun',
-                                                text: '赢1万',
+                                                text: '分享赢1万',
                                                 hasIcon: true,
                                                 isShare: true
                                             },
