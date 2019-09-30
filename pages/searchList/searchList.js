@@ -66,7 +66,7 @@ Page({
         showErrorPop: false,
         errorTxt: "",
         // 投票数量
-        voteNum: 1,
+        voteNum: 100,
         // 关键字
         keyword: "",
         // 提示框相关
@@ -301,7 +301,7 @@ Page({
         if (!reg.test(e.detail.value)) {
             this.setData({
                 showErrorPop: true,
-                voteNum: 1,
+                voteNum: 100,
                 errorTxt: "投票只能是正整数"
             })
             return false;
@@ -309,7 +309,7 @@ Page({
         if (parseInt(e.detail.value) < 1) {
             this.setData({
                 showErrorPop: true,
-                voteNum: 1,
+                voteNum: 100,
                 errorTxt: "投票必须大于票"
             })
         }
@@ -357,7 +357,7 @@ Page({
                             if (res1.data.code == 1) {
                                 that.setData({
                                     showErrorPop: false,
-                                    voteNum: 1,
+                                    voteNum: 100,
                                     showVotePop: false,
                                     showPop: true,
                                     popParam: {
@@ -534,7 +534,7 @@ Page({
     closePop: function () {
         this.setData({
             showErrorPop: false,
-            voteNum: 1,
+            voteNum: 100,
             idolId: "",
             showVotePop: false,
             showPop: false,
