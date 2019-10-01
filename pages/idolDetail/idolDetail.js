@@ -402,7 +402,7 @@ Page({
         }
     },
     // 投票方法
-    assistBtn: function () {
+    assistSubmit(e) {
         var that = this;
         if (!that.data.showErrorPop) {
             qq.showLoading({
@@ -427,7 +427,8 @@ Page({
                             api_token: res.data.token,
                             user_id: res.data.user_id,
                             star_id: that.data.idolId,
-                            votes: that.data.voteNum
+                            votes: that.data.voteNum,
+                            form_id:e.detail.formId
                         },
                         success: function (res1) {
                             if (res1.data.code == 1) {

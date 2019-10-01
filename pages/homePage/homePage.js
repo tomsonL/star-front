@@ -157,5 +157,5 @@ Page({
             cstl_id: that.data.hasMons[current].id
         })
         this.getHoroData(that.data.hasMons[current].id, current, e.currentTarget.dataset.type);
-    }
+    },
 })

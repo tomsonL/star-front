@@ -119,11 +119,14 @@
                 </view>
                 <image class="addBtn btnFun" src="../../images/icon_add_btn.png" catchtap="calculateFun" data-type="2" />
             </view>
-            <view class="voteBottom">
-                <view class="myNum">我的星力: {{fansInfo.votes_left}}</view>
-                <image class="poworIcon" src="../../images/powerIcon2x.png" />
-                <view class="btn btn-yellow assist {{showErrorPop ? 'btn-gray':''}}" catchtap="assistBtn">助力</view>
-            </view>
+            <form bindsubmit="assistSubmit" report-submit="true">
+                            <view class="voteBottom">
+                                <view class="myNum">我的星力: {{fansInfo.votes_left}}</view>
+                                <image class="poworIcon" src="../../images/powerIcon2x.png" />
+                                <!-- <button form-type="submit">Submit</button> -->
+                                <button class="btn btn-yellow assist {{showErrorPop ? 'btn-gray':''}}" form-type="submit">助力</button>
+                            </view>
+                        </form>
         </view>
         <view class="missionWrapper">
             <view class="getMoreTxt">想获得更多星力？</view>

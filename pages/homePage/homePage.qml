@@ -156,6 +156,7 @@
         <image src="../../images/ruleTitle2x.png" class="rule-title-bottom" />
       </view> -->
       <view class="rule-detail">
+
         <view>在斗数命盘中，每个人都在变换角色，</view>
         <view>仿佛 闪耀的“你”，在皓洁星空无时无刻变化着光亮，</view>
         <view>渺小的“我”，愿做漆黑夜晚中的“追光者”……</view>
