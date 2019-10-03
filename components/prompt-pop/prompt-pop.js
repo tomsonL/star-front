@@ -81,6 +81,10 @@ Component({
         shareFun: function () {
             this.triggerEvent('shareFun', {}, {});
         },
+        // 看视频的方法
+        videoAdFun: function () {
+            this.triggerEvent('videoAdFun', {}, {});
+        },
         voteFun: function () {
             this.triggerEvent('voteFun', this.data.popParam, {});
         }

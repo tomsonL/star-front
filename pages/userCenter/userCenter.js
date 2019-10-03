@@ -251,7 +251,7 @@ Page({
                                                 type: 2,
                                                 longType: 0,
                                                 btnFun: 'shareFun',
-                                                text: '分享赢1万',
+                                                text: '增加星力！',
                                                 hasIcon: true,
                                                 isShare: true
                                             },

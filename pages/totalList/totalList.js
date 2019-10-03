@@ -8,6 +8,11 @@ const request_host = config.REQUEST_HOST;
 const horoList = config.HORO;
 // interval计时器
 var interval = "";
+
+let videoAd = qq.createRewardedVideoAd({
+    adUnitId: '62d55eb03b58c9c51694df802608e1c7'
+})
+
 Page({
     data: {
         scrollTop: 0,
@@ -93,6 +98,8 @@ Page({
         canIUse: qq.canIUse('button.open-type.getUserInfo'),
         // 是否是当前月
         isThisMonth: true,
+        //增加星力的按钮显示广告还是分享
+        shareOrAd: 'share'
     },
     onLoad: function (option) {
         qq.showShareMenu();
@@ -107,6 +114,67 @@ Page({
         interval = setInterval(function () {
             that.getCountDown();
         }, 1000)
+
+
+        if (parseInt(Math.random()*2) == 1){
+            that.setData({
+                shareOrAd: 'share'
+            })
+        }else {
+            that.setData({
+                shareOrAd: 'videoAd'
+            })
+        }
+
+        videoAd.onError(function (res) {
+            console.log('videoAd onError', res)
+        })
+        videoAd.onLoad(function (res) {
+            console.log('videoAd onLoad', res)
+        })
+        videoAd.onClose(function (res) {
+            console.log('videoAd onClose', res)
+            console.log('videoAd onClose', res.isEnded)
+            if(res.isEnded == true){
+                qq.getStorage({
+                    key: "staruserinfo",
+                    success: function (res1) {
+                        // 添加获取随机助力值的ajax
+                        qq.request({
+                            method: "POST",
+                            url: request_host + "/ops/task",
+                            data: {
+                                task: "video_ad",
+                                user_id: res1.data.user_id,
+                                api_token: res1.data.token
+                            },
+                            success: function (res2) {
+                                that.setData({
+                                    // 弹出框
+                                    showPop: true,
+                                    popParam: {
+                                        popType: "reward",
+                                        popTitle: "获得奖励",
+                                        getVotes: res2.data.data.votes,
+                                        btns: [
+                                            {
+                                                type: 2,
+                                                longType: 1,
+                                                btnFun: 'closePop',
+                                                text: '去助力',
+                                                hasIcon: false
+                                            }
+                                        ]
+                                    }
+                                })
+                            }
+                        })
+                    }
+                })
+            }
+        })
+
+
     },
     onShow: function () {
         this.getList(this.data.urlParam, 0);
@@ -282,8 +350,23 @@ Page({
             }
         }
     },
+
     // 投票方法
     assistPopFun: function (e) {
+        // videoAd.load().then(() => {
+        //     console.log('激励视频加载成功');
+        // videoAd.show().then(() => {
+        //     console.log('激励视频 广告显示成功')
+        // })
+        // .catch(err => {
+        //         console.log('激励视频 广告显示失败')
+        //     })
+        // })
+        // .catch(err => {
+        //         console.log('激励视频加载失败');
+        // })
+
+
         qq.showLoading({
             title: "请稍后",
             mask: true
@@ -402,6 +485,17 @@ Page({
 
     assistSubmit(e) {
         var that = this;
+
+        if (parseInt(Math.random()*2) == 1){
+            that.setData({
+                shareOrAd: 'share'
+            })
+        }else {
+            that.setData({
+                shareOrAd: 'videoAd'
+            })
+        }
+
         if (!that.data.showErrorPop) {
             qq.showLoading({
                 title: "请稍后",
@@ -426,7 +520,7 @@ Page({
                             user_id: res.data.user_id,
                             star_id: that.data.idolId,
                             votes: that.data.voteNum,
-                            form_id:e.detail.formId
+                            form_id: e.detail.formId
                         },
                         success: function (res1) {
                             if (res1.data.code == 1) {
@@ -450,9 +544,9 @@ Page({
                                                 type: 1,
                                                 longType: 0,
                                                 btnFun: 'shareFun',
-                                                text: '分享赢1万',
+                                                text: '增加星力！',
                                                 hasIcon: true,
-                                                isShare: true
+                                                isShare: (that.data.shareOrAd == 'share')
                                             },
                                             {
                                                 type: 2,
@@ -537,7 +631,7 @@ Page({
                                                 type: 2,
                                                 longType: 0,
                                                 btnFun: 'shareFun',
-                                                text: '分享赢1万',
+                                                text: '增加星力！',
                                                 hasIcon: true,
                                                 isShare: true
                                             },
@@ -687,5 +781,20 @@ Page({
                 hasUserInfo: true
             })
         }
+    },
+
+    videoAdFun: function(e){
+        videoAd.load().then(() => {
+            console.log('激励视频加载成功');
+        videoAd.show().then(() => {
+            console.log('激励视频 广告显示成功')
+        })
+    .catch(err => {
+            console.log('激励视频 广告显示失败')
+        })
+    })
+    .catch(err => {
+            console.log('激励视频加载失败');
+    })
     },
 })
