@@ -9,10 +9,6 @@ const horoList = config.HORO;
 // interval计时器
 var interval = "";
 
-let videoAd = qq.createRewardedVideoAd({
-    adUnitId: '62d55eb03b58c9c51694df802608e1c7'
-})
-
 Page({
     data: {
         scrollTop: 0,
@@ -125,56 +121,6 @@ Page({
                 shareOrAd: 'videoAd'
             })
         }
-
-        videoAd.onError(function (res) {
-            console.log('videoAd onError', res)
-        })
-        videoAd.onLoad(function (res) {
-            console.log('videoAd onLoad', res)
-        })
-        videoAd.onClose(function (res) {
-            console.log('videoAd onClose', res)
-            console.log('videoAd onClose', res.isEnded)
-            if(res.isEnded == true){
-                qq.getStorage({
-                    key: "staruserinfo",
-                    success: function (res1) {
-                        // 添加获取随机助力值的ajax
-                        qq.request({
-                            method: "POST",
-                            url: request_host + "/ops/task",
-                            data: {
-                                task: "video_ad",
-                                user_id: res1.data.user_id,
-                                api_token: res1.data.token
-                            },
-                            success: function (res2) {
-                                that.setData({
-                                    // 弹出框
-                                    showPop: true,
-                                    popParam: {
-                                        popType: "reward",
-                                        popTitle: "获得奖励",
-                                        getVotes: res2.data.data.votes,
-                                        btns: [
-                                            {
-                                                type: 2,
-                                                longType: 1,
-                                                btnFun: 'closePop',
-                                                text: '去助力',
-                                                hasIcon: false
-                                            }
-                                        ]
-                                    }
-                                })
-                            }
-                        })
-                    }
-                })
-            }
-        })
-
-
     },
     onShow: function () {
         this.getList(this.data.urlParam, 0);
@@ -353,20 +299,6 @@ Page({
 
     // 投票方法
     assistPopFun: function (e) {
-        // videoAd.load().then(() => {
-        //     console.log('激励视频加载成功');
-        // videoAd.show().then(() => {
-        //     console.log('激励视频 广告显示成功')
-        // })
-        // .catch(err => {
-        //         console.log('激励视频 广告显示失败')
-        //     })
-        // })
-        // .catch(err => {
-        //         console.log('激励视频加载失败');
-        // })
-
-
         qq.showLoading({
             title: "请稍后",
             mask: true
@@ -784,17 +716,17 @@ Page({
     },
 
     videoAdFun: function(e){
-        videoAd.load().then(() => {
+        app.videoAd.load().then(() => {
             console.log('激励视频加载成功');
-        videoAd.show().then(() => {
-            console.log('激励视频 广告显示成功')
+            app.videoAd.show().then(() => {
+                console.log('激励视频 广告显示成功')
+            })
+            .catch(err => {
+                console.log('激励视频 广告显示失败')
+            })
         })
-    .catch(err => {
-            console.log('激励视频 广告显示失败')
-        })
-    })
-    .catch(err => {
+        .catch(err => {
             console.log('激励视频加载失败');
-    })
+        })
     },
 })

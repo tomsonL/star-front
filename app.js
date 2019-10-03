@@ -1,8 +1,60 @@
 //app.js
 const config = require('config.js');
 const ald = require('./utils/ald-stat.js')
+const request_host = config.REQUEST_HOST;
+
 App({
+  //视频广告
+  videoAd: null,
   onLaunch: function (option) {
+    this.videoAd = qq.createRewardedVideoAd({ adUnitId: '62d55eb03b58c9c51694df802608e1c7' });
+    this.videoAd.onError(function (res) {
+      console.log('videoAd onError', res)
+    })
+    this.videoAd.onLoad(function (res) {
+      console.log('videoAd onLoad', res)
+    })
+    this.videoAd.onClose(function (res) {
+      console.log('videoAd onClose', res)
+      if (res.isEnded == true) {
+        qq.getStorage({
+          key: "staruserinfo",
+          success: function (res1) {
+            // 添加获取随机助力值的ajax
+            qq.request({
+              method: "POST",
+              url: request_host + "/ops/task",
+              data: {
+                task: "video_ad",
+                user_id: res1.data.user_id,
+                api_token: res1.data.token
+              },
+              success: function (res2) {
+                getCurrentPages()[getCurrentPages().length - 1].setData({
+                  // 弹出框
+                  showPop: true,
+                  popParam: {
+                    popType: "reward",
+                    popTitle: "获得奖励",
+                    getVotes: res2.data.data.votes,
+                    btns: [
+                      {
+                        type: 2,
+                        longType: 1,
+                        btnFun: 'closePop',
+                        text: '去助力',
+                        hasIcon: false
+                      }
+                    ]
+                  }
+                })
+              }
+            })
+          }
+        })
+      }
+    })
+
     // 获取用户信息
     qq.getSetting({
       success: res => {
@@ -28,10 +80,9 @@ App({
     qq.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        qq.setStorageSync('qqcode',res.code);
+        qq.setStorageSync('qqcode', res.code);
       }
     })
-
   },
   getUserInfo: function (cb) {
     var that = this;
@@ -50,7 +101,10 @@ App({
       });
     }
   },
+
+
+
   globalData: {
-    userInfo: null
+    userInfo: null,
   }
 })
