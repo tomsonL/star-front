@@ -161,6 +161,7 @@
                 </view>
             </view>
         </view>
+        <ad unit-id="6c078af0a3da4424f2fa0cccbdefc269"></ad>
     </view>
     <!-- 提示框 -->
     <prompt-pop qq:if="{{showPop}}" pop-param="{{popParam}}" bind:closePop="closePop" bind:shareFun="{{shareOrAd}}Fun" bind:voteFun="voteFun"></prompt-pop>

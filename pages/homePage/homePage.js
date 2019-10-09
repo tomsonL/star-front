@@ -58,7 +58,7 @@ Page({
                 that.getHoroData('',that.data.hasMons.length - 1);
             }
         });
-        
+        that.checkInFun();
     },
     onShow: function () {
         //console.log('onshow');
@@ -203,6 +203,91 @@ Page({
             idolId: '',
             showVotePop: false,
             showPop: false,
+        })
+    },
+    // 签到
+    checkInFun: function (e) {
+        qq.showLoading({
+            title: "请稍后",
+            mask: true
+        })
+        var that = this;
+        qq.getStorage({
+            key: 'staruserinfo',
+            success: function (res) {
+                if (!res.data || res.data.length == 0) {
+                    qq.hideLoading();
+                    that.setData({
+                        hasUserInfo: false
+                    })
+                    return false;
+                }
+                qq.request({
+                    method: "POST",
+                    url: request_host + "/ops/checkin",
+                    data: {
+                        api_token: res.data.token,
+                        fans_id: res.data.user_id
+                    },
+                    success: function (res2) {
+                        if (res2.data.code == 1) {
+                            if (res2.data.data.votes != 0) {
+                                that.setData({
+                                    showPop: true,
+                                    popParam: {
+                                        popType: "reward",
+                                        popTitle: "签到成功",
+                                        getVotes: res2.data.data.votes,
+                                        rewardTxt: "连续签到，助力值翻倍！",
+                                        btns: [
+                                            {
+                                                type: 1,
+                                                longType: 0,
+                                                btnFun: 'closePop',
+                                                text: '去助力',
+                                                hasIcon: false
+                                            },
+                                            {
+                                                type: 2,
+                                                longType: 0,
+                                                btnFun: 'shareFun',
+                                                text: '增加星力！',
+                                                hasIcon: true,
+                                                isShare: true
+                                            },
+                                        ]
+                                    }
+                                })
+                                //that.getList();
+                            } else {
+                                // that.setData({
+                                //     showPop: true,
+                                //     popParam: {
+                                //         popType: "fail",
+                                //         popContent: "今天已签到"
+                                //     }
+                                // })
+                            }
+                        } else {
+                            that.setData({
+                                showPop: true,
+                                popParam: {
+                                    popType: "fail",
+                                    popContent: res2.data.msg
+                                }
+                            })
+                        }
+                        qq.hideLoading();
+                    }
+                })
+            },
+            //没有获取到用户权限
+            fail: function () {
+                qq.hideLoading();
+                that.setData({
+                    hasUserInfo: false
+                })
+            }
         })
     },
 })
