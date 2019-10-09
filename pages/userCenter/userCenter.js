@@ -481,4 +481,16 @@ Page({
             qq.hideLoading();
         }
     },
+    copy: function () {
+        qq.setClipboardData({
+            data: '3476347242',
+            success(res) {
+                qq.getClipboardData({
+                    success(res) {
+                        console.log(res.data) // data
+                    }
+                })
+            }
+        })
+    }
 })

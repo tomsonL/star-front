@@ -26,7 +26,7 @@
                         </view>
                   </view>
                   <view class="clear"></view>
-                  <view class="idolSay">
+                  <view class="idolSay" bindtap="clipCopy">
                         <view class="sayTrigle"></view>
                         <image class="voteImg" qq:if="{{popParam.voteImg}}" src="{{popParam.voteImg}}" />
                         <view class="sayPrompt">

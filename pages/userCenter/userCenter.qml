@@ -36,7 +36,7 @@
             <view>星力明细</view>
         </view>
         <view class="contact">
-            <text selectable="true">客服QQ：3476347242</text>
+            <text selectable="true" bindtap="copy">客服QQ：3476347242</text>
         </view>
         <view class="goPay" bindtap="goPay">
             <text selectable="true">充 值</text>

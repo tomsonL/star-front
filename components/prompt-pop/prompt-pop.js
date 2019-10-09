@@ -14,6 +14,8 @@ Component({
                 popType: '',
                 // 弹出框标题
                 popTitle: '',
+                // 返回文案
+                promptTxt:'',
                 // 弹出框内容
                 popContent: '',
                 // 是否是成功
@@ -87,6 +89,20 @@ Component({
         },
         voteFun: function () {
             this.triggerEvent('voteFun', this.data.popParam, {});
-        }
+        },
+        clipCopy: function () {
+            var that=this
+            qq.setClipboardData({
+                data: that.data.popParam.promptTxt,
+                success(res) {
+                    qq.getClipboardData({
+                        success(res) {
+                            console.log(res.data) // data
+                        }
+                    })
+                }
+            })
+        },
+
     }
 })
