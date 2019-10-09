@@ -54,7 +54,7 @@
                 </view>
             </view>
             <view class="topItem">
-                <view class="itemTitle">今日助力神：</view>
+                <view class="itemTitle">今日助力冠军：</view>
                 <view class="userAvatar">
                     <image class="avatarIcon" src="../../images/icon_todayVote.png" />
                     <image class="avatar" src="{{todayKing.toper_avatar ? todayKing.toper_avatar : '../../images/icon_avatar.png'}}" />

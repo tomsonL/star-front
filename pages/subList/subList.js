@@ -135,7 +135,7 @@ Page({
                 if (res.errMsg == 'shareAppMessage:ok') {
                     app.aldstat.sendEvent('转发成功');
                     // 来自页面内的按钮的转发
-                    if (options.from == 'button') {
+                    //if (options.from == 'button') {
                         qq.getStorage({
                             key: "staruserinfo",
                             success: function (res1) {
@@ -173,7 +173,7 @@ Page({
                                 })
                             }
                         })
-                    }
+                    //}
                 }
             },
             fail: function (res) {

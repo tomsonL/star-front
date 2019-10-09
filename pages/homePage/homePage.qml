@@ -155,6 +155,8 @@
         <view class="rule-title-txt">榜单规则</view>
         <image src="../../images/ruleTitle2x.png" class="rule-title-bottom" />
       </view> -->
+      <!-- 提示框 -->
+      <prompt-pop qq:if="{{showPop}}" pop-param="{{popParam}}" bind:closePop="closePop" bind:shareFun="{{shareOrAd}}Fun" bind:voteFun="voteFun"></prompt-pop>
       <view class="rule-detail">
 
         <view>在斗数命盘中，每个人都在变换角色，</view>

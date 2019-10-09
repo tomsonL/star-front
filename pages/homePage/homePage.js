@@ -65,6 +65,7 @@ Page({
         //this.getHoroData();
     },
     onShareAppMessage: function (options) {
+        console.log('onshare');
         var that = this;
         // 设置菜单中的转发按钮触发转发事件时的转发内容
         var shareObj = {
@@ -73,8 +74,49 @@ Page({
             imageUrl: 'http://image.3ceng.cn/res/share/share_500_400.jpg',
             //imageUrl: 'http://img.mp.itc.cn/upload/20170624/1da4a6bd75dc4f56bae76a702cb4242c_th.jpg',
             success: function (res) {
+                console.log('success');
                 // 转发成功之后的回调
                 if (res.errMsg == 'shareAppMessage:ok') {
+                    console.log('successOK');
+                    qq.getStorage({
+                        key: "staruserinfo",
+                        success: function (res1) {
+                            console.log('successuserinfo');
+                            // 此处可以修改 shareObj 中的内容
+                            shareObj.path = '/pages/homePage/homePage?invite_id=' + res1.data.user_id;
+                            // 添加获取随机助力值的ajax
+                            qq.request({
+                                method: "POST",
+                                url: request_host + "/ops/task",
+                                data: {
+                                    task: "share",
+                                    user_id: res1.data.user_id,
+                                    api_token: res1.data.token
+                                },
+                                success: function (res2) {
+                                    console.log('successusertask');
+                                    that.setData({
+                                        // 弹出框
+                                        showPop: true,
+                                        popParam: {
+                                            popType: "reward",
+                                            popTitle: "获得奖励",
+                                            getVotes: res2.data.data.votes,
+                                            btns: [
+                                                {
+                                                    type: 2,
+                                                    longType: 1,
+                                                    btnFun: 'closePop',
+                                                    text: '去助力',
+                                                    hasIcon: false
+                                                }
+                                            ]
+                                        }
+                                    })
+                                }
+                            })
+                        }
+                    })
                 }
             },
             fail: function () {
@@ -157,5 +199,15 @@ Page({
             cstl_id: that.data.hasMons[current].id
         })
         this.getHoroData(that.data.hasMons[current].id, current, e.currentTarget.dataset.type);
+    },
+    // 关闭弹窗
+    closePop: function () {
+        this.setData({
+            showErrorPop: false,
+            voteNum: 100,
+            idolId: '',
+            showVotePop: false,
+            showPop: false,
+        })
     },
 })
