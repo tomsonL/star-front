@@ -65,7 +65,6 @@ Page({
         //this.getHoroData();
     },
     onShareAppMessage: function (options) {
-        console.log('onshare');
         var that = this;
         // 设置菜单中的转发按钮触发转发事件时的转发内容
         var shareObj = {
@@ -74,14 +73,11 @@ Page({
             imageUrl: 'http://image.3ceng.cn/res/share/share_500_400.jpg',
             //imageUrl: 'http://img.mp.itc.cn/upload/20170624/1da4a6bd75dc4f56bae76a702cb4242c_th.jpg',
             success: function (res) {
-                console.log('success');
                 // 转发成功之后的回调
                 if (res.errMsg == 'shareAppMessage:ok') {
-                    console.log('successOK');
                     qq.getStorage({
                         key: "staruserinfo",
                         success: function (res1) {
-                            console.log('successuserinfo');
                             // 此处可以修改 shareObj 中的内容
                             shareObj.path = '/pages/homePage/homePage?invite_id=' + res1.data.user_id;
                             // 添加获取随机助力值的ajax
@@ -94,7 +90,6 @@ Page({
                                     api_token: res1.data.token
                                 },
                                 success: function (res2) {
-                                    console.log('successusertask');
                                     that.setData({
                                         // 弹出框
                                         showPop: true,
