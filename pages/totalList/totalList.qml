@@ -144,22 +144,6 @@
                 </view>
                 <view class="btn btn-yellow goWatch" catchtap="goInvite">去邀请</view>
             </view>
-            <view class="missionItem checkins">
-                <image class="corner" src="../../images/starCorner2x.png" />
-                <view class="missionTxt">
-                    连续签到，有收获！
-                </view>
-                <view class="btn btn-yellow goWatch" qq:if="{{!todayCheck}}" catchtap="checkInFun">签到</view>
-                <view class="isCheckIn goWatch" qq:else>已签到</view>
-                <view class="checkinsWrapper">
-                    <block qq:for="{{checkInsList}}" qq:for-item="item" qq:key="index">
-                        <view class="checkinsItem {{item.isCkeck ? 'checkinsItemActive':''}}">
-                            <view>{{item.dayName}}</view>
-                            <view>{{item.getNum}}</view>
-                        </view>
-                    </block>
-                </view>
-            </view>
         </view>
         <ad unit-id="6c078af0a3da4424f2fa0cccbdefc269"></ad>
     </view>
