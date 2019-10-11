@@ -20,7 +20,7 @@
             <view>2.新浪微博万粉推广；</view>
 
             <view class="subTitle">助力攻略：</view>
-            <view>每日登录星运Max榜助力榜，并完成签到，分享等任务，可获得相应的助力，坚持连续签到或触发其他任务可获得更多星力。</view>
+            <view>每日登录星运Max榜助力榜，并完成打卡，分享等任务，可获得相应的助力，坚持连续打卡或触发其他任务可获得更多星力。</view>
         </view>
         <view class="rule-wrapper">
             <view class="subTitle">说明：</view>

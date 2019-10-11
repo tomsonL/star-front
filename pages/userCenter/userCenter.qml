@@ -25,7 +25,7 @@
                 </view>
             </view>
             <view class="voteItem">
-                <view class="voteTitle">连续签到</view>
+                <view class="voteTitle">连续打卡</view>
                 <view class="powerWrapper">
                     <image class="poworIcon" src="../../images/powerIcon2x.png" />
                     <view class="power">{{fansInfo.checkins}}</view>

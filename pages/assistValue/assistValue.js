@@ -75,11 +75,11 @@ Page({
             }
         })
     },
-    // checkin:签到 / vad:视频广告 / invite:邀请好友 / charge:充值 / init / 初始赠送
+    // checkin:打卡 / vad:视频广告 / invite:邀请好友 / charge:充值 / init / 初始赠送
     formatType: function (type) {
         switch (type) {
             case "checkin":
-                return "签到";
+                return "打卡";
 
             case "vad":
                 return "视频广告";

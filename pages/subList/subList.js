@@ -82,7 +82,7 @@ Page({
         // 提示框相关
         showPop: false,
         popParam: {},
-        // 今天是否签到
+        // 今天是否打卡
         todayCheck: false,
         hasUserInfo: true, //是否有用户信息
         canIUse: qq.canIUse('button.open-type.getUserInfo'),
@@ -506,7 +506,7 @@ Page({
             })
         }
     },
-    // 签到
+    // 打卡
     checkInFun: function (e) {
         qq.showLoading({
             title: "请稍后",
@@ -537,9 +537,9 @@ Page({
                                     showPop: true,
                                     popParam: {
                                         popType: "reward",
-                                        popTitle: "签到成功",
+                                        popTitle: "打卡成功",
                                         getVotes: res2.data.data.votes,
-                                        rewardTxt: "连续签到，助力值翻倍！",
+                                        rewardTxt: "连续打卡，助力值翻倍！",
                                         btns: [
                                             {
                                                 type: 1,
@@ -565,7 +565,7 @@ Page({
                                     showPop: true,
                                     popParam: {
                                         popType: "fail",
-                                        popContent: "今天已签到"
+                                        popContent: "今天已打卡"
                                     }
                                 })
                                 that.assistPopFun();
