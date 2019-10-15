@@ -62,7 +62,7 @@
           </view>
           <view class="lib_avatar_wrapper avatar_wrapper" data-index="6" bindtap="{{ cstl_id == curr_cstl_id? 'goSubList':''}}">
             <image class="avatar_border" qq:if="{{cstl_id == 'lib'}}" src="../../images/icon_avatar_border.png"></image>
-            <image class="activeBg" qq:if="{{cstl_id == 'lib'}}" src="../../images/icon_active_bg.png" />
+            <image class="activeBg"  qq:if="{{cstl_id == 'lib'}}" src="../../images/icon_active_bg.png" />
             <image class="rankAvatar {{ cstl_id == curr_cstl_id? 'animation':''}}" src="{{rankData[6].star_avatar}}"></image>
           </view>
           <view class="sco_avatar_wrapper avatar_wrapper" data-index="7" bindtap="{{ cstl_id == curr_cstl_id? 'goSubList':''}}">
