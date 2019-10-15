@@ -26,13 +26,25 @@
                         </view>
                   </view>
                   <view class="clear"></view>
-                  <view class="idolSay" bindtap="clipCopy">
-                        <view class="sayTrigle"></view>
-                        <image class="voteImg" qq:if="{{popParam.voteImg}}" src="{{popParam.voteImg}}" />
-                        <view class="sayPrompt">
-                              <text selectable="true">{{popParam.promptTxt}}</text>
+                  <block qq:if="{{popParam.voteImg}}">
+                    <view class="idolSay">
+                    <view class="sayTrigle"></view>
+                    <image class="voteImg" src="{{popParam.voteImg}}" />
+                    <view class="sayPrompt" bindtap="clipCopy">
+                        <button open-type = "openGroupProfile" group-id="920053426"><text selectable="true">{{popParam.promptTxt}}</text></button>
                         </view>
-                  </view>
+                    </view>
+                  </block>
+                  <block qq:else>
+                    <view class="idolSay">
+                    <view class="sayTrigle"></view>
+                    <view class="sayPrompt">
+                        <text selectable="true">{{popParam.promptTxt}}</text>
+                    </view>
+                    </view>
+                  </block>
+
+
                   <view class="tips">{{popParam.tip}}</view>
             </view>
             <view qq:if="{{popParam.popType == 'reward'}}">

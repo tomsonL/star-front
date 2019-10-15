@@ -18,6 +18,9 @@
     "navigationBarTitleText": "星运MAX榜",
     "backgroundTextStyle": "light"
   },
+  "groupIdList":[
+    "920053426"
+  ],
   "tabBar": {
     "color": "#655035",
     "selectedColor": "#F7BB6F",

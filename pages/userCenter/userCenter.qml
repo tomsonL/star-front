@@ -36,10 +36,15 @@
             <view>星力明细</view>
         </view>
         <view class="contact">
+              <button class="contact" open-type = "openGroupProfile" group-id="920053426">官方Q群</button>
+        </view>
+        <!--
+        <view class="contact">
             <text selectable="true" bindtap="copy">客服QQ：3476347242</text>
         </view>
+        -->
         <view class="goPay" bindtap="goPay">
-            <text selectable="true">充 值</text>
+            <text selectable="true">充星力值</text>
         </view>
         <view class="missionWrapper">
             <view class="getMoreTxt">想获得更多星力？</view>

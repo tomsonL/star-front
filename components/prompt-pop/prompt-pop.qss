@@ -118,6 +118,16 @@
     font-size: 27rpx;
     color: #f9651c;
 }
+
+.sayPrompt > button {
+    position: relative;
+    line-height: 32rpx;
+    font-size: 27rpx;
+    color: #f9651c;
+    background-color:transparent;
+
+}
+
 .voteImg {
     position: relative;
     width: 496rpx;
