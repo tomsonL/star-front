@@ -243,8 +243,6 @@
     width: 100rpx;
     height: 100rpx;
     border-radius: 50%;
-    animation: avatarAni 1s infinite;
-    -webkit-animation: avatarAni 1s infinite;
 }
 
 @keyframes avatarAni {
@@ -278,6 +276,11 @@
     height: 100%;
     border-radius: 50%;
     border: 1px solid rgba(112, 112, 112, 0.99);
+}
+
+.animation{
+    animation: avatarAni 1s infinite;
+    -webkit-animation: avatarAni 1s infinite;
 }
 .avatar_border {
     position: absolute;

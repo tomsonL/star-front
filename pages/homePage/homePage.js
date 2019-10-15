@@ -15,6 +15,8 @@ Page({
         temIndex: 0,
         //星座id
         cstl_id: "",
+        //当前日期星座id
+        curr_cstl_id: "",
         //星座控制
         constellation: [],
         hasMons: [],
@@ -49,6 +51,7 @@ Page({
                 that.setData({
                     currentIndex: that.data.hasMons.length - 1,
                     cstl_id: that.data.hasMons[that.data.hasMons.length - 1].id,
+                    curr_cstl_id: that.data.hasMons[that.data.hasMons.length - 1].id,
                     constellation: horoArr
                 })
                 qq.setStorage({
