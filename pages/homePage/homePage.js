@@ -23,6 +23,8 @@ Page({
         rankData: [],
         showLeft: true,
         showRight: false,
+        shareMsg1:'',
+        shareMsg2:'',
     },
     onLoad: function (option) {
         app.aldstat.sendEvent('星盘');
@@ -64,17 +66,37 @@ Page({
         that.checkInFun();
     },
     onShow: function () {
-        //console.log('onshow');
-        //this.getHoroData();
+        var that=this;
+        qq.getStorage({
+            key: 'staruserinfo',
+            success: function (res) {
+                qq.request({
+                    method: "GET",
+                    url: request_host + "/user/get_share_msg",
+                    data: {
+                        user_id: res.data.user_id
+                    },
+                    success: function (res2) {
+
+                        that.data.shareMsg1 = res2.data.data.msg1;
+                        that.data.shareMsg2 = res2.data.data.msg2;
+                    }
+                })
+            }
+        })
     },
     onShareAppMessage: function (options) {
         var that = this;
         // 设置菜单中的转发按钮触发转发事件时的转发内容
         var shareObj = {
-            title: "人生剧本任意变幻，因为“你”，让“他”星运无限……",        // 默认是小程序的名称(可以写slogan等)
+            title: that.data.shareMsg1,        // 默认是小程序的名称(可以写slogan等)
+            shareTemplateId: "EE558DDCEFB407FD811CC6C06181D6AF",
+            shareTemplateData: {
+                "txt1": that.data.shareMsg2,
+                "txt2": "为爱豆助力，领现金红包！"
+            },
             path: '/pages/homePage/homePage',        // 默认是当前页面，必须是以‘/’开头的完整路径
             imageUrl: 'http://image.3ceng.cn/res/share/share_500_400.jpg',
-            //imageUrl: 'http://img.mp.itc.cn/upload/20170624/1da4a6bd75dc4f56bae76a702cb4242c_th.jpg',
             success: function (res) {
                 // 转发成功之后的回调
                 if (res.errMsg == 'shareAppMessage:ok') {

@@ -15,6 +15,8 @@ Page({
         idolList: [],
         // 是否有更多
         hasMore: true,
+        shareMsg1:'',
+        shareMsg2:'',
         checkInsList: [
             {
                 dayName: "第一天",
@@ -95,6 +97,24 @@ Page({
         if (this.data.keyword) {
             this.getList(this.data.keyword, 0);
         }
+        var that=this;
+        qq.getStorage({
+            key: 'staruserinfo',
+            success: function (res) {
+                qq.request({
+                    method: "GET",
+                    url: request_host + "/user/get_share_msg",
+                    data: {
+                        user_id: res.data.user_id
+                    },
+                    success: function (res2) {
+
+                        that.data.shareMsg1 = res2.data.data.msg1;
+                        that.data.shareMsg2 = res2.data.data.msg2;
+                    }
+                })
+            }
+        })
     },
     onHide: function () {
         this.setData({
@@ -106,7 +126,12 @@ Page({
         var that = this;
         // 设置菜单中的转发按钮触发转发事件时的转发内容
         var shareObj = {
-            title: "人生剧本任意变幻，因为“你”，让“他”星运无限……",        // 默认是小程序的名称(可以写slogan等)
+            title: that.data.shareMsg1,        // 默认是小程序的名称(可以写slogan等)
+            shareTemplateId: "EE558DDCEFB407FD811CC6C06181D6AF",
+            shareTemplateData: {
+                "txt1": that.data.shareMsg2,
+                "txt2": "为爱豆助力，领现金红包！"
+            },
             path: '/pages/homePage/homePage',        // 默认是当前页面，必须是以‘/’开头的完整路径
             imageUrl: 'http://image.3ceng.cn/res/share/share_500_400.jpg',
             success: function (res) {
