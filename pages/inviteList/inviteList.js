@@ -18,6 +18,7 @@ Page({
         isGetShare: false,
         shareMsg1:'',
         shareMsg2:'',
+        shareMsg3:'',
     },
     onLoad: function () {
         var pages = getCurrentPages()
@@ -40,7 +41,7 @@ Page({
             shareTemplateId: "EE558DDCEFB407FD811CC6C06181D6AF",
             shareTemplateData: {
                 "txt1": that.data.shareMsg2,
-                "txt2": "为爱豆助力，领现金红包！"
+                "txt2": that.data.shareMsg3,
             },
             path: '/pages/homePage/homePage',        // 默认是当前页面，必须是以‘/’开头的完整路径
             imageUrl: 'http://image.3ceng.cn/res/share/share_500_400.jpg',
@@ -168,6 +169,7 @@ Page({
 
                         that.data.shareMsg1 = res2.data.data.msg1;
                         that.data.shareMsg2 = res2.data.data.msg2;
+                        that.data.shareMsg3 = res2.data.data.msg3;
                     }
                 })
             }
