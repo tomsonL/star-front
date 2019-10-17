@@ -22,9 +22,9 @@ Page({
             })
             if(that.data.time ==0){
                 clearInterval(interval);
-                qq.switchTab({
-                    url: '../homePage/homePage'
-                })
+                // qq.switchTab({
+                //     url: '../homePage/homePage'
+                // })
             }
         },1000)
         qq.request({
