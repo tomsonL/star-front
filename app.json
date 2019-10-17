@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/start/start",
     "pages/homePage/homePage",
     "pages/idolDetail/idolDetail",
     "pages/totalList/totalList",

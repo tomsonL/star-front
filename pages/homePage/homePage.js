@@ -27,6 +27,7 @@ Page({
         shareMsg2:'',
     },
     onLoad: function (option) {
+
         app.aldstat.sendEvent('星盘');
         if (option.invite_id) {
             qq.setStorageSync('invite_id', option.invite_id);
