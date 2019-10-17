@@ -16,8 +16,7 @@ Page({
     onLoad: function () {
         var that = this;
         var interval = setInterval(function(){
-            console.log(that.data.time);
-            var timenew = that.data.time-1;
+            var timenew = that.data.time - 1;
             that.setData({
                 time:timenew
             })
@@ -28,13 +27,11 @@ Page({
                 })
             }
         },1000)
-
         qq.request({
             method: "GET",
             url: request_host + "/ranks/pre_top",
             data: {},
             success: function (res) {
-                console.log(res);
                 that.setData({
                     star: res.data.data.star,
                     cstl_info: res.data.data.cstl_info,
@@ -51,6 +48,4 @@ Page({
             url: '../homePage/homePage'
         })
     }
-
-
 })
