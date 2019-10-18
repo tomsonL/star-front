@@ -68,6 +68,9 @@ Page({
         that.checkInFun();
     },
     onShow: function () {
+        this.updateShareMsg();
+    },
+    updateShareMsg: function(){
         var that=this;
         qq.getStorage({
             key: 'staruserinfo',

@@ -119,6 +119,9 @@ Page({
     },
     onShow: function () {
         this.getList(this.data.urlParam);
+        this.updateShareMsg();
+    },
+    updateShareMsg: function(){
         var that=this;
         qq.getStorage({
             key: 'staruserinfo',
@@ -516,6 +519,7 @@ Page({
                                 })
                                 that.getList(that.data.urlParam);
                                 app.aldstat.sendEvent('助力成功', { '明星': that.data.idolName, '页面': '星座分榜' });
+                                that.updateShareMsg();
                             } else {
                                 that.setData({
                                     showPop: true,

@@ -155,6 +155,9 @@ Page({
     },
     onShow: function () {
         this.getList(this.data.urlParam, 0);
+        this.updateShareMsg();
+    },
+    updateShareMsg: function(){
         var that=this;
         qq.getStorage({
             key: 'staruserinfo',

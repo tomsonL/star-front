@@ -102,6 +102,9 @@ Page({
         this.setData({
             lastTimer: new Date().getHours() + ":00:00"
         })
+        this.updateShareMsg();
+    },
+    updateShareMsg: function(){
         var that=this;
         qq.getStorage({
             key: 'staruserinfo',
@@ -113,6 +116,7 @@ Page({
                         user_id: res.data.user_id
                     },
                     success: function (res2) {
+
                         that.data.shareMsg1 = res2.data.data.msg1;
                         that.data.shareMsg2 = res2.data.data.msg2;
                         that.data.shareMsg3 = res2.data.data.msg3;
@@ -518,6 +522,7 @@ Page({
                                 })
                                 that.getList(that.data.urlParam);
                                 app.aldstat.sendEvent('助力成功', { '明星': that.data.idolInfo.star_name, '页面': '明星详情' });
+                                that.updateShareMsg();
                             } else {
                                 that.setData({
                                     showPop: true,

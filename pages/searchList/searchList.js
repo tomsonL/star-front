@@ -98,6 +98,9 @@ Page({
         if (this.data.keyword) {
             this.getList(this.data.keyword, 0);
         }
+        this.updateShareMsg();
+    },
+    updateShareMsg: function(){
         var that=this;
         qq.getStorage({
             key: 'staruserinfo',
@@ -441,6 +444,7 @@ Page({
                                 })
                                 that.getList(that.data.keyword, 0);
                                 app.aldstat.sendEvent('助力成功', { '明星': that.data.idolName, '页面': '搜索页' });
+                                that.updateShareMsg();
                             } else {
                                 that.setData({
                                     showPop: true,
