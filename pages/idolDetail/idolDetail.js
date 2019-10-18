@@ -113,7 +113,6 @@ Page({
                         user_id: res.data.user_id
                     },
                     success: function (res2) {
-
                         that.data.shareMsg1 = res2.data.data.msg1;
                         that.data.shareMsg2 = res2.data.data.msg2;
                         that.data.shareMsg3 = res2.data.data.msg3;
@@ -132,7 +131,7 @@ Page({
                 "txt1": that.data.shareMsg2,
                 "txt2": that.data.shareMsg3,
             },
-            path: '/pages/homePage/homePage',        // 默认是当前页面，必须是以‘/’开头的完整路径
+            path: '/pages/start/start',
             imageUrl: 'http://image.3ceng.cn/res/share/share_500_400.jpg',
             success: function (res) {
                 // 转发成功之后的回调

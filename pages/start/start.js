@@ -7,12 +7,13 @@ const request_host = config.REQUEST_HOST;
 
 Page({
     data: {
-        poster:"http://image.3ceng.cn/start_bg2.jpg",
+        poster:"",
         time:5,
         star:{},
         cstl_info:{},
         top_fans:[]
     },
+
     onLoad: function () {
         var that = this;
         var interval = setInterval(function(){
@@ -22,9 +23,7 @@ Page({
             })
             if(that.data.time ==0){
                 clearInterval(interval);
-                qq.switchTab({
-                    url: '../homePage/homePage'
-                })
+                that.skip();
             }
         },1000)
         qq.request({
@@ -35,7 +34,8 @@ Page({
                 that.setData({
                     star: res.data.data.star,
                     cstl_info: res.data.data.cstl_info,
-                    top_fans: res.data.data.top_fans
+                    top_fans: res.data.data.top_fans,
+                    poster: res.data.data.poster
                 })
             }
         })
@@ -47,5 +47,5 @@ Page({
         qq.switchTab({
             url: '../homePage/homePage'
         })
-    }
+    },
 })

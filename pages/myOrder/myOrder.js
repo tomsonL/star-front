@@ -27,7 +27,7 @@ Page({
         // 设置菜单中的转发按钮触发转发事件时的转发内容
         var shareObj = {
             title: "人生剧本任意变幻，因为“你”，让“他”星运无限……",        // 默认是小程序的名称(可以写slogan等)
-            path: '/pages/homePage/homePage',        // 默认是当前页面，必须是以‘/’开头的完整路径
+            path: '/pages/start/start',
             imageUrl: 'http://image.3ceng.cn/res/share/share_500_400.jpg',
             success: function (res) {
                 // 转发成功之后的回调
