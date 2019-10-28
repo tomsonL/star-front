@@ -83,7 +83,9 @@ Page({
         shareOrAd: 'share'
     },
     onLoad: function () {
-        qq.showShareMenu();
+        qq.showShareMenu({
+            withShareTicket: true
+        });
         if (parseInt(Math.random()*2) == 1){
             this.setData({
                 shareOrAd: 'share'
@@ -574,7 +576,9 @@ Page({
     // 手动分享方法
     shareFun: function () {
         app.aldstat.sendEvent('邀请');
-        qq.showShareMenu();
+        qq.showShareMenu({
+            withShareTicket: true
+        });
     },
     // 弹框投票方法
     voteFun: function (e) {

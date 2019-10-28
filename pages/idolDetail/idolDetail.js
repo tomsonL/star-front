@@ -83,7 +83,9 @@ Page({
         shareOrAd: 'share'
     },
     onLoad: function (option) {
-        qq.showShareMenu();
+        qq.showShareMenu({
+            withShareTicket: true
+        });
         this.setData({
             urlParam: option
         })
@@ -639,7 +641,9 @@ Page({
     // 手动分享方法
     shareFun: function () {
         app.aldstat.sendEvent('邀请');
-        qq.showShareMenu();
+        qq.showShareMenu({
+            withShareTicket: true
+        });
     },
     // 弹框投票方法
     voteFun: function (e) {

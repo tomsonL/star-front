@@ -33,7 +33,9 @@ Page({
         if (option.invite_id) {
             qq.setStorageSync('invite_id', option.invite_id);
         }
-        //qq.showShareMenu();
+        qq.showShareMenu({
+            withShareTicket: true
+        })
         var that = this;
         var cstlId = "";
         var today = new Date().getTime();
@@ -67,8 +69,9 @@ Page({
         });
         that.checkInFun();
     },
-    onShow: function () {
+    onShow: function (options) {
         this.updateShareMsg();
+        console.log(options);
     },
     updateShareMsg: function(){
         var that=this;
@@ -92,6 +95,9 @@ Page({
         })
     },
     onShareAppMessage: function (options) {
+        qq.showShareMenu({
+            withShareTicket: true
+        })
         var that = this;
         // 设置菜单中的转发按钮触发转发事件时的转发内容
         var shareObj = {
@@ -102,6 +108,7 @@ Page({
                 "txt2": that.data.shareMsg3,
             },
             path: '/pages/start/start',
+//imageUrl: 'http://image.3ceng.cn/res/share/share_500_400.jpg',
             imageUrl: 'http://image.3ceng.cn/res/share/share_500_400.jpg',
             success: function (res) {
                 // 转发成功之后的回调

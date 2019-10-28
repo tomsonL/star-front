@@ -62,7 +62,9 @@ Page({
     },
     onLoad: function () {
         this.getList();
-        qq.showShareMenu();
+        qq.showShareMenu({
+            withShareTicket: true
+        });
     },
     onShow: function () {
         this.getList();
@@ -395,7 +397,9 @@ Page({
     // 手动分享方法
     shareFun: function () {
         app.aldstat.sendEvent('邀请');
-        qq.showShareMenu();
+        qq.showShareMenu({
+            withShareTicket: true
+        });
     },
     // 关闭弹窗
     closePop: function () {

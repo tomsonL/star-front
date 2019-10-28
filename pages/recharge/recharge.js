@@ -51,7 +51,9 @@ Page({
         canIUse: qq.canIUse('button.open-type.getUserInfo'),
     },
     onLoad: function () {
-        qq.showShareMenu();
+        qq.showShareMenu({
+            withShareTicket: true
+        });
         this.getList();
     },
     onShareAppMessage: function (options) {

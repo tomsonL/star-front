@@ -30,7 +30,9 @@ Page({
         app.aldstat.sendEvent('去邀请', {
             '来源': prevpage_route
         });
-        qq.showShareMenu();
+        qq.showShareMenu({
+            withShareTicket: true
+        });
         this.getList();
     },
     onShareAppMessage: function (options) {
@@ -148,7 +150,9 @@ Page({
     // 邀请方法
     inviteFun: function () {
         app.aldstat.sendEvent('邀请');
-        qq.showShareMenu();
+        qq.showShareMenu({
+            withShareTicket: true
+        });
         this.setData({
             isGetShare: false
         })
@@ -259,7 +263,9 @@ Page({
     // 手动分享方法
     shareFun: function () {
         app.aldstat.sendEvent('邀请');
-        qq.showShareMenu();
+        qq.showShareMenu({
+            withShareTicket: true
+        });
     },
     // 关闭弹窗
     closePop: function () {
