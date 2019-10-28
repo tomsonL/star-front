@@ -7,6 +7,8 @@ App({
   //视频广告
   videoAd: null,
   onLaunch: function (option) {
+    console.log('App---onLaunch');
+    console.log(option);
     this.videoAd = qq.createRewardedVideoAd({ adUnitId: '62d55eb03b58c9c51694df802608e1c7' });
     this.videoAd.onError(function (res) {
       console.log('videoAd onError', res)
@@ -101,8 +103,6 @@ App({
       });
     }
   },
-
-
 
   globalData: {
     userInfo: null,

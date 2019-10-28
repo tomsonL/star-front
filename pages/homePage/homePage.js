@@ -69,10 +69,6 @@ Page({
         });
         that.checkInFun();
     },
-    onShow: function (options) {
-        this.updateShareMsg();
-        console.log(options);
-    },
     updateShareMsg: function(){
         var that=this;
         qq.getStorage({
@@ -98,6 +94,7 @@ Page({
         qq.showShareMenu({
             withShareTicket: true
         })
+        this.updateShareMsg();
         var that = this;
         // 设置菜单中的转发按钮触发转发事件时的转发内容
         var shareObj = {

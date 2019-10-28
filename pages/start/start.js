@@ -11,18 +11,19 @@ Page({
         time:5,
         star:{},
         cstl_info:{},
-        top_fans:[]
+        top_fans:[],
+        interval:{}
     },
 
     onLoad: function () {
         var that = this;
-        var interval = setInterval(function(){
+        that.interval = setInterval(function(){
             var timenew = that.data.time - 1;
             that.setData({
                 time:timenew
             })
             if(that.data.time ==0){
-                clearInterval(interval);
+                clearInterval(that.interval);
                 that.skip();
             }
         },1000)
@@ -47,5 +48,6 @@ Page({
         qq.switchTab({
             url: '../homePage/homePage'
         })
+        clearInterval(this.interval);
     },
 })

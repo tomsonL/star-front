@@ -161,8 +161,6 @@ Page({
     onShareAppMessage: function (options) {
         var that = this;
         // 设置菜单中的转发按钮触发转发事件时的转发内容
-console.log(that.data.shareMsg2);
-console.log(that.data.shareMsg3);
         var shareObj = {
             title: that.data.shareMsg1,        // 默认是小程序的名称(可以写slogan等)
             shareTemplateId: "EE558DDCEFB407FD811CC6C06181D6AF",
