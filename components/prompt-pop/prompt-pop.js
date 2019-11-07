@@ -1,7 +1,8 @@
 //promptPop.js
 //获取应用实例
 const app = getApp()
-
+const config = require('../../config.js');
+const request_host = config.REQUEST_HOST;
 Component({
     properties: {
         // 这里定义了innerText属性，属性值可以在组件使用时指定
@@ -70,7 +71,8 @@ Component({
     },
     data: {
         // 这里是一些组件内部数据
-        someData: {}
+        someData: {},
+        clipAble:false,
     },
     ready() {
     },
@@ -85,11 +87,15 @@ Component({
         },
         // 看视频的方法
         videoAdFun: function () {
-            this.triggerEvent('videoAdFun', {}, {});
+            console.log('videoAdFun is called');
+            var re = this.triggerEvent('videoAdFun', {}, {});
+            console.log(this);
         },
+
         voteFun: function () {
             this.triggerEvent('voteFun', this.data.popParam, {});
         },
+
         clipCopy: function () {
             var that=this
             qq.setClipboardData({
@@ -102,7 +108,33 @@ Component({
                     })
                 }
             })
+            app.globalData.clipAble = false;
+            app.globalData.videoAd = 1;
         },
+
+        videoAdFun2: function (e) {
+            var that = this
+            console.log('video ad fun2 ');
+            app.globalData.videoAd = 2;
+            app.videoAd2.load().then(() => {
+                console.log('激励视频2加载成功');
+            app.videoAd2.show().then(() => {
+                console.log('激励视频2 广告显示成功')
+                setTimeout(function(){
+                    that.setData({
+                        clipAble:true
+                    });
+                }, 5000);
+            })
+            .catch(err => {
+                console.log('激励视频 广告显示失败')
+            })
+            })
+            .catch(err => {
+                console.log('激励视频加载失败');
+            })
+        },
+
 
     }
 })

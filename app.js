@@ -4,12 +4,17 @@ const ald = require('./utils/ald-stat.js')
 const request_host = config.REQUEST_HOST;
 
 App({
+
   //视频广告
   videoAd: null,
+  videoAd2: null,
   onLaunch: function (option) {
     console.log('App---onLaunch');
     console.log(option);
+    var that=this;
     this.videoAd = qq.createRewardedVideoAd({ adUnitId: '62d55eb03b58c9c51694df802608e1c7' });
+    this.videoAd2 = qq.createRewardedVideoAd({ adUnitId: '62d55eb03b58c9c51694df802608e1c7' });
+
     this.videoAd.onError(function (res) {
       console.log('videoAd onError', res)
     })
@@ -17,43 +22,46 @@ App({
       console.log('videoAd onLoad', res)
     })
     this.videoAd.onClose(function (res) {
-      console.log('videoAd onClose', res)
-      if (res.isEnded == true) {
-        qq.getStorage({
-          key: "staruserinfo",
-          success: function (res1) {
-            // 添加获取随机助力值的ajax
-            qq.request({
-              method: "POST",
-              url: request_host + "/ops/task",
-              data: {
-                task: "video_ad",
-                user_id: res1.data.user_id,
-                api_token: res1.data.token
-              },
-              success: function (res2) {
-                getCurrentPages()[getCurrentPages().length - 1].setData({
-                  // 弹出框
-                  showPop: true,
-                  popParam: {
-                    popType: "reward",
-                    popTitle: "获得奖励",
-                    getVotes: res2.data.data.votes,
-                    btns: [
-                      {
-                        type: 2,
-                        longType: 1,
-                        btnFun: 'closePop',
-                        text: '去助力',
-                        hasIcon: false
+     console.log('videoAd onClose', res)
+      if (res.isEnded == true  && that.globalData.videoAd==1) {
+          qq.getStorage({
+              key: "staruserinfo",
+              success: function (res1) {
+                  // 添加获取随机助力值的ajax
+                  qq.request({
+                      method: "POST",
+                      url: request_host + "/ops/task",
+                      data: {
+                          task: "video_ad",
+                          user_id: res1.data.user_id,
+                          api_token: res1.data.token
+                      },
+                      success: function (res2) {
+                          getCurrentPages()[getCurrentPages().length - 1].setData({
+                              // 弹出框
+                              showPop: true,
+                              popParam: {
+                                  popType: "reward",
+                                  popTitle: "获得奖励",
+                                  getVotes: res2.data.data.votes,
+                                  btns: [
+                                      {
+                                          type: 2,
+                                          longType: 1,
+                                          btnFun: 'closePop',
+                                          text: '去助力',
+                                          hasIcon: false
+                                      }
+                                  ]
+                              }
+                          })
                       }
-                    ]
-                  }
-                })
+                  })
               }
-            })
-          }
-        })
+          })
+
+
+
       }
     })
 
@@ -106,5 +114,6 @@ App({
 
   globalData: {
     userInfo: null,
+    videoAd:1
   }
 })

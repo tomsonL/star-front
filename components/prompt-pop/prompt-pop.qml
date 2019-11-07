@@ -27,23 +27,28 @@
                   </view>
                   <view class="clear"></view>
                   <block qq:if="{{popParam.voteImg}}">
-                    <view class="idolSay">
-                    <view class="sayTrigle"></view>
-                    <image class="voteImg" src="{{popParam.voteImg}}" />
-                    <view class="sayPrompt" bindtap="clipCopy">
-                        <button open-type = "openGroupProfile" group-id="920053426"><text selectable="true">{{popParam.promptTxt}}</text></button>
+                        <view class="idolSay">
+                              <view class="sayTrigle"></view>
+
+
+                              <view qq:if="{{clipAble}}" class="sayPrompt" bindtap="clipCopy">
+                                    <image class="voteImg" src="{{popParam.voteImg}}" />
+                                    <button open-type="openGroupProfile" group-id="920053426"><text selectable="true">{{popParam.promptTxt}}</text></button>
+                              </view>
+                              <view qq:else class="sayPrompt" bindtap="videoAdFun2">
+                                    <image class="voteImg" src="{{popParam.voteImg}}" bindtap="videoAdFun2" />
+                                    <text>恭喜获得礼物码，点击视频后查看吧~</text>
+                              </view>
                         </view>
-                    </view>
                   </block>
                   <block qq:else>
-                    <view class="idolSay">
-                    <view class="sayTrigle"></view>
-                    <view class="sayPrompt">
-                        <text selectable="true">{{popParam.promptTxt}}</text>
-                    </view>
-                    </view>
+                        <view class="idolSay" >
+                              <view class="sayTrigle"></view>
+                              <view class="sayPrompt">
+                                    <text selectable="true">{{popParam.promptTxt}}</text>
+                              </view>
+                        </view>
                   </block>
-
 
                   <view class="tips">{{popParam.tip}}</view>
             </view>

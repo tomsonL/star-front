@@ -26,9 +26,9 @@ Page({
         thirdIdol: {},
         //明星List
         idolList: [],
-        shareMsg1:'',
-        shareMsg2:'',
-        shareMsg3:'',
+        shareMsg1: '',
+        shareMsg2: '',
+        shareMsg3: '',
         // 是否有更多
         hasMore: true,
         titleInfo: {
@@ -117,11 +117,11 @@ Page({
         }, 1000)
 
 
-        if (parseInt(Math.random()*2) == 1){
+        if (parseInt(Math.random() * 2) == 1) {
             that.setData({
                 shareOrAd: 'share'
             })
-        }else {
+        } else {
             that.setData({
                 shareOrAd: 'videoAd'
             })
@@ -131,8 +131,8 @@ Page({
         this.getList(this.data.urlParam, 0);
         this.updateShareMsg();
     },
-    updateShareMsg: function(){
-        var that=this;
+    updateShareMsg: function () {
+        var that = this;
         qq.getStorage({
             key: 'staruserinfo',
             success: function (res) {
@@ -176,43 +176,43 @@ Page({
                     app.aldstat.sendEvent('转发成功');
                     // 来自页面内的按钮的转发
                     //if (options.from == 'button') {
-                        qq.getStorage({
-                            key: "staruserinfo",
-                            success: function (res1) {
-                                // 此处可以修改 shareObj 中的内容
-                                shareObj.path = '/pages/homePage/homePage?invite_id=' + res1.data.user_id;
-                                // 添加获取随机助力值的ajax
-                                qq.request({
-                                    method: "POST",
-                                    url: request_host + "/ops/task",
-                                    data: {
-                                        task: "share",
-                                        user_id: res1.data.user_id,
-                                        api_token: res1.data.token
-                                    },
-                                    success: function (res2) {
-                                        that.setData({
-                                            // 弹出框
-                                            showPop: true,
-                                            popParam: {
-                                                popType: "reward",
-                                                popTitle: "获得奖励",
-                                                getVotes: res2.data.data.votes,
-                                                btns: [
-                                                    {
-                                                        type: 2,
-                                                        longType: 1,
-                                                        btnFun: 'closePop',
-                                                        text: '去助力',
-                                                        hasIcon: false
-                                                    }
-                                                ]
-                                            }
-                                        })
-                                    }
-                                })
-                            }
-                        })
+                    qq.getStorage({
+                        key: "staruserinfo",
+                        success: function (res1) {
+                            // 此处可以修改 shareObj 中的内容
+                            shareObj.path = '/pages/homePage/homePage?invite_id=' + res1.data.user_id;
+                            // 添加获取随机助力值的ajax
+                            qq.request({
+                                method: "POST",
+                                url: request_host + "/ops/task",
+                                data: {
+                                    task: "share",
+                                    user_id: res1.data.user_id,
+                                    api_token: res1.data.token
+                                },
+                                success: function (res2) {
+                                    that.setData({
+                                        // 弹出框
+                                        showPop: true,
+                                        popParam: {
+                                            popType: "reward",
+                                            popTitle: "获得奖励",
+                                            getVotes: res2.data.data.votes,
+                                            btns: [
+                                                {
+                                                    type: 2,
+                                                    longType: 1,
+                                                    btnFun: 'closePop',
+                                                    text: '去助力',
+                                                    hasIcon: false
+                                                }
+                                            ]
+                                        }
+                                    })
+                                }
+                            })
+                        }
+                    })
                     //}
                 }
             },
@@ -450,11 +450,11 @@ Page({
     assistSubmit(e) {
         var that = this;
 
-        if (parseInt(Math.random()*2) == 1){
+        if (parseInt(Math.random() * 2) == 1) {
             that.setData({
                 shareOrAd: 'share'
             })
-        }else {
+        } else {
             that.setData({
                 shareOrAd: 'videoAd'
             })
@@ -750,18 +750,18 @@ Page({
         }
     },
 
-    videoAdFun: function(e){
+    videoAdFun: function (e) {
         app.videoAd.load().then(() => {
             console.log('激励视频加载成功');
             app.videoAd.show().then(() => {
                 console.log('激励视频 广告显示成功')
             })
+                .catch(err => {
+                    console.log('激励视频 广告显示失败')
+                })
+        })
             .catch(err => {
-                console.log('激励视频 广告显示失败')
+                console.log('激励视频加载失败');
             })
-        })
-        .catch(err => {
-            console.log('激励视频加载失败');
-        })
     },
 })
